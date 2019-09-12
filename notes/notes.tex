@@ -1,0 +1,69 @@
+% setup the document
+\documentclass[b5paper,openany]{book}
+
+% setup variables ------------------------------
+
+% your name
+\newcommand\instructor{Mark Wales}
+
+% the week number
+\newcommand\weekno{10}
+
+% week main title
+\newcommand\maintitle{Building More UIs}
+
+% week subtitle
+\newcommand\subtitle{with React}
+
+% link to notes - relative to github.com/develop-me/
+\newcommand\github{week-10--advanced-react/blob/master/notes/}
+
+% setup functions, styling, etc.
+\input{../../templates/template.tex}
+
+% the structure of the document
+\begin{document}
+
+% render the title page (uses variables above)
+\tp
+
+\quotepage{Success is not the absence of failure; it's the persistence through failure}{Aisha Tyler}
+
+\tableofcontents
+
+\input{../../templates/preface.tex}
+
+\chapter{AJAX}
+\input{01/01-ajax.tex}
+
+\chapter{Asynchronous Programming}
+\input{01/02-async.tex}
+
+\chapter{Lifecycle Methods}
+\input{01/03-lifecycle.tex}
+
+\chapter{Pre-Built Components}
+\input{02/01-prebuilt-components.tex}
+
+\chapter{Testing Components}
+\input{02/02-testing.tex}
+
+\chapter{Context API}
+\input{03/01-context.tex}
+
+\chapter{Progressive Web Apps}
+\input{03/02-pwa.tex}
+
+\chapter{Hooks}
+\input{04/01-hooks.tex}
+
+
+
+
+\nchapter{Glossary}
+\input{glossary.tex}
+
+
+\input{../../templates/colophon.tex}
+
+\end{document}

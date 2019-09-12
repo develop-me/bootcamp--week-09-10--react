@@ -1,0 +1,34 @@
+We can put API calls in our component methods, we just need to make sure that we use \texttt{this.setState()} \textit{inside} the \texttt{.then()} function:
+
+\begin{minted}{js}
+    handleSubmit() {
+        // get the values of some controlled components
+        let { title, article } = this.state;
+
+        // post data to an API
+        axios.post("/api/article", {
+            title: title,
+            article: article,
+        }).then(() => {
+            // once the server gets responds successfully, clear the inputs
+            this.setState({ title: "", article: "" });
+        });
+    }
+\end{minted}
+
+If we're going to \textit{fetch} data from an API then we'll need some way to run a bit of code when a component first appears on screen.\footnote{This is \href{https://medium.com/@mahcloud/actions-in-the-constructor-or-componentdidmount-be3720e4a9a6}{subtly different} from when it first gets created in code, \texttt{constructor}}
+\\
+
+We can do this using the \texttt{componentDidMount} ``Lifecycle method''. This method is called for us by React when the component first renders, so any code we put in it will run when a component is rendered on screen:\footnote{If a component is removed and then re-added, the \texttt{componentDidMount} method will run again.}
+
+\inputminted{js}{01/figures/01-StarWarsFolks.jsx}
+
+If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/react-component.html#componentdidmount}{Lifecycle Methods: \texttt{componentDidMount}}
+\end{itemize}

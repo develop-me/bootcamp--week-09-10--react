@@ -1,0 +1,123 @@
+If a React app needs to work with data that's stored on a server somewhere, it will need to make API calls.
+\\
+
+So far the only way we know to get data in the browser is to navigate to a new page and the only way to submit data is to create a form with a \texttt{POST} method. Both of these involve refreshing the page, which is no good for an app that runs purely in JavaScript.
+\\
+
+
+``AJAX'' (\textbf{Asynchronous JavaScript and XML}) is an outdated term for doing HTTP requests using JavaScript.
+\\
+
+The name comes from the pre-JSON era, when people still used XML to transfer data:
+
+\begin{minted}{xml}
+    <employees>
+        <employee>
+            <name>Jenny</name>
+            <email>jenny1987@gmail.com</email>
+        </employee>
+        <employee>
+            <name>Rahul</name>
+            <email>rahul12@gmail.com</email>
+        </employee>
+        <employee>
+            <name>Mia</name>
+            <email>mia87@gmail.com</email>
+        </employee>
+    </employees>
+\end{minted}
+
+As you can see, XML is verbose and repetitive. Nowadays JSON is used pretty much everywhere. So it should really be called ``AJAJ'', but that doesn't sound as cool.
+\\
+
+In any case, people still say ``AJAX'' when they're talking about JavaScript making HTTP requests.
+
+
+\section{Axios}
+
+There are various ways to make an AJAX request from the browser.
+\\
+
+The original method, \texttt{XMLHttpRequest}, is horrifying to use, as it pre-dates the time when people realised that JavaScript didn't have to be unpleasant to work with.
+\\
+
+The more modern \texttt{fetch} API is much nicer to work with and is \href{https://caniuse.com/#feat=fetch}{now supported in most browsers}. However, it's still a bit ungainly to work with.
+\\
+
+We'll be using \href{https://github.com/mzabriskie/axios}{Axios} for our HTTP requests. It's a handy library that makes doing HTTP requests with JavaScript really easy.\footnote{And, as an added bonus, it works in Node too.}
+\\
+
+You can install it with:
+
+\begin{minted}{js}
+    npm install axios
+\end{minted}
+
+Axios provides us with methods for the various HTTP methods:
+
+\begin{minted}{js}
+    import axios from "axios";
+
+    // make a GET request
+    axios.get("/articles");
+
+    // make a POST request, with the given data
+    axios.post("/articles", {
+        title: "Hello",
+        article: "Blah blah blah",
+        tags: ["fish", "cat", "spoon"],
+    });
+
+    // make a PUT request, with the given data
+    axios.put("/articles/5", {
+        title: "Hello Again",
+        article: "Blah blah blah!",
+        tags: ["fish", "cat"],
+    });
+
+    // make a DELETE request
+    axios.delete("/articles/4");
+\end{minted}
+
+
+\subsection{Config}
+
+One of Axios' best features is it's easy to configure the parts of your HTTP request that are the same every time.
+\\
+
+For example, if we're using a RESTful API, our base URL, API key, and the \texttt{Accept} header are going to be the same for every request, so we can setup a version of Axios that has those already setup:
+
+\begin{minted}{js}
+    // import the library version of axios
+    import axios from "axios";
+
+    // create a version of axios with useful defaults
+    export default axios.create({
+        // use your own url
+        baseURL: "http://username.restful.training/api/",
+
+        // use your own key
+        params: {"key": "4fdea06a65ba1491091c0db709faf0cce944067a"},
+
+        // make sure we get JSON back
+        headers: {"Accept": "application/json"},
+    });
+\end{minted}
+
+Then we can import \textit{that} file and use it as follows:
+
+\begin{minted}{js}
+    // import *local* version of axios
+    import axios from "./axios";
+
+    // automatically handle base URL and key
+    axios.get("/articles");
+\end{minted}
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://github.com/axios/axios}{Axios}
+    \item \href{https://blog.logrocket.com/how-to-make-http-requests-like-a-pro-with-axios/}{How To Make HTTP Requests Like a Pro with Axios}
+\end{itemize}
