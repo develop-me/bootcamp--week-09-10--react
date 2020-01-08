@@ -1,3 +1,100 @@
+Hooks are a newer way of writing stateful components in a more functional style, without needing to use a \texttt{class}. This avoids issues with \texttt{this} and, done properly, can lead to more composable code.
+\\
+
+Let's take a look at a basic \texttt{class} based component again:
+
+\inputminted{js}{04-hooks/figures/01-class-component.js}
+
+And here it is using hooks:
+
+\inputminted{js}{04-hooks/figures/02-hooks.js}
+
+The hooks version is less than half the length, but it does exactly the same thing.
+\\
+
+Before we delve into exactly how this works, we'll need to look at destructuring arrays.
+
+\section{Destructuring Arrays}
+So far we've only used destructuring to get properties from an object:
+
+\begin{minted}{js}
+    let person = { firstName: "Ben", lastName: "Folds", favouriteNumber: 5 };
+
+    // get the firstName property and store it in a firstName variable
+    let { firstName } = person;
+    console.log(firstName); // "Ben"
+\end{minted}
+
+We can also destructure an array. However, we don't have property names to work with and we're not allowed (and wouldn't want) variables that are just numbers. So destructuring an array is based purely on the \textit{order} of the items in the array:
+
+\begin{minted}{js}
+    let values = [1, 2, 3, 4];
+
+    // get first and second value
+    let [first, second] = values;
+    console.log(second); // 2
+\end{minted}
+
+In the above example we could have called the variables \texttt{first} and \texttt{second} anything we liked: it's purely the order that's important. You'll also notice that we've ignored the third and fourth values in the array.
+
+
+\section{\texttt{useState}}
+
+Now we understand destructuring arrays, we can start to understand \texttt{useState}.
+\\
+
+\texttt{useState} sets up state for a \textit{single} value. It does three things for us:
+
+\begin{itemize}
+    \item Setting up the initial value
+    \item Giving us the current value
+    \item Giving us a function to update the value
+\end{itemize}
+
+In the counter example, we want to keep track of a value that we're calling \texttt{counter}. It should have an initial value of \texttt{0}, so we call \texttt{useState(0)} passing in the initial value.
+\\
+
+The \texttt{useState} function returns an array containing two values: the current value and a function to update that value. We can then destructure this array to get the value and update function back, using whatever names are most appropriate (usually using the \texttt{x} and \texttt{setX} convention).\footnote{If it returned an object it would be messier to name them whatever we like}
+
+\begin{minted}{js}
+    // useState returns an array containing two values
+    // the current value
+    // a function to update the value
+    const [counter, setCounter] = useState(0);
+\end{minted}
+
+As mentioned above, \texttt{useState} can only be used for setting/updating a \texttt{single} value. You will need more than one call to \texttt{useState} if you need more than one value in state:
+
+\inputminted{js}{04-hooks/figures/03-multiple-useState.js}
+
+As you can imagine, this gets quite messy if you have lots of values in state. In that case it's best to use \texttt{useReducer}.
+
+\begin{infobox}{Tuples}
+    You might notice that \texttt{useState} returns an array containing mixed data-types: any type for the first value and a function for the second. We've previously seen that mixing your types in an array is a bad idea, as generally you want to do the same thing to every item in an array. The exception to this is if you're using an array as a ``tuple''.
+    \\
+
+    Many programming languages, particularly functional ones, have a data type called a tuple. A tuple is a data-structure that contains two values that are somehow related. It might look something like this:
+
+    \begin{minted}{haskell}
+        (40.242531, -109.013390) -- a GPS coordinate
+        ("Marte", 99) -- a name and age
+    \end{minted}
+
+    It's common, although not necessary, for the two parts of a tuple to be different data types: it just ties two values together so they don't get separated.
+    \\
+
+    JavaScript doesn't have native support for tuples, so the closest approximation is to use an array with two values.
+\end{infobox}
+
+
+\section{\texttt{useReducer}}
+
+``Reducers'' are like the \texttt{reduce} method of arrays, except that instead of accumulating a value by going through each item of an array, they accumulate the current value of state over time.
+\\
+
+A reducer is a function which gets passed the current value of the state plus some additional data, it then has to return a new version of the state based on those two bits of information. Reducers should be pure functions and must always return a valid copy of the state.
+
+
 \section{Additional Resources}
 
 \begin{itemize}[leftmargin=*]
@@ -5,4 +102,5 @@
     \item \href{https://tvernon.tech/blog/react-custom-hook-for-forms}{Writing your own React custom hooks}
     \item \href{https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672}{Do React Hooks Replace Redux?}
     \item \href{https://www.youtube.com/watch?v=nUzLlHFVXx0}{Composing Behavior in React or Why React Hooks are Awesome}
+    \item \href{https://medium.com/@ntgard/tuples-in-javascript-cd33321e5277}{Tuples in JavaScript}
 \end{itemize}
