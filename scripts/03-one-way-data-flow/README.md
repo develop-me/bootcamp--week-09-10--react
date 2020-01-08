@@ -1,4 +1,4 @@
-# Day 3: Afternoon
+# Day 4
 
 ## Lifting State
 - Creating a toggle button: own state, but no way of knowing about each other
