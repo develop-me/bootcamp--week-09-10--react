@@ -1,12 +1,43 @@
 # Challenges
 
-**Use Git to make a commit every time you get an answer working. Use sensible commit messages.**
+- **Use Git to make a commit every time you get an answer working. Use sensible commit messages.**
 
-Make sure you keep React DevTools + JS console open at all times and correct anything that it flags up. Use the Network panel to check things are working as you'd expect.
+- Make sure you keep React DevTools ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)/[Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)) + JS console open at all times and correct anything that it flags up.
+
+- Use the Network panel to check things are working as you'd expect.
+
+- Use Postman to check your API requests if you're not sure what you need to send.
+
+- Put these components in a `blog` directory inside your existing React app.
 
 ## APIs with React
 
-For all of these challenges use the [`restful.training`](https://github.com/develop-me/restful.training#restfultraining) API that you worked with in the Laravel week. You'll need the password `wsYZzT8_m_pwBNDjSk77` to sign-up if you've lost your login.
+For all of these challenges use the [`restful.training`](https://github.com/develop-me/restful.training#restfultraining) API that you worked with in the Laravel week. (You'll need the password `wsYZzT8_m_pwBNDjSk77` to sign-up if you've lost your login.)
+
+Make sure you install the axios library and then setup a config file that looks something like this:
+
+```javascript
+// import the library version of axios
+import axios from "axios";
+
+// create a version of axios with useful defaults
+export default axios.create({
+    // use your own url
+    baseURL: "http://wombat.restful.training/api/blog",
+
+    // use your own key
+    params: {
+        key: "1e1c27284c86wom8922bat0f217f784b097b513",
+    },
+
+    // make sure we get JSON back
+    headers: {
+        Accept: "application/json",
+    },
+});
+```
+
+**The `params` property is broken in axios v0.19. If you get a `401` error try running `npm install axios@0.18.0` and then re-running `npm start`**
 
 These challenges all involve making a `GET` request when a component first loads. You should show a loading message until you get back a response:
 
