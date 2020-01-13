@@ -89,10 +89,113 @@ As you can imagine, this gets quite messy if you have lots of values in state. I
 
 \section{\texttt{useReducer}}
 
-``Reducers'' are like the \texttt{reduce} method of arrays, except that instead of accumulating a value by going through each item of an array, they accumulate the current value of state over time.
+\subsection{Reducers}
+
+``Reducers'' are like the \texttt{reduce} method of arrays, except that instead of accumulating a value by going through each item of an array, they accumulate the current value of state over time. Simples!
 \\
 
-A reducer is a function which gets passed the current value of the state plus some additional data, it then has to return a new version of the state based on those two bits of information. Reducers should be pure functions and must always return a valid copy of the state.
+A reducer is a function which gets passed the current value of the state plus some additional data, it then has to return a new version of the state based on those two bits of information. Reducers should be pure functions and \textbf{must always return a valid copy of the state}.
+\\
+
+The simplest possible reducer is one that takes the current state and returns it:
+
+\inputminted{js}{04-hooks/figures/04-reducer-id.js}
+
+This is not particularly useful, as it means the state can never change!
+\\
+
+For our reducer to be useful we need to also pass along some additional information, in React\footnote{And Redux} this is normally an ``action''.
+\\
+
+An action is just an object literal with various properties. If we give it a \texttt{type} property then we can change the state in different ways depending on the value of this specific property:
+
+\inputminted{js}{04-hooks/figures/05-reducer-p1scores.js}
+
+In the above reducer if the action has a \texttt{type} property of \texttt{player1Scores} we add \texttt{1} to the \texttt{player1} property of state. In all other cases (\texttt{default}) it will just return state unchanged - remember, \textbf{we always need to return a valid copy of the state}.
+\\
+
+We can now easily add a \texttt{player2Scores} action:
+
+\begin{minted}{js}
+    case: "player2Scores": return {
+        ...state,
+        player2: state.player2 + 1,
+    };
+\end{minted}
+
+Because an action is just an object literal, we can have as many properties as we like on it. Remember, a reducer is a pure function, so it should only work with information that's been passed in (or other pure functions).
+
+\inputminted{js}{04-hooks/figures/06-reducer-payload.js}
+
+It's sometimes tidier to pull the \texttt{case}s out into their own functions:
+
+\inputminted{js}{04-hooks/figures/07-reducer-pull.js}
+
+\subsection{Dispatching Actions}
+
+Now that we understand what a reducer is, we need to know how to use it.
+\\
+
+We never call the reducer directly, instead we use the \texttt{dispatch} function that \texttt{useReducer} gives us:
+
+\inputminted{js}{04-hooks/figures/08-useReducer.js}
+
+We pass \texttt{useReducer} the reducer that we've created as well as an initial value for that state.\footnote{In the same way that we have to give an initial value for the accumulator in an array reduce} \texttt{useReducer} then gives us back two values: \texttt{state} and \texttt{dispatch}.
+\\
+
+The first value, which we've called \texttt{state}, is an object that represents the \textit{current} state (which will be \texttt{initial} the first time the component renders). We can destructure this to get the values that we're interested in.
+\\
+
+The second value, which we've called \texttt{dispatch}, is a function that we call, passing in an action as the first argument. Dispatching an action will cause React to call the reducer function, passing in the \textit{current} state along with the action that was dispatched. Once the reducer returns a version of the state, the component re-renders with the new state.
+\\
+
+It's usually always tidier to use \texttt{useReducer} when your state contains multiple values. Used properly, it can also make your code much more composable.
+
+\begin{infobox}{Double Destructuring}
+    In the above example we could have used multi-level destructuring to save a line of code:
+
+    \begin{minted}[fontsize=\footnotesize]{javascript}
+        // rather than destructuring state on a separate line
+        // destructure state within the useReducer destructuring
+        const [ { player1, player2 }, dispatch ] = useReducer(reducer, initial);
+    \end{minted}
+
+    You can see that we've destructured the state directly within the destructuring of the \texttt{useReducer} tuple.
+\end{infobox}
+
+
+\section{\texttt{useEffect}}
+
+We need to be careful about where we put some of our code. We don't want to get in the way of React's render phase. With our \texttt{class} based components we used the lifecycle methods (e.g. \texttt{componentDidMount}) to avoid side-effects (changing the DOM, adding event listeners, etc.) inside \texttt{render}, but with hooks based components we don't have methods and our function is effectively the \texttt{render} method.
+\\
+
+Anything that causes side-effects needs to be wrapped with \texttt{useEffect}: this delays running the code until \textit{after} the component has rendered. It can be used to recreate Lifecycle methods, although that is not its only purpose.
+\\
+
+A simple example might be if you wanted to updated the \texttt{<title>} tag of the page every time something changes on your page:
+
+\inputminted{javascript}{04-hooks/figures/09-useEffect.js}
+
+This function will be called \textit{every} time that component updates, similar to the behaviour of \texttt{componentDidUpdate}.
+\\
+
+Sometimes, if the component has more than one value in state, the update will not change the value that we're interested in. \texttt{useEffect} lets us optionally pass in an array of values that the effect is dependent on. Now the function will only run if the component updates \textit{and} the value has changed:
+
+\inputminted{javascript}{04-hooks/figures/10-useEffect-dependents.js}
+
+
+
+
+
+For example, if we want to make an API request which will then cause the component to re-render, this will cause side-effects and so should be wrapped in \texttt{useEffect}.
+
+\inputminted{javascript}{04-hooks/figures/11-StarWarsFolks.js}
+
+
+We can also recreate the \texttt{addEventListener} example from the lifecycle methods section:
+
+
+\inputminted{javascript}{04-hooks/figures/12-useEffect-return.js}
 
 
 \section{Additional Resources}

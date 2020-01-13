@@ -65,6 +65,45 @@ Alternatively you can use the \texttt{.catch()} method:
 
 You could use the above methods to handle form validation errors and the like.
 
+\section{API Requests from Components}
+
+We can put API calls in our component methods, we just need to make sure that we use \texttt{this.setState()} \textit{inside} the \texttt{.then()} function:
+
+\begin{minted}{js}
+    handleSubmit() {
+        // get the values of some controlled components
+        let { title, article } = this.state;
+
+        // post data to an API
+        axios.post("/api/article", {
+            title: title,
+            article: article,
+        }).then(() => {
+            // once the server gets responds successfully, clear the inputs
+            this.setState({ title: "", article: "" });
+        });
+    }
+\end{minted}
+
+If we're going to \textit{fetch} data from an API then we'll need some way to run a bit of code when a component first appears on screen.
+\\
+
+We can do this using the \texttt{componentDidMount} lifecycle method:
+
+\inputminted{js}{03-async/figures/01-StarWarsFolks.jsx}
+
+If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
+
+\begin{infobox}{Not Ideal}
+    If we make an API request inside our component, then it means that the component can \textit{only} be used for displaying that specific data.
+    \\
+
+    However, the whole purpose of React components is that we can reuse the same bits of UI with different data. So this is far from ideal.
+    \\
+
+    When we look at Redux next week we'll see a much cleaner way to do API calls, which does not tie a component to a specific API call.
+\end{infobox}
+
 \section{Additional Resources}
 
 \begin{itemize}[leftmargin=*]
