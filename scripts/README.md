@@ -8,7 +8,9 @@
     - Morning: `useState`
     - Afternoon: `useReducer`
 - Day 3: [Hooks Continued](02-hooks/)
-    - Morning: `useEffect`
+    - Morning:
+        - `useEffect`
+        - `useRef`
     - Afternoon: Custom hooks
 - Day 4: [One-Way Data Flow](03-one-way-data-flow/)
     - Morning: Lifting State

@@ -4,7 +4,7 @@ When we make a request to the API we don't get a response straight away. Even on
 So, JavaScript doesn't just stop doing everything until you get a response back: it keeps on doing whatever else needs to be done until it gets a response.
 \\
 
-When we don't get back a response immediately, we need to deal with the response \textbf{asynchronously}: in other words, the code that runs when the response comes back could run at \textit{any time} in the future (or never).  We've actually dealt with a similar concept when we wrote event handlers.
+When we don't get back a response immediately, we need to deal with the response \textbf{asynchronously}: in other words, the code that runs when the response comes back could run at \textit{any time} in the future (or never).  We've dealt with a similar concept when we wrote event handlers.
 
 
 \section{Promises}
@@ -41,7 +41,7 @@ Be aware that \textbf{there's no guarantee the promises will resolve in the orde
 Sometimes things will go wrong: you might have sent invalid data, the API server might be down, or any number of other issues.
 \\
 
-The \texttt{.then()} method of a Promise actually accepts a second argument which will be called if something goes wrong.
+The \texttt{.then()} method of a Promise accepts a second argument which will be called if something goes wrong:
 
 \begin{minted}{js}
     axios.get("/articles").then(response => {
@@ -85,14 +85,13 @@ We can put API calls in our component methods, we just need to make sure that we
     }
 \end{minted}
 
-If we're going to \textit{fetch} data from an API then we'll need some way to run a bit of code when a component first appears on screen.
-\\
-
-We can do this using the \texttt{componentDidMount} lifecycle method:
+If we need to fetch data from the API data to show in our component, then we'll need to use \texttt{componentDidMount}:
 
 \inputminted{js}{03-async/figures/01-StarWarsFolks.jsx}
 
 If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
+
+\pagebreak
 
 \begin{infobox}{Not Ideal}
     If we make an API request inside our component, then it means that the component can \textit{only} be used for displaying that specific data.

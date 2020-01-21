@@ -6,7 +6,30 @@ const initial = {
   player2: 0,
 };
 
-// ...the reducer function from above
+
+// reducer functions
+const player1Scores = state => {
+  return {
+    ...state,
+    player1: state.player1 + 1,
+  };
+};
+
+const player2Scores = state => {
+  return {
+    ...state,
+    player2: state.player2 + 1,
+  };
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "player1Scores": return player1Scores(state);
+    case "player2Scores": return player2Scores(state);
+    default: return state;
+  }
+};
+
 
 // the Scorer component
 const Scorer = () => {

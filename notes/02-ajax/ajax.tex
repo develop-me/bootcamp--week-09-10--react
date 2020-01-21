@@ -53,6 +53,15 @@ You can install it with:
     npm install axios
 \end{minted}
 
+
+\begin{infobox}{Axios 0.19}
+    Axios 0.19 introduced a bug which means that the \texttt{params} property of \\ \texttt{axios.create} gets lost. This bug was reported on GitHub six months ago, but remains unfixed.
+    \\
+
+    \textbf{For now you will want to run \texttt{npm install axios@0.18} to force NPM to install an older, but working, version of Axios}.
+\end{infobox}
+
+
 Axios provides us with methods for the various HTTP methods:
 
 \begin{minted}{js}
@@ -113,6 +122,7 @@ Then we can import \textit{that} file and use it as follows:
     // automatically handle base URL and key
     axios.get("/articles");
 \end{minted}
+
 
 
 \section{Additional Resources}

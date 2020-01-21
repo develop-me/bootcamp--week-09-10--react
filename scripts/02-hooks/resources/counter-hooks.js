@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const Counter = () => {
   // sets up the initial value of counter
@@ -9,12 +9,8 @@ const Counter = () => {
   // uses the provided function to set the value of counter
   const updateCounter = () => setCounter(counter + 1);
 
-  useEffect(() => {
-    document.title = `Clicked ${counter} times`;
-  });
-
   // display counter and setup click handler
   return <p onClick={ updateCounter }>{ counter }</p>;
-};
+}
 
 export default Counter;

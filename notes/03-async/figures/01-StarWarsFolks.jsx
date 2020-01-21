@@ -31,7 +31,12 @@ class StarWarsFolks extends Component {
         <h2>Some Star Wars Peeps</h2>
         <ul className="list-group">
           { people.map(person => (
-            <li key={ person.url } className="list-group-item">{ person.name }</li>
+            <li
+              key={ person.url }
+              className="list-group-item"
+            >
+              { person.name }
+            </li>
           )) }
         </ul>
       </>

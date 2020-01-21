@@ -1,11 +1,11 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    case "player1Bonus": return {
+    case "player1Steals": return {
       ...state,
 
-      // do something with the bonus property
-      player1: state.player1 + action.bonus,
-      player2: state.player2 - action.bonus,
+      // do something with the amount property
+      player1: state.player1 + action.amount,
+      player2: state.player2 - action.amount,
     };
 
     // ...other switch cases

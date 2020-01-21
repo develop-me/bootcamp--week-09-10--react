@@ -1,9 +1,6 @@
 ## To Do
 
-- Deployment guide
-    > Not using the `gh-pages` package
-    * [ ] Hash routes
-    * [ ] Dev vs production conditionals
+- Talk about `useCallback` in lifting state (and mention for pre-built components too)
 
 ## Doing
 

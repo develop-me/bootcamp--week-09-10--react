@@ -131,6 +131,8 @@ It's sometimes tidier to pull the \texttt{case}s out into their own functions:
 
 \inputminted{js}{04-hooks/figures/07-reducer-pull.js}
 
+If you do this make sure you pass \texttt{state} and, if necessary, \texttt{action} as arguments.
+
 \subsection{Dispatching Actions}
 
 Now that we understand what a reducer is, we need to know how to use it.
@@ -166,7 +168,10 @@ It's usually always tidier to use \texttt{useReducer} when your state contains m
 
 \section{\texttt{useEffect}}
 
-We need to be careful about where we put some of our code. We don't want to get in the way of React's render phase. With our \texttt{class} based components we used the lifecycle methods (e.g. \texttt{componentDidMount}) to avoid side-effects (changing the DOM, adding event listeners, etc.) inside \texttt{render}, but with hooks based components we don't have methods and our function is effectively the \texttt{render} method.
+We need to be careful about where we put some of our code. We don't want to get in the way of React's ``render phase''.
+\\
+
+With our \texttt{class} based components we used the lifecycle methods (e.g. \\ \texttt{componentDidMount}) to avoid side-effects (changing the DOM, adding event listeners, \&c.) inside \texttt{render}, but with hooks based components we don't have methods and our function is effectively the \texttt{render} method.
 \\
 
 Anything that causes side-effects needs to be wrapped with \texttt{useEffect}: this delays running the code until \textit{after} the component has rendered. It can be used to recreate Lifecycle methods, although that is not its only purpose.
@@ -179,15 +184,14 @@ A simple example might be if you wanted to updated the \texttt{<title>} tag of t
 This function will be called \textit{every} time that component updates, similar to the behaviour of \texttt{componentDidUpdate}.
 \\
 
-Sometimes, if the component has more than one value in state, the update will not change the value that we're interested in. \texttt{useEffect} lets us optionally pass in an array of values that the effect is dependent on. Now the function will only run if the component updates \textit{and} the value has changed:
+Sometimes, if the component has more than one value in state, the update will not change the value that we're interested in. \texttt{useEffect} lets us optionally pass in an array of values that the effect is dependent on. Now the function will only run if the component updates \textit{and} that value has changed:
 
 \inputminted{javascript}{04-hooks/figures/10-useEffect-dependents.js}
 
+React only does a shallow check of the values in the array, so be careful passing in data structures, as it might not behave as you expect.
+\\
 
-
-
-
-For example, if we want to make an API request which will then cause the component to re-render, this will cause side-effects and so should be wrapped in \texttt{useEffect}.
+If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an empty array as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
 
 \inputminted{javascript}{04-hooks/figures/11-StarWarsFolks.js}
 
@@ -197,13 +201,54 @@ We can also recreate the \texttt{addEventListener} example from the lifecycle me
 
 \inputminted{javascript}{04-hooks/figures/12-useEffect-return.js}
 
+Notice that the \texttt{componentWillUnmount} code goes in a function which you return from the function passed to \texttt{useEffect}.\footnote{This is a ``higher-order function'': a function that accepts/returns another function} This is a nice way of doing it, as it groups the adding and removing of the event listener in one place.
+
+
+\section{Custom Hooks}
+
+We need to use \texttt{useEffect} within our component function because it uses the state of the component, so that needs to be in scope. However, this means that we can't reuse the logic inside \texttt{useEffect}, which restricts function reuse. Sad times.
+\\
+
+Say we needed various components that load all the articles from an API: an articles list for the homepage and an archive list for the sidebar. We can write our own custom hook to avoid needing to rewrite the article fetching code:
+
+\inputminted{js}{04-hooks/figures/13-useGetArticles.js}
+
+We create a function that \textit{just} deals with the state aspect of articles - no JSX involved. It's good practice to prefix the function name with \texttt{use}, to make it clear it's a custom hook. The function takes an initial value as its argument and returns a tuple containing the state and state setting function. We can now use this in any component we like:
+
+\inputminted{js}{04-hooks/figures/14-Articles.js}
+
+All we've really done is moved the article fetching code into a separate function, which we then call instead of \texttt{useState}. We don't even need to destructure the setter function as the custom hook is doing all the work for us.
+
+\section{Rules of Hooks}
+
+Hooks can only work if the order that they are called in never changes. Because of this, you cannot call hooks inside loops, conditions, or nested functions. They should \textbf{always be at the top level of your React function}.
+
+\begin{infobox}{Under the Hook}
+    Hooks seem almost magical. Where's the state actually getting stored? If the component function is called every time it renders, how is it being kept track of?
+    \\
+
+    How hooks actually work under the hood is a little bit messy. If you didn't know better, you might think that functions like \texttt{setState} are pure: but they keep track of values over time, and this is a give away that something very impure is going on under the hood.
+    \\
+
+    \textbf{You don't need to understand this}, but here is a super-simplified version of what's going on (it's waaay more complicated in real life):
+
+    \inputminted{js}{04-hooks/figures/15-under-the-hood.js}
+
+    As you can see, state is being kept track of outside of the component. And there's a bunch of other global(ish) variables too. Flagrantly impure.
+    \\
+
+    You can hopefully also see why the order that hooks are called in is so important: React \textit{only} has the order to work with.
+\end{infobox}
+
 
 \section{Additional Resources}
 
 \begin{itemize}[leftmargin=*]
+    \item \href{http://reactjs.org/docs/hooks-rules.html}{React: Rule of Hooks}
     \item \href{https://leewarrick.com/blog/react-use-effect-explained/}{React's useEffect and useRef Explained for Mortals}
     \item \href{https://tvernon.tech/blog/react-custom-hook-for-forms}{Writing your own React custom hooks}
     \item \href{https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672}{Do React Hooks Replace Redux?}
     \item \href{https://www.youtube.com/watch?v=nUzLlHFVXx0}{Composing Behavior in React or Why React Hooks are Awesome}
     \item \href{https://medium.com/@ntgard/tuples-in-javascript-cd33321e5277}{Tuples in JavaScript}
+    \item \href{https://eloquentjavascript.net/05_higher_order.html}{Higher Order Functions}
 \end{itemize}
