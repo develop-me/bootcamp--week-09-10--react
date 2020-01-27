@@ -1,6 +1,20 @@
 # Day 1
 
 
+## Lifecycle Methods
+
+- For class based components, methods that React calls for us
+- `render`: should just return JSX, not side-effects
+- `constructor`: settings up initial state and binding methods
+- `componentDidMount`: side-effects when the component first renders
+    - show `setTimeout` example
+    - show adding `window` event handler
+- `componentWillUnmount`: when the component is about to be removed
+    - show removing `window` event handler
+- `componentDidUpdate`: gets called every time component updates
+    - show updated `document.title` each time counter changes
+
+
 ## AJAX
 
 - So far we only know `GET` and `POST` in browsers - by navigating or submitting a form
@@ -38,10 +52,3 @@
     - `.catch()` on the end
     - Useful for form validation
 - Use Network console to debug
-
-
-## Lifecycle Methods
-
-- Demonstrate making Axios request on a form submission
-    - `setState()` in the `.then()`
-- Demonstrate `componentDidMount` (see `StarWarsFolks.js`)
