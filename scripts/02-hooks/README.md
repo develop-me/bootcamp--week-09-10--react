@@ -53,7 +53,7 @@
 - Demonstrate updating the page title `document.title` every time counter changes
 - Show dependents array for updating title example
 - Demonstrate `componentDidMount` like behaviour with empty array (`star-wars.js`)
-- Demonstate `componentWillUnmount` like behaviour
+- Demonstrate `componentWillUnmount` like behaviour
 
 ### Custom Hooks
 

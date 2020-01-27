@@ -1,8 +1,8 @@
 const reducer = (state, action) => {
   switch (action.type) {
-    // if the type property is "player1Scores"
+    // if the type property is "PLAYER_1_SCORES"
     // add one to the player1 property of state
-    case "player1Scores": return {
+    case "PLAYER_1_SCORES": return {
       ...state,
       player1: state.player1 + 1,
     };
@@ -11,6 +11,6 @@ const reducer = (state, action) => {
 };
 
 // run the reducer, passing in state and action
-let action = { type: "player1Scores" };
+let action = { type: "PLAYER_1_SCORES" };
 let newState = reducer(initial, action);
 console.log(newState); // { player1: 1, player2: 0 }

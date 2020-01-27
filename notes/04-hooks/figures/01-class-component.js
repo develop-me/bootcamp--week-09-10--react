@@ -8,6 +8,8 @@ class Counter extends Component {
     this.state = {
       counter: 0,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // click handler method
