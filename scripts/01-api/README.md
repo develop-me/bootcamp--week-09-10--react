@@ -47,6 +47,9 @@
 - First argument passed in is the `response`
 - Generally chain promises
 - No guarantee promises will resolve in the order you write them in - `GET` tends to be quicker
+    - Show requests to:
+        - `https://httpbin.org/delay/5`
+        - `https://httpbin.org/delay/1`
 - Errors:
     - Second argument of `.then()`
     - `.catch()` on the end

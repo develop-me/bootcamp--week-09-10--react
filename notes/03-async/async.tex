@@ -34,6 +34,24 @@ Rather than using an intermediary variable, generally we use chaining with Promi
 \end{minted}
 
 Be aware that \textbf{there's no guarantee the promises will resolve in the order you wrote them}. For example, \texttt{GET} requests tend to be quicker than other types of request as they generally involve less server activity.
+\\
+
+We can use \href{https://httpbin.org/#/Dynamic_data/get_delay__delay_}{https://httpbin.org/delay/<delay>} to play around with this:
+
+\begin{minted}{js}
+    // will take 5 seconds to return a response
+    axios.get("https://httpbin.org/delay/5").then(() => {
+        // will show after (at least) 5 seconds
+        console.log("Five");
+    });
+
+    // will take 1 second to return a response
+    axios.get("https://httpbin.org/delay/1").then(() => {
+        // will show after (at least) 1 second
+        console.log("One");
+    });
+\end{minted}
+
 
 
 \subsection{Errors}
