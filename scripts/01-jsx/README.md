@@ -5,33 +5,32 @@
 - Demonstrate with Node
 - Audience participation
 - Types of things
-    - Numbers
+- Numbers
 	1. represents both integer and floating point numbers
 	2. many operations for numbers, e.g. multiplication *, division /, addition +, subtraction -, and so on
 	3. so-called “special numeric values” which also belong to this data type: Infinity, -Infinity and NaN
 	4. Infinity: reference directly, or division by zero
 	5. NaN: represents a computational error. It is a result of an incorrect or an undefined mathematical operation.
-	6. NaN is sticky: any further operations on NaN return NaN
-    - Strings
+	6. NaN is sticky: any further operations on NaN return NaN 
+- Strings
  	1. must be surrounded by quotes - ', " or `
 	2. can be concatentated or interpolated
-    - Booleans
+- Booleans
 	1. only 2 values: true/false
 	2. commonly used to store yes/no values
 	3. can come as a result of comparisons
-    - Arrays
+- Arrays
 	1. used to store multiple values in a single variable
 	2. access the values by referring to an index number
 	3. variables of different types
-    - Objects
+- Objects
 	1. an unordered collection of related data
 	2. key:value pairs, called properties
 	3. The property names can be strings or numbers
-    - Functions
-- What's a function?
-    - Call it
-    - Takes arguments
-    - Returns a value
+- Functions
+	1. Call it
+   	2. Takes arguments
+    	3. Returns a value
 - Array notation
     - Map, filter, reduce
 - Object notation
