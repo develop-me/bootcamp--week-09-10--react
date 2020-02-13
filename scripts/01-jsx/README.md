@@ -30,12 +30,40 @@
 - Functions
 	1. Call it
    	2. Takes arguments
-    	3. Returns a value
+	3. Returns a value
 - Array notation
-    - Map, filter, reduce
+    - Map
+	1. creates a new array with the results of calling a function for every array element
+	2. function(currentValue, index = optional)
+	3. multiplication
+    - Filter
+	1. creates an array filled with all array elements that pass a test (provided as a function)
+	2. function(currentValue, index = optional)
+	3. even numbers
+    - Reduce
+	1. reduces the array to a single value
+	2. function(total, currentValue, currentIndex = optional), initialValue = optional
+	3. sum
 - Object notation
-    - Destructuring
+    1. Access value by dot notation
+    2. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
 - Classes
+	1. A JavaScript class is a type of function
+	2. declared with the class keyword
+	3. const y = class {}
+	4. has inheritance - all instances of same class inherit the same properties/method defined in the constructor
+	5. constructor = a blueprint/template for the class
+
+```js
+	// Initializing a constructor function
+	class Hero {
+	   constructor(name, level) {
+   	  	this.name = name;
+          	this.level = level;
+	   }
+	}
+```
+	6. classes are named with a capital letter
 
 
 ## React [5 mins]
