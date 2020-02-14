@@ -137,9 +137,9 @@ Frameworks good for large companies as puts a constraint on the devs
 	- The webserver create react app sets up watches for file changes and then automatically refreshes the browser for you
 	-  looks for code errors and alerts you to those too, as well as weird things like unused vars
 	- all sitting in the console for you
-- Show that errors
-	- yellow:
-	- red: 
+- Show that errors: console, terminal, browser
+	- yellow: non-breaking, inconsistencies and unused vars
+	- red: breaking
 - Quickly look at directory structure:
 	- package.json = which packages to install
 	- node_modules = where those packages lives
@@ -151,10 +151,27 @@ Frameworks good for large companies as puts a constraint on the devs
 ### JSX [30-45 mins]
 
 - GO TO APP.JS
-- **Emphasise that we're still just doing JavaScript**: JSX is on top of it
-- Components: one per UI element
-- Components can have sub-components
-- Top level component: `App` in this setup (show `index.js`)
+- **Emphasise that we're still just doing JavaScript**: JSX is on top of it, whats in the return
+- Some things do look different though
+- imports we haven't used yet 
+- function App() - capital letter looks a bit weird but thats just the old way of writing it
+- Look what its returning - its html. But not quite html - this is jsx
+- JSX = syntax extension for JS, a templating language
+- What is a templating language?
+	- Allows the defining of placeholders within a design structure that are later on replaced with dynamic data
+	- Support iteration and conditions which are often necessary for designing a web page
+	- Allows us to have the interactivy, and flexibility of what's rendered in the browser based on what the user does
+- JSX specifics:
+        - camelCase attributes,
+        - `className`: class is reserved word
+        - moustaches: dictate when we are using jsx or js
+
+- Structure
+	- Components: one per UI element
+	- Components can have sub-components
+	- Top level component: `App` in this setup (show `index.js`)
+	- App will import all other components, and then index.js just has to import App.js
+
 - Change App to `<h1>Hello, world</h1>` with stateless component
 
    ```js
@@ -162,17 +179,46 @@ Frameworks good for large companies as puts a constraint on the devs
         return <h1>Hello, world</h1>;
     };
     ```
-- What is a templating language?
-    - way to generate one sort of code from another
-- JSX specifics: camel-case attributes, `className`, moustaches
-- Under-the-hood: just creating classes and using DOM - `React.createElement("h1", {}, "Hello, world")`
+
+- Under-the-hood: just creating classes and using DOM
+
+	```js
+	// all the same 
+	<h1>Hello, world</h1>
+
+	// same as
+	React.createElement("h1", {}, "Hello, world")
+	
+	// same as
+	var newDiv = document.createElement("h1"); 
+  	newDiv.innerHTML = "Hello, world";
+
+  	let div = document.getElementById('root');
+  	div.appendChild(newDiv);
+	```
 - Use bootstrap: add to `index.html`
-- CSS-in-JS
+- CSS-in-JS: several options
+	- import a css file straight in, like App.css
+	- use inline styling, although syntax is different
+	- use a className from your imported bootstrap (alert alert-primary)
+	- other libraries you can use built specially for react/component style libraries
 - Sub-components: create a `<Header>`, use in `App`
 - Quickly mention `import` & `export`: modern JS (not React specific)
+	- export statement used to export functions, objects, or primitive values from one file or packaged so they can be used by other programs, files or packages with the import statement
+	- 2 types: Named Exports (Zero or more exports per module)
+	- Default Exports (One per module)
+	- Have slightly different syntax for importing and for exporting
+	- Cos react is all about components containing small atomic pieces of functionality we'll generally be using default export, so just stick to this pattern for now
 - Show console messages
 - Content component: see `Content.js`
-- Pull out JS: `const formatted = valuation.toLocaleString( "en-GB", { style: "currency", currency: "GBP" });`
+- Templating example:
+
+	```js
+	let valuation = 1000000;
+	const formatted = valuation.toLocaleString( "en-GB", { style: "currency", currency: "GBP" });
+	```
+
+	- If these values were to change, our funding p tag would always reflect this - not hard coded
 - Use `<Content>` in `App`: need to use `<>`/`</>`
 - Split out `Funding`, then use in `Header`
 - `Pagination` for `.map()`: see `Pagination.js`
