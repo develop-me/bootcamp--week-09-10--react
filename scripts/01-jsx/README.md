@@ -1,4 +1,5 @@
 # Day 1: Morning
+i(expect to finish between 11am and break)
 
 ## JS Recap [10 mins]
 
@@ -47,6 +48,7 @@
 - Object notation
     1. Access value by dot notation
     2. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
+    3. Can also use destructing for function parameters, which we'll do later today.
 - Classes
 	1. A JavaScript class is a type of function
 	2. declared with the class keyword
@@ -54,40 +56,101 @@
 	4. has inheritance - all instances of same class inherit the same properties/method defined in the constructor
 	5. constructor = a blueprint/template for the class
 
-```js
-	// Initializing a constructor function
-	class Hero {
-	   constructor(name, level) {
+	```js
+	// Initializing a class
+	class Cat {
+	   // needed if you want to pass in arguments to the class
+	   constructor(name, colour) {
    	  	this.name = name;
-          	this.level = level;
+          	this.colour = colour;
+		// can use the args you pass in, or set defaults
+		this.legs = 4;
+		this.isCute = true;
 	   }
-	}
-```
+
+	   // has its own methods, inherited by other instances
+	   miaow() {
+		return 'miaow';
+	   }
+	};
+	
+	// creating a new instance of the class
+	new Cat('Mr Tibbs', 'tabby');
+
+	```
 	6. classes are named with a capital letter
+	7. React uses these a lot!
 
 
 ## React [5 mins]
 
-- What is React
-- Makes DOM nice
-- For building UIs
-- Not a framework
-- Also be using Axios, Redux, ReactRouter
+- What is React: would anyone like to suggest?
+- Leading frontend js library, made by FB
+- Open source
+- Actively maintained, improved and enhanced; have a nosy on website
+- Makes DOM nice, removes all the clunky and awkward event listeners, document.gets etc. etc.
+- It is just using plain old javascript under the hood, no witchcraft
+- Using the DOM is the only way you can interact with a browser
+- Used to generate User Interfaces for html in a web browser
+- Not a framework: what's the difference?
+- Framework: entire system designed to try and do everything for you e.g. angular, laravel - designed to build user interfaces and do all the other things involved in an app aka talk to APIS deal with data, routing when the url changes etc.
+Frameworks good for large companies as puts a constraint on the devs
+- Library: designed to do one thing NOT do everything for you
+- Combining with other libraries and tools: Axios, Redux, ReactRouter
+	- axios: making api requests with js
+	- API? Application programming interface - way of talking to teh backend where the data normally lies
+	- Redux: data management library
+	- React Router: url management, deals with page navigation
+- Industry combo, but alternatives for ALL
+- Concepts are all transferable, so even if you don't end up using these you'll be so much quicker to pick them up and recognise the patterns
 - Can't built a full app until we learn Redux, so for now just building stand-alone components
-- Overkill to use for basic websites
+- Overkill to use for basic websites: simple enquiry page with a single form, brochure/magazine style website does not need react, something with many highly interactive components is a better use case. e.g. Trello, facebook, deliveroo, tinder!
+- its largely single screen and not massively about navigating from one place to another, not a strong concept in react
+- bugs in react tend to break everything - has downsides ofc like everything, lots more data and js to import
 
 ### Scaffolding [10 mins]
 
 - **Tell them not to follow along**
 - `npm init react-app project-name`
-- Show app running
-- Using Babel, Webpack, ESLint
+- stress lower case and hyphens, make sure name isn't name of another library aka react
+- yarn and npm are just package managers for js
+- They use the same repositories
+- If you're using yarn your messages will just look slightly different
+- This command does everything for you: was made because react was very hard to set up and is so widely used is an npm feature:
+	- makes directory
+	- makes package.json which holds the packages we need to run react
+	- runs npm install and goes off to get those packages from internet
+	- it'll cache for future times, can take a while
+	- node_modules folder you can look at later is HUGE
+- Using Babel: compiler
+	- converts ECMAScript 2015+ code into a backwards compatible version of JavaScript in current and older browsers
+	- package.json: set confines for how much into the past to compile your code to both in dev and prod environments
+	- 0.2% means it would work for 98.8% of users
+	- browsers that are not dead
+	- opera mini ignored cos doesnt even use js 
+	- dev standards can be lower so machine doesnt have to do as much work whilst youre coding
+- Webpack: module bundling system built on top of Node. js.
+	-  Handles combination and minification of JavaScript and CSS files, and other assets such as image files through the use of plugins.
+- ESLint: a linter looks for anomallies in code, both errors and inconsistencies which can lead to bugs 
+- Show working
 - Show that changes update things
+	- The webserver create react app sets up watches for file changes and then automatically refreshes the browser for you
+	-  looks for code errors and alerts you to those too, as well as weird things like unused vars
+	- all sitting in the console for you
 - Show that errors
-- Quickly look at directory structure
+	- yellow:
+	- red: 
+- Quickly look at directory structure:
+	- package.json = which packages to install
+	- node_modules = where those packages lives
+	- public -> index.html = the html template, where the browser points
+	- src -> App.js = the root react component
+	- src -> index.js = entry point for the JS
+
 
 ### JSX [30-45 mins]
 
+- GO TO APP.JS
 - **Emphasise that we're still just doing JavaScript**: JSX is on top of it
 - Components: one per UI element
 - Components can have sub-components
