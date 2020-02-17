@@ -1,7 +1,7 @@
 # Day 1: Afternoon
 
 ## Props [40 mins]
-i(Straight after lunch unless big issues with exercises)
+<em>(Straight after lunch unless big issues with exercises)</em>
 
 - So far:
 	- what are components/how they are structured
@@ -53,5 +53,6 @@ i(Straight after lunch unless big issues with exercises)
 	};
 
 	```
+
 - Default props only used if the prop is not present, not for falsey values
 - Useful for when you have components where you always want to render something, or a component which you want to use as a preview AND to reflect actual data
