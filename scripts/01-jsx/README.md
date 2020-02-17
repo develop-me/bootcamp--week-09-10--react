@@ -162,9 +162,9 @@ Frameworks good for large companies as puts a constraint on the devs
 	- Support iteration and conditions which are often necessary for designing a web page
 	- Allows us to have the interactivy, and flexibility of what's rendered in the browser based on what the user does
 - JSX specifics:
-        - camelCase attributes,
-        - `className`: class is reserved word
-        - moustaches: dictate when we are using jsx or js
+	- camelCase attributes
+	- `className`: class is reserved word
+	- Moustaches: dictate when we are using jsx or js
 
 - Structure
 	- Components: one per UI element
