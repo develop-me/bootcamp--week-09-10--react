@@ -200,7 +200,7 @@ Frameworks good for large companies as puts a constraint on the devs
 - CSS-in-JS: several options
 	- import a css file straight in, like App.css
 	- use inline styling, although syntax is different
-	- use a className from your imported bootstrap (alert alert-primary)
+	- use a className from your imported bootstrap: `alert alert-primary`
 	- other libraries you can use built specially for react/component style libraries
 - Sub-components: create a `<Header>`, use in `App`
 - Quickly mention `import` & `export`: modern JS (not React specific)
