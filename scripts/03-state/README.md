@@ -37,22 +37,22 @@ returned
 	import React, { Component } from "react";
 
 	class Header extends Component {
-		handleClick() {
-    	   		console.log("hellooo");
-  	 	 }
+  	   handleClick() {
+    	   	console.log("hellooo");
+  	   }
 
-  	  	render() {
-    	   		const { title, subTitle } = this.props;
+  	   render() {
+    	   	const { title, subTitle } = this.props;
 
-   	    		return (
-     		 		<>
-        				<h1 className="alert alert-primary" onClick={this.handleClick}>
-          				{title}
-        				</h1>
-        				<p>{subTitle}</p>
-      				</>
-    			);
-  		}
+   	    	return (
+     		   <>
+        	      <h1 className="alert alert-primary" onClick={this.handleClick}>
+          		{title}
+        	      </h1>
+        	      <p>{subTitle}</p>
+      		   </>
+    		);
+  	   }
 	}
 
 	export default Header;
@@ -65,13 +65,79 @@ returned
 	- enforces you to define components functionality/uses: think about subcomponents and parent components
 
 ## State [30 mins]
-- Now we've got an object, we can have local state
+- Now we've got an object, we can have local state inside our component
+- Just like we have `this.props`, we now also have `this.state`
 - Similar to state with DOM: long lived-variables (because event handlers are short-lived)
-- `this.props` and `this.state`
-- Initial state in the constructor: counter example
+- 3 parts:
+	- Initial state in the constructor: counter example
+	```js
+	
+	constructor(props) {
+    	   super(props);
+    	   this.state = {
+     	      counter: 0,
+    	   };
+	}
+
+	```
+	
+	- display values based on `this.state` in our JSX: destructure like props
+	```js
+	const { counter } = this.state;
+
+	<h1>{this.state.counter}</h1>
+	```	
+
+	- updating `this.state` when events fire and trigger our methods: `this.stState();`
+
+	```js
+	handleClick() {
+    	  let current = this.state.counter;
+   	  this.setState({ counter: current + 1 });
+   	}
+	```
+
 - Just a Plain Old JavaScript Object
+- This is why we call the other kind of comp functional or stateless
+- Only class based comps can have state
 - Have to use `setState()` so that React knows to re-render
+	- runs at the end of the method, not synchronous
+	- watch out for this, if you're finding your render is behind your state or out of sync it's likely a bug to do with this
 - Careful about changing state by accident (`push`, `pop`, increment operator)
+	- instead use `concat`, spread operator, our array iterators
+	- methods and functions which do not modify the existing variable but create a new one
+	- another common cause of bugs to watch out for
 - Need to bind `this`
-- Don't `console.log()` after `setState()`, it's delayed
+	- its weird, its clunky but the concept of this is broken is JS
+	- `this` - refers to object executing current code
+	- if your method uses `this`, bind it in the constructor
+	```js
+	this.handleClick = this.handleClick.bind(this);
+	```
+- AGAIN: `this.setState()` does not update state till after method has finished, therefore don't `console.log()` after `setState()`
 - React Developer Tools: useful for seeing state
+- What is state and why do we use it?
+	- keep track of whats going on in your components
+	- its current state
+	- like a memory
+- What to put in state?
+	- what do we want to change?
+	- what types would be best to track the changes
+		- a boolean if tracking something with 2 values? i.e. open or closed
+		- an array if the previous values count? i.e list
+	- the simpler/smaller, the better
+	- can you infer the state of one thing from another? if so only track one i.e. button red if click is even - don't need to store colour and counter because they are tied with logic
+- How to put it all together
+	1. The boilerplate: imports, exports and basic class declaration
+	- Don't be afraid to copy paste it, you will get used to it overtime but it's good practice to try and write it out because it encourages you to understand it
+	2. Pop in your render method and focus on getting some JSX to display the way you want it to 
+	- Doesn't have to perfect or too complicated just take it one step and a time
+	3. State time: Ask yourself the questions we spoke about
+	4. Update the render method to use the initial state
+	- Remember you can destructure your state in the `render()` method
+	5. Try manually changing the initial state values to make sure your JSX is rendering what you'd expect/want
+	6. Now add the interactivty - add your event handlers
+	- Don't forget:	using `this.setState()`? BIND
+	- Modifying state? Make sure you don't change the state DIRECTLY, but reassign it
+- Finally, unexpected crazy weird things going on? Don't panic - take a breath and try to use the react dev tools to see what's going on - he's your new best friend.
+- It's okay if this all seems a bit much right now!
