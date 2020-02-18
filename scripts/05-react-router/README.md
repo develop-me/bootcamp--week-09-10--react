@@ -2,7 +2,12 @@
 
 ## ReactRouter [30 mins]
 
-- Takes URL, runs some code
+- Takes URL, decides which code to run/components to show etc.
+- Why do we need this?
+	- Client side routing: means we can navigate around without the page refreshing
+	- No flash of a white screen, no blank page
+	- Seamless more modern and responsive experience for users 
+	- Seems like normal browser functionality to the user: can use the back and forward buttons as if it was any other website
 - Setup: `react-router-dom`
 - Import `BrowserRouter as Router` and `Route`
 - Keep `Header` but use `Route` for rest

@@ -9,11 +9,22 @@
 ## Forms [20 mins]
 - Need to be careful with inputs
 - State should track *anything* that changes, including the value of an input
+- Demo doing that and show the warning in the console 
+	- set value to `this.state.input`
+	- set input state to something
 - Need to update the state, otherwise we can't edit the input
 - Use the `currentTarget` property from the event object
+- create handleChange method which takes e and sets this.state.input to e.currentTarget.value
 - Make sure you bind the event handler
+- Put onChange listener on input
+	- onChange is basically the DOM input event
+	- fires on every key stroke!
+- Add p tag, for passwords for example!
+	```js
+	<p>Length: {this.state.input.length}</p>
+	```
 - **Controlled component**
-- Add a "Length:" bit to demonstrate advantage of keeping in state
-- `onChange` is more like `input` event type
-- `defaultValue` property
-- `value` works for `<select>` and the like
+- This IS a controlled component, all form elements in a react app should be this!
+- Other things to note:
+	- `defaultValue` property: for defaults (surprisingly), NB: not the same as placeholder as would be considered the value entered by the user is form was submitted
+- `value` works for `<select>` and all other form elements - radios, checkboxes etc.
