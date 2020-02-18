@@ -46,10 +46,10 @@ returned
 
    	    	return (
 				<>
-				<h1 className="alert alert-primary" onClick={this.handleClick}>
+					<h1 className="alert alert-primary" onClick={this.handleClick}>
           			{title}
-        	    </h1>
-        	    <p>{subTitle}</p>
+        	    	</h1>
+        	    	<p>{subTitle}</p>
       		   	</>
     		);
   	    }
@@ -94,8 +94,8 @@ returned
 	```js
 	handleClick() {
 		let current = this.state.counter;
-   	  	this.setState({ counter: current + 1 });
-   	}
+		this.setState({ counter: current + 1 });
+	}
 	```
 
 - Just a Plain Old JavaScript Object
