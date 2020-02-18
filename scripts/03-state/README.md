@@ -37,22 +37,22 @@ returned
 	import React, { Component } from "react";
 
 	class Header extends Component {
-  	   handleClick() {
-    	   	console.log("hellooo");
-  	   }
-
-  	   render() {
-    	   	const { title, subTitle } = this.props;
+		handleClick() {
+			console.log("hellooo");
+  	   	}
+	
+		render() {
+			const { title, subTitle } = this.props;
 
    	    	return (
-     		   <>
-        	      <h1 className="alert alert-primary" onClick={this.handleClick}>
-          		{title}
-        	      </h1>
-        	      <p>{subTitle}</p>
-      		   </>
+				<>
+				<h1 className="alert alert-primary" onClick={this.handleClick}>
+          			{title}
+        	    </h1>
+        	    <p>{subTitle}</p>
+      		   	</>
     		);
-  	   }
+  	    }
 	}
 
 	export default Header;
@@ -73,10 +73,11 @@ returned
 	```js
 	
 	constructor(props) {
-    	   super(props);
-    	   this.state = {
-     	      counter: 0,
-    	   };
+		super(props);
+		
+		this.state = {
+			counter: 0,
+    	};
 	}
 
 	```
@@ -92,8 +93,8 @@ returned
 
 	```js
 	handleClick() {
-    	  let current = this.state.counter;
-   	  this.setState({ counter: current + 1 });
+		let current = this.state.counter;
+   	  	this.setState({ counter: current + 1 });
    	}
 	```
 
@@ -129,16 +130,16 @@ returned
 	- can you infer the state of one thing from another? if so only track one i.e. button red if click is even - don't need to store colour and counter because they are tied with logic
 - How to put it all together
 	1. The boilerplate: imports, exports and basic class declaration
-	- Don't be afraid to copy paste it, you will get used to it overtime but it's good practice to try and write it out because it encourages you to understand it
+		- Don't be afraid to copy paste it, you will get used to it overtime but it's good practice to try and write it out because it encourages you to understand it
 	2. Pop in your render method and focus on getting some JSX to display the way you want it to 
-	- Doesn't have to perfect or too complicated just take it one step and a time
+		- Doesn't have to perfect or too complicated just take it one step and a time
 	3. State time: Ask yourself the questions we spoke about
 	4. Update the render method to use the initial state
-	- Remember you can destructure your state in the `render()` method
+		- Remember you can destructure your state in the `render()` method
 	5. Try manually changing the initial state values to make sure your JSX is rendering what you'd expect/want
 	6. Now add the interactivty - add your event handlers
-	- Don't forget:	using `this.setState()`? BIND
-	- Modifying state? Make sure you don't change the state DIRECTLY, but reassign it
+		- Don't forget:	using `this.setState()`? BIND
+		- Modifying state? Make sure you don't change the state DIRECTLY, but reassign it
 - Finally, unexpected crazy weird things going on? Don't panic - take a breath and try to use the react dev tools to see what's going on - he's your new best friend.
 - It's okay if this all seems a bit much right now!
 - Use git!
