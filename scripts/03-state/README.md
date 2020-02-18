@@ -141,3 +141,4 @@ returned
 	- Modifying state? Make sure you don't change the state DIRECTLY, but reassign it
 - Finally, unexpected crazy weird things going on? Don't panic - take a breath and try to use the react dev tools to see what's going on - he's your new best friend.
 - It's okay if this all seems a bit much right now!
+- Use git!
