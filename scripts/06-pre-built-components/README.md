@@ -76,3 +76,6 @@
 
 	<DatePicker selected={ date } onChange={ this.handleDate } />
 	```
+- There you have it, there's such a huge range of pre-built components out there
+- Some incredibly complex, some super simple: documentation is key
+- Also look at how many people have used it, how many issues there are open/closed on github to help you choose
