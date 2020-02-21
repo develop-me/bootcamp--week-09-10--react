@@ -13,7 +13,6 @@
     - Add to `scripts` property:
        ```json
        "scripts": {
-           "predeploy": "npm run build",
            "deploy": "gh-pages -d build"
         }
        ```

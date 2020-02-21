@@ -17,10 +17,9 @@ Next, update the \texttt{homepage} property in your \texttt{package.json}:
     "homepage": "https://<username>.github.io/<repo>/",
 \end{minted}
 
-Then add the following two lines to the \texttt{scripts} object in your \texttt{package.json}:
+Then add the following line to the \texttt{scripts} object in your \texttt{package.json}:
 
 \begin{minted}{json}
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
 \end{minted}
 
