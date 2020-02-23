@@ -1,5 +1,5 @@
 # Day 1: Morning
-i(expect to finish between 11am and break)
+<em>(expect to finish between 11am and break)</em>
 
 ## JS Recap [10 mins]
 
