@@ -24,28 +24,43 @@
 - Arrays
 	1. used to store multiple values in a single variable
 	2. access the values by referring to an index number
-	3. variables of different types
+	3. values of different types
+	4. Zero indexed
 - Objects
 	1. an unordered collection of related data
 	2. key:value pairs, called properties
 	3. The property names can be strings or numbers
+	4. Access with dot notation
+	```js
+	let dog = {
+  	  name: 'Borky',
+  	  legs: 4,
+  	  cute: true,
+ 	  favourite_food: [ 'biscuits', 'bones', 'bacon' ]
+	};
+	```
+
 - Functions
 	1. Call it
    	2. Takes arguments
 	3. Returns a value
-- Array notation
+	```js
+	let sum = (x, y) => x + y
+	```
+
+- Array Iterator Methods
     - Map
-	1. creates a new array with the results of calling a function for every array element
-	2. function(currentValue, index = optional)
-	3. multiplication
+	1) creates a new array with the results of calling a function for every array element
+	2) function(currentValue, index = optional)
+	3) multiplication: `numbers.map(value => value * 2)`
     - Filter
-	1. creates an array filled with all array elements that pass a test (provided as a function)
-	2. function(currentValue, index = optional)
-	3. even numbers
+	1) creates an array filled with all array elements that pass a test (provided as a function)
+	2) function(currentValue, index = optional)
+	3) even numbers: `numbers.filter(value => value % 2 === 0)`
     - Reduce
-	1. reduces the array to a single value
-	2. function(total, currentValue, currentIndex = optional), initialValue = optional
-	3. sum
+	1) reduces the array to a single value
+	2) function(total, currentValue, currentIndex = optional), initialValue = optional
+	3) sum: `numbers.reduce((acc, value) => acc + value, 0)`
 - Object notation
     1. Access value by dot notation
     2. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
