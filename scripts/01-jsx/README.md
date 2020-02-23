@@ -15,7 +15,8 @@
 	6. NaN is sticky: any further operations on NaN return NaN 
 - Strings
  	1. must be surrounded by quotes - ', " or `
-	2. can be concatentated or interpolated
+	2. can be concatentated (+)
+	3. interpolated: template literals are string literals allowing embedded expressions (`${expression}`)
 - Booleans
 	1. only 2 values: true/false
 	2. commonly used to store yes/no values
