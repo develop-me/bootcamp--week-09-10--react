@@ -35,8 +35,8 @@
 	let dog = {
   	  name: 'Borky',
   	  legs: 4,
-  	  cute: true,
- 	  favourite_food: [ 'biscuits', 'bones', 'bacon' ]
+  	  isCute: true,
+ 	  favFood: [ 'biscuits', 'bones', 'bacon' ]
 	};
 	```
 
@@ -64,7 +64,13 @@
 - Object notation
     1. Access value by dot notation
     2. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
-    3. Can also use destructing for function parameters, which we'll do later today.
+    3. General rule: key name == variable name
+    4. Can also use destructing for function parameters, which we'll do later today.
+	```js
+	const { name, legs, isCute, favFood } = dog
+	```
+  
+
 - Classes
 	1. A JavaScript class is a type of function
 	2. declared with the class keyword
