@@ -37,10 +37,12 @@
 	- If the condition is true, the ternary operator returns expression_1, otherwise it returns the expression_2
 - Expression: any unit of code that can be evaluated to a value
 - Statement: an instruction to perform a specific action
+- So far: Props are specific values (js types), to be represented by known placeholders
+- What if we wanted to pass in more - mark up, another component?
 - Children props: update `Header`
 	- For when what you're rendering has its own set structure/template i.e. another component
-	- For components that don’t know their children ahead of time
-	- Can only pass in a single, can  use alongside normal props
+	- For components that don’t know the specific of their props  ahead of time
+	- Can only pass in a single value/expression, can use alongside normal props
 	- This is especially common for components like Header or NavBar that represent generic “boxes”
 - Show passing in `Funding` into `Heading`
 - Show `Heading` with text as the children
