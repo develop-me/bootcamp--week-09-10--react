@@ -1,6 +1,10 @@
 # Day 1: Morning
 <em>(expect to finish between 11am and break)</em>
 
+• Morning: 11:30 - 12:00
+• Lunch: 13:00 - 14:00
+• Afternoon: 15:30 - 16:00
+
 ## JS Recap [10 mins]
 
 - Demonstrate with Node
@@ -97,7 +101,8 @@
 	};
 	
 	// creating a new instance of the class
-	new Cat('Mr Tibbs', 'tabby');
+	let tibbs = new Cat('Mr Tibbs', 'tabby');
+	tibbs.miaow();
 
 	```
 	6. classes are named with a capital letter
@@ -120,7 +125,7 @@ Frameworks good for large companies as puts a constraint on the devs
 - Library: designed to do one thing NOT do everything for you
 - Combining with other libraries and tools: Axios, Redux, ReactRouter
 	- axios: making api requests with js
-	- API? Application programming interface - way of talking to teh backend where the data normally lies
+	- API? Application programming interface - way of talking to the backend where the data normally lies
 	- Redux: data management library
 	- React Router: url management, deals with page navigation
 - Industry combo, but alternatives for ALL
