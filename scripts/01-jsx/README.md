@@ -57,9 +57,9 @@
 	};
 	```
 	5. Access value by dot notation
-    	6. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
-    	7. General rule: key name == variable name
-    	8. Can also use destructing for function parameters, which we'll do later today.
+	6. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
+	7. General rule: key name == variable name
+	8. Can also use destructing for function parameters, which we'll do later today.
         ```js
         const { name, legs, isCute, favFood } = dog
         ```
