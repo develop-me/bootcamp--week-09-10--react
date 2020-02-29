@@ -243,6 +243,9 @@ Frameworks good for large companies as puts a constraint on the devs
 
 	- If these values were to change, our funding p tag would always reflect this - not hard coded
 - Use `<Content>` in `App`: need to use `<>`/`</>`
+	- Can use Fragment, or simply this
 - Split out `Funding`, then use in `Header`
 - `Pagination` for `.map()`: see `Pagination.js`
 - `key` attribute
+	- unique and constant id
+	- React uses to identify each component in the DOM and to know whether it's a different component or the same one
