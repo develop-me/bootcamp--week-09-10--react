@@ -18,14 +18,15 @@
 
 - Explain that there's one for every event: check out the react docs for a full list
 - Using plain old DOM under the hood
-- Even removes listners from components which are no longer visible
+- Even removes listeners from components which are no longer visible
 - Can only add to HTML, not React components (where it would be a prop)
 
 ## Class Components [10 mins]
 - Don't want inline event handlers, gets super messy if you have any remotely complicated functionality
 - Can use class methods
 - Go through stateless -> class component transform
-	- Import Component from React, extend from it
+	- Import Component constructor from React, extend from it
+	- Extending = copy + add functionality
 	- Creates a JS class with the same name as the function you’re replacing
 	- Needs a render method which holds the return
 	- Returns the exact JSX that the function version
@@ -45,12 +46,12 @@ returned
 			const { title, subTitle } = this.props;
 
    	    	return (
-				<>
-					<h1 className="alert alert-primary" onClick={this.handleClick}>
-          			{title}
+		<>
+			<h1 className="alert alert-primary" onClick={this.handleClick}>
+          		{title}
         	    	</h1>
         	    	<p>{subTitle}</p>
-      		   	</>
+      		</>
     		);
   	    }
 	}
@@ -74,10 +75,9 @@ returned
 	
 	constructor(props) {
 		super(props);
-		
-		this.state = {
-			counter: 0,
-    	};
+		// super() is used to call the parent constructor
+		// super(props) would pass props to the parent constructor Component
+		this.state = { counter: 0 };
 	}
 
 	```
