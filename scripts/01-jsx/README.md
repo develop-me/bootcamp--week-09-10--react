@@ -30,6 +30,19 @@
 	2. access the values by referring to an index number
 	3. values of different types
 	4. Zero indexed
+- Array Iterator Methods
+    - Map
+        1) creates a new array with the results of calling a function for every array element
+        2) function(currentValue, index = optional)
+        3) multiplication: `numbers.map(value => value * 2)`
+    - Filter
+        1) creates an array filled with all array elements that pass a test (provided as a function)
+        2) function(currentValue, index = optional)
+        3) even numbers: `numbers.filter(value => value % 2 === 0)`
+    - Reduce
+        1) reduces the array to a single value
+        2) function(total, currentValue, currentIndex = optional), initialValue = optional
+        3) sum: `numbers.reduce((acc, value) => acc + value, 0)`
 - Objects
 	1. an unordered collection of related data
 	2. key:value pairs, called properties
@@ -43,7 +56,13 @@
  	  favFood: [ 'biscuits', 'bones', 'bacon' ]
 	};
 	```
-
+	5. Access value by dot notation
+    	6. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
+    	7. General rule: key name == variable name
+    	8. Can also use destructing for function parameters, which we'll do later today.
+        ```js
+        const { name, legs, isCute, favFood } = dog
+        ```
 - Functions
 	1. Call it
    	2. Takes arguments
@@ -51,29 +70,6 @@
 	```js
 	let sum = (x, y) => x + y
 	```
-
-- Array Iterator Methods
-    - Map
-	1) creates a new array with the results of calling a function for every array element
-	2) function(currentValue, index = optional)
-	3) multiplication: `numbers.map(value => value * 2)`
-    - Filter
-	1) creates an array filled with all array elements that pass a test (provided as a function)
-	2) function(currentValue, index = optional)
-	3) even numbers: `numbers.filter(value => value % 2 === 0)`
-    - Reduce
-	1) reduces the array to a single value
-	2) function(total, currentValue, currentIndex = optional), initialValue = optional
-	3) sum: `numbers.reduce((acc, value) => acc + value, 0)`
-- Object notation
-    1. Access value by dot notation
-    2. Destructuring: unpack values from arrays, or properties from objects, into distinct variables.
-    3. General rule: key name == variable name
-    4. Can also use destructing for function parameters, which we'll do later today.
-	```js
-	const { name, legs, isCute, favFood } = dog
-	```
-  
 
 - Classes
 	1. A JavaScript class is a type of function
