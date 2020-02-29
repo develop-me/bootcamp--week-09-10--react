@@ -70,6 +70,6 @@
 	<Switch>
         	<Route exact path="/" component={Header} />
         	<Route exact path="/funding" component={Funding} />
-		<Route component={404} />
+		<Route component={FourOhFour} />
 	</Switch>
 	```
