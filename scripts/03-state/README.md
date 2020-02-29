@@ -89,7 +89,7 @@ returned
 	<h1>{this.state.counter}</h1>
 	```	
 
-	- updating `this.state` when events fire and trigger our methods: `this.stState();`
+	- updating `this.state` when events fire and trigger our methods: `this.setState();`
 
 	```js
 	handleClick() {
@@ -140,6 +140,7 @@ returned
 	6. Now add the interactivty - add your event handlers
 		- Don't forget:	using `this.setState()`? BIND
 		- Modifying state? Make sure you don't change the state DIRECTLY, but reassign it
+		- Not sure what a method or operator does? Use MDN docs
 - Finally, unexpected crazy weird things going on? Don't panic - take a breath and try to use the react dev tools to see what's going on - he's your new best friend.
 - It's okay if this all seems a bit much right now!
 - Use git!
