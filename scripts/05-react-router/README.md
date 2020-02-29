@@ -66,3 +66,10 @@
 - What about if people put random things in the url - it breaks the app!
 - Use `<Switch>` to get handle 404s
 	- Same as a regular JS switch statement, the last component we put in the switch statement is the default component rendered - so if no other routes match
+	```js
+	<Switch>
+        	<Route exact path="/" component={Header} />
+        	<Route exact path="/funding" component={Funding} />
+		<Route component={404} />
+	</Switch>
+	```

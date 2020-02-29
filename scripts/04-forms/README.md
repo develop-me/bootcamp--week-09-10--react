@@ -3,8 +3,8 @@
 - Go through challenges from yesterday
 
 ## Structure of Day
-- Forms
-- React Router
+- AM: Forms
+- PM: React Router
 
 ## Forms [20 mins]
 - Need to be careful with inputs
@@ -27,4 +27,5 @@
 - This IS a controlled component, all form elements in a react app should be this!
 - Other things to note:
 	- `defaultValue` property: for defaults (surprisingly), NB: not the same as placeholder as would be considered the value entered by the user is form was submitted
+	- instead of value prop
 - `value` works for `<select>` and all other form elements - radios, checkboxes etc.
