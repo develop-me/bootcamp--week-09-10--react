@@ -1,5 +1,5 @@
 # Day 1: Morning
-<em>(expect to finish between 11am and break)</em>
+*(expect to finish between 11am and break)*
 
 • Morning: 11:30 - 12:00
 • Lunch: 13:00 - 14:00
@@ -70,6 +70,10 @@
 	```js
 	let sum = (x, y) => x + y
 	```
+- Symbol
+    1. The `Symbol()` function returns a value of type symbol
+    2. Every symbol value returned from Symbol() is unique
+    3. Used as an identifier for object properties
 
 - Classes
 	1. A JavaScript class is a type of function
@@ -231,7 +235,7 @@ Frameworks good for large companies as puts a constraint on the devs
 	- 2 types: Named Exports (Zero or more exports per module)
 	- Default Exports (One per module)
 	- Have slightly different syntax for importing and for exporting
-	- Cos react is all about components containing small atomic pieces of functionality we'll generally be using default export, so just stick to this pattern for now
+	- Because react is all about components containing small atomic pieces of functionality we'll generally be using default export, so just stick to this pattern for now
 - Show console messages
 - Content component: see `Content.js`
 - Templating example:
