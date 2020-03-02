@@ -13,4 +13,4 @@
 - Day 5: Quiz
 	- Morning: 11:00 - 11:30
 	- Lunch: 12:30 - 14:00
-	-  Afternoon: 15:30 - 16:00 (or skip and finish early)
+	- Afternoon: 15:30 - 16:00 (or skip and finish early)
