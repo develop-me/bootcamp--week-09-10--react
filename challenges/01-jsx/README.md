@@ -4,6 +4,21 @@
 
 Make sure you keep the JS console open at all times and correct anything that it flags up.
 
+To create your app run: `npm init react-app your-project-name`
+- Run this in the directory you want your react app to live
+- A good rule of thumb is to use hyphens and lower case for your project name
+- Do NOT use keywords which might be used elsewhere e.g react
+
+To connect your git repo for these challenge to the react app:
+- Create a repo on github
+- Change directory into your react app
+- Run `git init`
+- Set the upstream origin to be the repo you've created by running:
+    ```
+    git remote add origin https://github.com/USERNAME/REPOSITORY.git
+    git push -u origin master
+    ```
+
 ## JSX
 
 - Create a component `<Header>` that displays: `<h1>Hello, world</h1>`
