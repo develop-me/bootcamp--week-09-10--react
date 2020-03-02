@@ -1,7 +1,7 @@
 # Day 1: Afternoon
 
 ## Props [40 mins]
-<em>(Straight after lunch unless big issues with exercises)</em>
+*(Straight after lunch unless big issues with exercises)*
 
 - So far:
 	- what are components/how they are structured
