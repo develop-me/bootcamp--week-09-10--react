@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 import Button from "./Button";
 
 class Buttons extends Component {
@@ -6,7 +6,7 @@ class Buttons extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         { /* when this button is clicked, set selected to 1 */ }
         <Button
           name="First"
@@ -20,7 +20,7 @@ class Buttons extends Component {
           selected={ this.state.selected === 2 }
           handleClick={ () => this.setState({ selected: 2 }) }
         />
-      </Fragment>
+      </>
     );
   }
 }

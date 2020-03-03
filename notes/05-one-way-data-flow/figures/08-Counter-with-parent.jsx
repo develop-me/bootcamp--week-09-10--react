@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 
 class Counter extends Component {
   // ...etc.
@@ -18,11 +18,11 @@ class Counter extends Component {
     let { count } = this.state;
 
     return (
-      <Fragment>
+      <>
         <p onClick={ this.handleClick }>{ count }</p>
         { /* call the local handleButtonClick method */ }
         <button onClick={ this.handleButtonClick }>Submit</button>
-      </Fragment>
+      </>
     );
   }
 }
