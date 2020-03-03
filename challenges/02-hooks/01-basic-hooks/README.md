@@ -8,6 +8,8 @@
 
 ## Hooks
 
+Use Hooks for all of the challenges below. You should already have done them using a `class`!
+
 1) Create a `<Clicked>` component. It should initially display "Not clicked" in a `<p>`. Once it's been clicked it should change to "Clicked".
 
 2) Update your `<Square colour="hotpink">` component so that the background starts green, but when it is clicked it changes to the passed in colour. It should alternate every time you click.
