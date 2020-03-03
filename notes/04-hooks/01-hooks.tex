@@ -203,7 +203,7 @@ Sometimes, if the component has more than one value in state, the update will no
 React only does a shallow check of the values in the array, so be careful passing in data structures, as it might not behave as you expect.
 \\
 
-If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an empty array as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
+If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an \textit{empty array} as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
 
 \inputminted{javascript}{04-hooks/figures/11-StarWarsFolks.js}
 

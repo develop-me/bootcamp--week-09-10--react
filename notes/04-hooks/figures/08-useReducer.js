@@ -6,7 +6,6 @@ const initial = {
   player2: 0,
 };
 
-
 // reducer functions
 const player1Scores = state => {
   return {
@@ -29,7 +28,6 @@ const reducer = (state, action) => {
     default: return state;
   }
 };
-
 
 // the Scorer component
 const Scorer = () => {
