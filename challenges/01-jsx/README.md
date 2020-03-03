@@ -10,7 +10,7 @@ To create your app run: `npm init react-app your-project-name`
 - Do NOT use keywords which might be used elsewhere e.g react
 
 To connect your git repo for these challenge to the react app:
-- Create a repo on github
+- Create an *empty* repo on github (do not create one with a README.md)
 - Change directory into your react app
 - Run `git init`
 - Set the upstream origin to be the repo you've created by running:
