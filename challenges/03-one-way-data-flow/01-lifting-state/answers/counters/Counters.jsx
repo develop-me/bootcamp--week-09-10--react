@@ -25,7 +25,7 @@ class Counters extends Component {
         const max = values.reduce((max, value) => value > max ? value : max, 0);
 
         return (
-            <React.Fragment>
+            <>
                 { values.map((value, index) => (
                     <Counter
                         key={ index }
@@ -35,7 +35,7 @@ class Counters extends Component {
                         handleSubtract={ () => this.handleChange(index, -1) }
                     />
                 )) }
-            </React.Fragment>
+            </>
         );
     }
 }
