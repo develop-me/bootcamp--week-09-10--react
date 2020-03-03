@@ -67,6 +67,17 @@
 - Use `<Switch>` to get handle 404s
 	- Same as a regular JS switch statement, the last component we put in the switch statement is the default component rendered - so if no other routes match
 	```js
+	switch(expression) {
+	  case x:
+    	   // code block
+   	   break;
+  	  case y:
+    	   // code block
+    	   break;
+  	  default:
+    	   // code block
+	}
+
 	<Switch>
         	<Route exact path="/" component={Header} />
         	<Route exact path="/funding" component={Funding} />
