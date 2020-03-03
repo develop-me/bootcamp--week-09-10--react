@@ -1,7 +1,6 @@
 # Day 1
 
-
-## Lifecycle Methods
+### Lifecycle Methods
 
 - For class based components, methods that React calls for us
 - `render`: should just return JSX, not side-effects
@@ -14,15 +13,13 @@
 - `componentDidUpdate`: gets called every time component updates
     - show updated `document.title` each time counter changes
 
-
-## AJAX
+### AJAX
 
 - So far we only know `GET` and `POST` in browsers - by navigating or submitting a form
 - Asynchronous JavaScript and XML - outdated term (see `employees.xml`)
 - Mostly use JSON (see `employees.json`)
 
-
-## Axios
+### Axios
 
 - `XMLHttpRequest` - grim
 - `fetch` - better, but still quite complicated
@@ -31,16 +28,14 @@
 - Can configure with defaults (see `axios.js`)
 - In `index.js`: `axios.get("/people")`
 
-
-## Asynchronous Programming
+### Asynchronous Programming
 
 - Don't get a response back immediately
 - JS can't just wait around for something to happen
 - Need to do something *when we get a response*
 - Similar concept to event handlers
 
-
-## Promises
+### Promises
 
 - Axios returns a Promise
 - Has a `.then()` method
@@ -55,3 +50,6 @@
     - `.catch()` on the end
     - Useful for form validation
 - Use Network console to debug
+
+
+**Challenges**: `challenges/01-api/README.md`
