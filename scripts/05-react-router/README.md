@@ -50,6 +50,7 @@
 	</Route>
 	```
 - Wrapping it in `Route` allows you to just pass in props like normal
+- Notice that we are passing the `<Figure/>` component as `children` to `<Route/>`
 - Matches:
 	- URL parameters with `render` prop and `match.params.<parameter>` (resource `Article.js`)
 	```js
