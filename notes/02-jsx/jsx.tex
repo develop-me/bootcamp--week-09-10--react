@@ -2,14 +2,6 @@ In React we create \textbf{components}. These represent the different UI element
 \\
 
 The top-level component in the React app scaffolding that's been created for us is called \texttt{App} and it lives in \texttt{src/App.js}. This component is loaded in from the \texttt{src/index.js}, which is where everything gets started. So all of our components will need to be used inside the \texttt{App} component or a sub-component thereof.
-\\
-
-\begin{infobox}{\texttt{js} or \texttt{jsx}}
-    It's a good idea to rename \texttt{src/App.js} to \texttt{src/App.jsx}: this will ensure that your text editor uses the right syntax highlighting. This isn't necessary for all text editors, but it's still useful to be able to look at the extension of a file and see if it's a React component or a regular JS file.
-    \\
-
-    If you've already started the server you'll get a nasty looking error: you'll need to stop the server (\texttt{Ctrl+C}) and rerun \texttt{npm start}.
-\end{infobox}
 
 
 \pagebreak
@@ -17,7 +9,7 @@ The top-level component in the React app scaffolding that's been created for us 
 
 \section{My First Component}
 
-If you have a look inside the \texttt{src/App.jsx} file, it should look something like this:
+If you have a look inside the \texttt{src/App.js} file, it should look something like this:
 
 \inputminted{jsx}{02-jsx/figures/01-App.jsx}
 
@@ -148,11 +140,11 @@ This is just a regular HTML file - not JSX - so we don't need to use \texttt{cla
 If we had to put all of our HTML into a single file, it would get very big. JSX lets us break up different parts of the UI into separate components.
 \\
 
-Let's create a \texttt{<Header>} component to keep our app title in. Create a new file called \texttt{Header.jsx} and add the following:
+Let's create a \texttt{<Header>} component to keep our app title in. Create a new file called \texttt{Header.js} and add the following:
 
 \inputminted{jsx}{02-jsx/figures/03-Header.jsx}
 
-Now update \texttt{App.jsx} to include our Header component:
+Now update \texttt{App.js} to include our Header component:
 
 \inputminted{jsx}{02-jsx/figures/04-App-with-Header.jsx}
 
