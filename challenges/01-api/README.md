@@ -55,6 +55,8 @@ These challenges all involve making a `GET` request when a component first loads
 
 ![Comments](img/comments.png)
 
+---
+
 These challenges all involve sending data to the server when a form is submitted.
 
 - Create a component `<CreateArticle>` which allows you to submit an article to the API. You should be able to get to it by visiting `/articles/create`
@@ -65,6 +67,7 @@ These challenges all involve sending data to the server when a form is submitted
     - Add it to the `<Article>` component  above the `<Comments>` component
 
 ![Create Comment](img/create-comment.png)
+
 
 ## Tricksy
 
