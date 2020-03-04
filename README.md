@@ -10,6 +10,8 @@
     - [ReactRouter](https://github.com/develop-me/bootcamp--week-09--react/blob/master/scripts/05-react-router/README.md)
 - Day 4: Pre-Built Components
     - [Pre-Built Components](https://github.com/develop-me/bootcamp--week-09--react/blob/master/scripts/06-pre-built-components/README.md)
+    - [Deployment](https://github.com/develop-me/bootcamp--week-09--react/blob/master/scripts/07-deployment/README.md)
+
 - Day 5: Quiz
 	- Morning: 11:00 - 11:30
 	- Lunch: 12:30 - 14:00
