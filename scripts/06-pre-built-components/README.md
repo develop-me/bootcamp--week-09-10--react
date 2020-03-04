@@ -17,12 +17,12 @@
 - Rely on documentation, if its bad - move on!
 - 2 main kinds of component
 - Larger collection of pre-built components
-	- Comps can do many things
+	- Components which will do many things
 	- Focus is on the way the components work together or look together rather than specific functionality
 	- React Bootstrap
 - Specific single use case components
 	- Do one thing or focus on a single area of things and do it well
-	- A single, often heavily modifiable components
+	- A single component, often heavily modifiable with lots of components
 	- React Datepicker
 
 ### React Bootstrap [15 mins]
@@ -39,7 +39,7 @@
 	```
 	
 - The ease of this is all down to the excellent documentation!
-- DOM props get passed through
+- DOM props get passed through to the component and it puts them on the jsx elements for us
 - Add an `onClick` handler to `<Button>`: works as you'd expect!
 - Redo `<Figure>` with Bootstrap Card
 	```js
@@ -52,6 +52,8 @@
   	</Card>
 	```
 - We can see the syntax is slightly different, but again - follow the documentation to understand that, and note it works with our props just like it was our own component
+- Only difference between using these and our own, as we can't immediately see what goes on inside their components
+- We can check the source code in node_modules or the github repo to see this!
 - Mention React Native: 
 	- The mobile phone app version of react, although react apps can exist on a mobile they run in a hidden browser
 	- A native app runs directly on the phone, compiles down to different code language than javascript depending on if the phone is iOS or android etc.
