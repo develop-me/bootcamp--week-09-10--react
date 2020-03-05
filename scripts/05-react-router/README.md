@@ -103,18 +103,18 @@
 - Make `<FourOhFour>` component to demonstrate 
 
 Structure:
-    - `<Router/>` at the top level
-    - Components to appear on all pages either here or after your `<Switch>`
-    - Use the `<Switch />` component to wrap all your `<Route>`s
-    - Pass components to your `<Routes/>` to determine which path renders them!
-        - Single component without props: `component={COMPONENT}`
-        - Multiple components with or without props:
-            ```js
-            <Route>
-                <>
-                    <ComponentA />
-                    <ComponentB title="blah" />
-                </>
-            </Route>
-            ```
-        - URL params important? Pass in with the render prop
+- `<Router/>` at the top level
+- Components to appear on all pages either here or after your `<Switch>`
+- Use the `<Switch />` component to wrap all your `<Route>`s
+- Pass components to your `<Routes/>` to determine which path renders them!
+    - Single component without props: `component={COMPONENT}`
+    - Multiple components with or without props:
+    ```js
+        <Route>
+            <>
+            <ComponentA />
+            <ComponentB title="blah" />
+            </>
+         </Route>
+    ```
+- URL params important? Pass in with the render prop
