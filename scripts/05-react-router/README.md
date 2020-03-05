@@ -46,13 +46,16 @@
 	- Will only match if the path matches the `location.pathname` exactly
 	- `location.pathname` refers to url in the browser after the `.com`
     - Gets the `location.pathname` from the history object
-- Add a route with props to `<Figure>` by wrapping in `<Route>` (`src="https://goo.gl/FYXPaS"`)
+- Add a route with props to `<Figure>` by wrapping in `<Route>`
 	```js
 	<Route path="/figure">
+     <>
    	 <Figure
-       		 caption="A cat, strutting its stuff!"
-        	 src="https://goo.gl/tRdW93"
+        caption="A cat, strutting its stuff!"
+        src="https://goo.gl/tRdW93"
    	 />
+     <Figure caption="A fat cat!" src="https://goo.gl/FYXPaS" />
+     </>
 	</Route>
 	```
 - Wrapping it in `Route` allows you to just pass in props like normal
