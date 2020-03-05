@@ -10,7 +10,7 @@
 	- No flash of a white screen, no blank page
 	- Seamless more modern and responsive experience for users 
 	- Seems like normal browser functionality to the user: can use the back and forward buttons as if it was any other website
-    - We are not actually leaving the original page - just changing which components we can see
+    - We are not actually leaving the original page - just changing which components we can see, which components are RENDERED
 - Setup: `react-router-dom`
 - Import `BrowserRouter as Router` and `Route`
 - BrowserRouter:
@@ -18,17 +18,18 @@
 	- Unavailable for IE9 and lower
 	- Clean routes: `www.example.com/person/john`
 	- Needs to be backed by a web server i.e. if the route only exists in the react app but not on server, reloading, linking etc. (anything that hits the server directly) will return 404
+    - 404: HTTP network response, symbolises server or page not found
 	- Server has access to the full URL
 	- Large applications
     - Works for us because our web server which only deals with rendering our react app
 - HashRouter:
-	- Uses URL hash
-	- Server side routing independant from client side routing
+	- Uses URL with hash
+	- The hash keeps the server side routing independant from client side routing
 	- No browser issues
 	- Server does not have access to the path after the #
 	-`www.example.com/#/person/john`
 	- Client interprets bit after the hash
-	- Small client side app which doesn't need a backend OR is has routes which should not effect the browser URL e.g a widget on a website
+	- Small client side app which doesn't need a backend OR has routes which should not effect the browser URL e.g a widget on a website
     
 - Keep `Header` separate but use `Route` for rest
 - Add a route with `exact path="/"` to `Content` using the `component` prop
@@ -42,8 +43,9 @@
 	```
 
 - Discuss `exact`
-	- will only match if the path matches the location.pathname exactly
-	- location.pathname refers to url in the browser after the `.com`
+	- Will only match if the path matches the `location.pathname` exactly
+	- `location.pathname` refers to url in the browser after the `.com`
+    - Gets the `location.pathname` from the history object
 - Add a route with props to `<Figure>` by wrapping in `<Route>` (`src="https://goo.gl/FYXPaS"`)
 	```js
 	<Route path="/figure">
