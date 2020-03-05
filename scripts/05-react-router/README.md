@@ -58,8 +58,9 @@
 - Wrapping it in `Route` allows you to just pass in props like normal
 - Notice that we are passing the `<Figure/>` component as `children` to `<Route/>`
 - Matches *(resource `Article.js`)*:
-	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use a with `render` prop 
-    - Pass in the word `match` as a prop to this render prop function and 
+	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use the `render` prop 
+    - The render props contains a function
+    - Pass in the word `match` as a prop to the function 
     - Inside we return the component we want to pass part of the url to
     - Use `match.params.<parameter>` as the value of the prop we pass down
 	```js
@@ -69,12 +70,17 @@
 	```
 	- `match.params.id` becomes a prop: will change based on url
 	- `:id` tells the route to expect that part of the url to change, and to use that in the match 
-- So now we have routing: a way for our react components to use the URL to figure out which components or sets of components to render, we need to get around our app
-- BUT: the normal way (`<a></a>`) causes the browser to load from scratch and it would mean we'd lose all our apps state AND kind of make the point of react router redundant!
-- Use `<Link to="/">`: show it's just a `<a>`
-	- literally an <a> with `e.preventDefault()` and running a function which updates the address bar and that browser history object for us!
+    - Whatever it is you're accessing you put the `:` before and then use the same word after `match.params` 
+- So now we have routing: a way for our react components to use the URL to figure out which components or sets of components to render
+- BUT: we need to get around our app
+- The normal way (`<a></a>`) causes the browser to load from scratch and it would mean we'd lose all our apps state AND kind of make the point of react router redundant!
+- `import { Link } from "react-router-dom`
+- Use `<Link to="/">`: show it's just a `<a>` in the browser
+	- Literally an <a> with `e.preventDefault()` and running a function which updates the address bar and that browser history object for us!
+    - We use the `to` prop instead of the `href` attribute
 - What about if people put random things in the url - in some cases it might break the app entirely, in others it would appear broken because the user would see a white screen/the same screen
 - Use `<Switch>` to get handle 404s
+    - `import { Switch } from "react-router-dom`
 	- Same as a regular JS switch statement, the last component we put in the switch statement is the default component rendered - so if no other routes match
 	```js
 	switch(expression) {
@@ -89,8 +95,8 @@
 	}
 
 	<Switch>
-        	<Route exact path="/" component={Header} />
-        	<Route exact path="/funding" component={Funding} />
+        <Route exact path="/" component={Header} />
+        <Route exact path="/funding" component={Funding} />
 		<Route component={FourOhFour} />
 	</Switch>
 	```
