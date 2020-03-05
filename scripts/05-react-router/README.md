@@ -118,3 +118,9 @@ Structure:
          </Route>
     ```
 - URL params important? Pass in with the render prop
+    ```js
+        <Route
+          path="/articles/:id"
+          render={({ match }) => <Article id={match.params.id} />}
+        />
+    ```
