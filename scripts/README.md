@@ -7,7 +7,9 @@
 - Day 3:
     - Morning: [Forms](04-forms/)
     - Afternoon: [React Router](05-react-router/)
-- Day 4: [Pre-Built Components](06-pre-built-components/)
+- Day 4: 
+    - Morning: [Pre-Built Components](06-pre-built-components/)
+    - Afternoon: [Deployment](07-deployment/)
 - Day 5: [Quiz](../quiz/)
 
 ## Notes
