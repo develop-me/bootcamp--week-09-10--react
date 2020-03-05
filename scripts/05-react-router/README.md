@@ -50,11 +50,8 @@
 	```js
 	<Route path="/figure">
      <>
-   	 <Figure
-        caption="A cat, strutting its stuff!"
-        src="https://goo.gl/tRdW93"
-   	 />
-     <Figure caption="A fat cat!" src="https://goo.gl/FYXPaS" />
+   	    <Figure caption="A cat, strutting its stuff!" src="https://goo.gl/tRdW93" />
+        <Figure caption="A fat cat!" src="https://goo.gl/FYXPaS" />
      </>
 	</Route>
 	```
