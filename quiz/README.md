@@ -40,3 +40,8 @@ Create a component `<Posts>` that consists of a list of items that have a title 
 - Make it so that `<Posts>` is visible if you visit the root route (i.e. `/`)
 
 ![Lifting State](img/lifting-state.png)
+
+
+## Hooks
+
+If you haven't already, use Hooks for all of the above components.
