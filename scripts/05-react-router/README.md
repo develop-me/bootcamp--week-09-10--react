@@ -42,10 +42,6 @@
   	</Router>
 	```
 
-- Discuss `exact`
-	- Will only match if the path matches the `location.pathname` exactly
-	- `location.pathname` refers to url in the browser after the `.com`
-    - Gets the `location.pathname` from the history object
 - Add a route with props to `<Figure>` by wrapping in `<Route>`
 	```js
 	<Route path="/figure">
@@ -71,6 +67,15 @@
 	- `match.params.id` becomes a prop: will change based on url
 	- `:id` tells the route to expect that part of the url to change, and to use that in the match 
     - Whatever it is you're accessing you put the `:` before and then use the same word after `match.params` 
+- Discuss `exact`
+	- Will only match if the path matches the `location.pathname` exactly
+	- `location.pathname` refers to url in the browser after the `.com`
+    - Gets the `location.pathname` from the history object
+    - Like our articles above, maybe we want `/articles/:id` to take us to a specific article, but `/articles/all` to take us to all articles
+    - Currently because we're using the render prop `<Router />` would think we were trying to path to a specific article and pass `all` as the article prop (thinking it was `:id`)
+    - Using the prop `exact` would mean we can essentially have 2 similar paths but because one is an exact match `<Router />` will take us know to take us to the `<Route />` which matches the exact path, and not the one which is similar
+
+
 - So now we have routing: a way for our react components to use the URL to figure out which components or sets of components to render
 - BUT: we need to get around our app
 - The normal way (`<a></a>`) causes the browser to load from scratch and it would mean we'd lose all our apps state AND kind of make the point of react router redundant!
