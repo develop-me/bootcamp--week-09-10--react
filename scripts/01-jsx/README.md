@@ -12,14 +12,14 @@
 - Types of things
 - Numbers
 	1. represents both integer and floating point numbers
-	2. many operations for numbers, e.g. multiplication *, division /, addition +, subtraction -, and so on
-	3. so-called “special numeric values” which also belong to this data type: Infinity, -Infinity and NaN
+	2. many operations for numbers, e.g. multiplication `*`, division `/`, addition `+`, subtraction `-`, and so on
+	3. so-called “special numeric values” which also belong to this data type: `Infinity`, `-Infinity` and `NaN`
 	4. Infinity: reference directly, or division by zero
 	5. NaN: represents a computational error. It is a result of an incorrect or an undefined mathematical operation.
-	6. NaN is sticky: any further operations on NaN return NaN 
+	6. NaN is sticky: any further operations on `NaN` return `NaN` 
 - Strings
- 	1. must be surrounded by quotes - ', " or `
-	2. can be concatentated (+)
+ 	1. must be surrounded by quotes - `'`, `"` or ``
+    2. can be concatentated (`+`)
 	3. interpolated: template literals are string literals allowing embedded expressions (`${expression}`)
 - Booleans
 	1. only 2 values: true/false
