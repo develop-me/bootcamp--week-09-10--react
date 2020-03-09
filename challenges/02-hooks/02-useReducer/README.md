@@ -6,7 +6,29 @@
 
 ## Reducers
 
-We're going to slowly build up the functionality of a todo list app. We'll use TDD to do this.
+The following challenges are a bit overkill, as you could just use `useState` for them, as they only involve a single bit of state, but it's good practice before we jump into something more complicated.
+
+- Try recreating the `<Clicked>` component from the previous set of challenges using `useReducer` instead of `useState`.
+
+    Your initial state should be:
+
+    ```js
+    const initial = { clicked: false };
+    ```
+
+    Your action should be:
+
+    ```js
+    { type: "CLICKED" }
+    ```
+
+- Try recreating the `<Square colour="hotpink">` component from the previous set of challenges using `useReducer` instead of `useState`.
+
+- Try recreating the `<Counter initial={ 50 } max={ 100 } />` component from the previous set of challenges using `useReducer` instead of `useState`.
+
+---
+
+Now, we're going to slowly build up the functionality of a todo list app. We'll use TDD to do this.
 
 ### Setup
 
@@ -376,9 +398,30 @@ export default (state, action) => {
 
 ## `useReducer`
 
+Use [`ToDo/List.js`](ToDo/List.js) for this challenge. Have a look around and make sure you understand the JSX.
+
+Few things to note:
+
+- The Bootstrap classes get a bit crazy for list items!
+- The `<input>` is already setup as a controlled component. We'll keep track of its state separately. You *could* do it in the reducer, but it's a design choice to keep it separately.
+- We're going to start off with some dummy data, to make sure things display as we expect.
+
+We'll work through things in difficulty order, rather than the order that we created the reducer.
+
+- Make it so that when you click on one of the remove buttons the relevant item is removed from the state. Remember, **your reducer does most of the work for you**, you just need to `dispatch` the correct action. If you remove all the items you should see a "No list items" message.
+
+- Make it so that when you click on the text of each list item (the `<span>` with `class="flex-grow-1"`), it marks the relevant item as completed. Again, **your reducer does most of the work for you**.
+
+- Make it so that when the form is submitted it creates a new list item with the value of `input` as its `task`. **As always, your reducer should do most the work here**.
+
+- Update the `initial` state so that you start with an empty list.
+
+### Tricksy
+
+- Make it so that you can update a list item when you click on the "Edit" button. It's up to you how the UX for this should work. You'll probably need some additional state to keep track of things.
 
 
-
+---
 
 ## Tricksy Challenges
 
