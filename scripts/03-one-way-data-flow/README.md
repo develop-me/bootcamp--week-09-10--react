@@ -1,5 +1,10 @@
 # Day 4
 
+Breaks:
+    - 11:30-12:00 Morning Break
+    - 13:00-14:00 Lunch
+    - 15:30-16:00 Afternoon Break
+
 ## Morning
 
 ### Lifting State

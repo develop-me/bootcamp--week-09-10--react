@@ -1,5 +1,10 @@
 # Days 2 & 3: Hooks
 
+Breaks:
+    - 11:30-12:00 Morning Break
+    - 13:00-14:00 Lunch
+    - 15:30-16:00 Afternoon Break
+
 ## Day 2: Morning
 
 - Hooks are a newer way of writing stateful components
