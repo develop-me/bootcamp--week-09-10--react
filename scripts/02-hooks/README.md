@@ -1,12 +1,17 @@
-# Days 2 & 3
+# Days 2 & 3: Hooks
 
-## Hooks
+Breaks:
+    - 11:30-12:00 Morning Break
+    - 13:00-14:00 Lunch
+    - 15:30-16:00 Afternoon Break
+
+## Day 2: Morning
 
 - Hooks are a newer way of writing stateful components
-- more functional style, without needing to use a \texttt{class}
+- More functional style, without needing to use a `class`
 - Look at a basic class component (`counter.js`)
 
-### Destructuring Arrays
+### Destructuring Array Assignment
 
 - Show destructuring an object
 - Now destructuring an array of numbers
@@ -25,6 +30,12 @@
 - Briefly mention concept of tuples
     - Not part of JS
     - Joins two values together, don't have to be same type
+
+**Challenges**: `challenges/02-hooks/01-basic-hooks/README.md`
+
+---
+
+## Day 2: Afternoon
 
 ### `useReducer`
 
@@ -46,6 +57,12 @@
 - Show dispatching an action
 - Destructure `state`
 
+**Challenges**: `challenges/02-hooks/02-useReducer/README.md`
+
+---
+
+## Day 3
+
 ### `useEffect`
 
 - For side-effecty code
@@ -53,9 +70,11 @@
 - Demonstrate updating the page title `document.title` every time counter changes
 - Show dependents array for updating title example
 - Demonstrate `componentDidMount` like behaviour with empty array (`star-wars.js`)
-- Demonstate `componentWillUnmount` like behaviour
+- Demonstrate `componentWillUnmount` like behaviour
 
 ### Custom Hooks
 
 - `useEffect` needs access to state variables
 - Create hook to pull out API fetching behaviour
+
+**Challenges**: `challenges/02-hooks/03-advanced-hooks/README.md`

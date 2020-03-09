@@ -34,6 +34,24 @@ Rather than using an intermediary variable, generally we use chaining with Promi
 \end{minted}
 
 Be aware that \textbf{there's no guarantee the promises will resolve in the order you wrote them}. For example, \texttt{GET} requests tend to be quicker than other types of request as they generally involve less server activity.
+\\
+
+We can use \href{https://httpbin.org/#/Dynamic_data/get_delay__delay_}{https://httpbin.org/delay/<delay>} to play around with this:
+
+\begin{minted}{js}
+    // will take 5 seconds to return a response
+    axios.get("https://httpbin.org/delay/5").then(() => {
+        // will show after (at least) 5 seconds
+        console.log("Five");
+    });
+
+    // will take 1 second to return a response
+    axios.get("https://httpbin.org/delay/1").then(() => {
+        // will show after (at least) 1 second
+        console.log("One");
+    });
+\end{minted}
+
 
 
 \subsection{Errors}
@@ -79,7 +97,7 @@ We can put API calls in our component methods, we just need to make sure that we
             title: title,
             article: article,
         }).then(() => {
-            // once the server gets responds successfully, clear the inputs
+            // once the server responds successfully, clear the inputs
             this.setState({ title: "", article: "" });
         });
     }
@@ -90,8 +108,6 @@ If we need to fetch data from the API data to show in our component, then we'll 
 \inputminted{js}{03-async/figures/01-StarWarsFolks.jsx}
 
 If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
-
-\pagebreak
 
 \begin{infobox}{Not Ideal}
     If we make an API request inside our component, then it means that the component can \textit{only} be used for displaying that specific data.

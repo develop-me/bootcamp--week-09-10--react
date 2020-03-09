@@ -10,7 +10,7 @@ Say, for example, we have two buttons but we want it so that only one of them ca
 
 We can easily create a self-aware button that knows when \textit{it's} been clicked:
 
-\inputminted{jsx}{05-one-way-data-flow/figures/01-Button.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/01-Button.jsx}
 
 But there's no way for the first button to know anything about the state of the second button and vice-versa. Remember: we can only pass information down from one component to its sub-components, we \textit{can't} pass data back up.
 \\
@@ -21,7 +21,7 @@ This is where the concept of \textbf{lifting state} becomes important. If we sto
 
 First let's create the component. We'll use a number to keep track of which \texttt{<Button>} we want highlighted:
 
-\inputminted{jsx}{05-one-way-data-flow/figures/02-Buttons.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/02-Buttons.jsx}
 
 
 \pagebreak
@@ -29,11 +29,11 @@ First let's create the component. We'll use a number to keep track of which \tex
 
 Next we'll update the \texttt{<Buttons>} component to pass down the value of \texttt{selected} to \texttt{<Button>} using a prop:
 
-\inputminted{jsx}{05-one-way-data-flow/figures/03-Buttons-selected.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/03-Buttons-selected.jsx}
 
 We'll need to update our \texttt{<Button>} so it works out the class name based on the \texttt{selected} \textit{prop} (as opposed to using its own state):
 
-\inputminted{jsx}{05-one-way-data-flow/figures/04-Button-selected.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/04-Button-selected.jsx}
 
 Now, when we load the app, the first button should be selected, but clicking won't make any difference.  We could check it works for the second button by temporarily changing the initial state in \texttt{<Buttons>}.
 \\
@@ -43,7 +43,7 @@ The \texttt{<Button>} JSX isn't using state anymore, so the \texttt{onClick} han
 
 But remember that functions in JavaScript can be passed around just like any other value, so we \textit{can} pass in an event handler from the parent component:
 
-\inputminted{jsx}{05-one-way-data-flow/figures/05-Buttons-click.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/05-Buttons-click.jsx}
 
 We pass through an anonymous function that sets \texttt{<Buttons>}'s state with the correct value.
 \\
@@ -53,6 +53,6 @@ Each instance of the \texttt{<Button>} component gets given a \textit{different}
 
 Finally we need to accept the \texttt{handleClick} prop inside our button and set it as the \texttt{onClick} event handler. And, as we're not using state in the component anymore, we can also refactor it into a stateless component while we're at it:
 
-\inputminted{jsx}{05-one-way-data-flow/figures/06-Button-func.jsx}
+\inputminted{js}{05-one-way-data-flow/figures/06-Button-func.jsx}
 
 By passing a function into the component we've avoided the need for two-way data flow. The \texttt{<Button>} component still doesn't need to know anything about the component that it is used in, as long as the parent component passes in a \texttt{handleClick} function everything will work; but the function that gets passed in could do \textit{anything}.

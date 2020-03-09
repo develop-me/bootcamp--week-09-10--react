@@ -1,5 +1,4 @@
-// import Fragment
-import React, { Fragment, Component } from "react";
+import React, { Component } from "react";
 
 // import the currently self-aware Button component
 import Button from "./Button";
@@ -14,12 +13,11 @@ class Buttons extends Component {
   }
 
   render() {
-    // need to use a Fragment to output multiple elements
     return (
-      <Fragment>
+      <>
         <Button name="First" />
         <Button name="Second" />
-      </Fragment>
+      </>
     );
   }
 }

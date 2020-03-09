@@ -9,7 +9,7 @@ class Squares extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 <Square
                     selected={ this.state.selected === 1 }
                     handleClick={ () => this.setState({ selected: 1 }) }
@@ -20,7 +20,7 @@ class Squares extends Component {
                     handleClick={ () => this.setState({ selected: 2 }) }
                     colour={ this.props.colour }
                 />
-            </React.Fragment>
+            </>
         );
     }
 }

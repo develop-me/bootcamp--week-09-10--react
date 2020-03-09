@@ -6,7 +6,6 @@ const initial = {
   player2: 0,
 };
 
-
 // reducer functions
 const player1Scores = state => {
   return {
@@ -24,12 +23,11 @@ const player2Scores = state => {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "player1Scores": return player1Scores(state);
-    case "player2Scores": return player2Scores(state);
+    case "PLAYER_1_SCORES": return player1Scores(state);
+    case "PLAYER_2_SCORES": return player2Scores(state);
     default: return state;
   }
 };
-
 
 // the Scorer component
 const Scorer = () => {
@@ -41,13 +39,13 @@ const Scorer = () => {
   return (
     <>
       <p
-        onClick={ () => dispatch({ type: "player1Scores" }) }
+        onClick={ () => dispatch({ type: "PLAYER_1_SCORES" }) }
       >
         Player 1: { player1 }
       </p>
 
       <p
-        onClick={ () => dispatch({ type: "player2Scores" }) }
+        onClick={ () => dispatch({ type: "PLAYER_2_SCORES" }) }
       >
         Player 2: { player2 }
       </p>

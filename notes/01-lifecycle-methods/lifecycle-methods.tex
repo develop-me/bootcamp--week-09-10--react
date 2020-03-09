@@ -53,6 +53,21 @@ Sometimes it's also necessary to add event handlers to, say, the \texttt{window}
 If you do setup event handlers in \texttt{componentDidMount}, make sure you remove them using \texttt{componentWillUnmount}.
 
 
+\section{\texttt{componentWillUnmount}}
+
+React does all sorts of clever stuff for us, including adding and removing all necessary event listeners to DOM elements that it creates. However, if we add event listeners ourselves (as in the \texttt{componentDidMount} example), we need to make sure we remove them when the component is no longer needed:
+
+\begin{minted}{javascript}
+    componentWillUnmount() {
+        // we need to remove any event listeners
+        // that React hasn't setup itself
+        window.removeEventListener("mouseup", this.handleStopDragging);
+    }
+\end{minted}
+
+If we forget to do this, over the life of our app multiple copies of the same event listener will build up, using memory and CPU unnecessarily (and potentially leading to all sorts of weird bugs).
+
+
 \section{\texttt{componentDidUpdate}}
 
 Sometimes we want to run a bit of code every time the component updates.
@@ -72,20 +87,6 @@ For example, say we wanted to update the \texttt{<title>} tag of the web-page ev
 
 If you're  using any of the lifecycle methods to perform DOM manipulation, make sure there isn't a React way to achieve the same thing first. As a general rule of thumb, if the DOM manipulation is on DOM elements that are part of the component (or its children), you should be able to use React-specific methods.
 
-
-\section{\texttt{componentWillUnmount}}
-
-React does all sorts of clever stuff for us, including adding and removing all necessary event listeners to DOM elements that it creates. However, if we add event listeners ourselves (as in the \texttt{componentDidMount} example), we need to make sure we remove them when the component is no longer needed:
-
-\begin{minted}{javascript}
-    componentWillUnmount() {
-        // we need to remove any event listeners
-        // that React hasn't setup itself
-        window.removeEventListener("mouseup", this.handleStopDragging);
-    }
-\end{minted}
-
-If we forget to do this, over the life of our app multiple copies of the same event listener will build up, using memory and CPU unnecessarily (and potentially leading to all sorts of weird bugs).
 
 
 \section{Additional Resources}

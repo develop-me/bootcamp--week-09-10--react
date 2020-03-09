@@ -14,7 +14,7 @@ The hooks version is less than half the length, but it does exactly the same thi
 
 Before we delve into exactly how this works, we'll need to look at destructuring arrays.
 
-\section{Destructuring Arrays}
+\section{Destructuring Assignment: Arrays}
 So far we've only used destructuring to get properties from an object:
 
 \begin{minted}{js}
@@ -111,27 +111,39 @@ An action is just an object literal with various properties. If we give it a \te
 
 \inputminted{js}{04-hooks/figures/05-reducer-p1scores.js}
 
-In the above reducer if the action has a \texttt{type} property of \texttt{player1Scores} we add \texttt{1} to the \texttt{player1} property of state. In all other cases (\texttt{default}) it will just return state unchanged - remember, \textbf{we always need to return a valid copy of the state}.
+In the above reducer if the action has a \texttt{type} property of \texttt{PLAYER\_1\_SCORES}\footnote{It's a convention to use uppercase separated by underscores} we add \texttt{1} to the \texttt{player1} property of state. In all other cases (\texttt{default}) it will just return state unchanged - remember, \textbf{we always need to return a valid copy of the state}.
 \\
 
-We can now easily add a \texttt{player2Scores} action:
+We can now easily add a \texttt{PLAYER\_2\_SCORES} action:
 
 \begin{minted}{js}
-    case: "player2Scores": return {
+    case: "PLAYER_2_SCORES": return {
         ...state,
         player2: state.player2 + 1,
     };
 \end{minted}
 
-Because an action is just an object literal, we can have as many properties as we like on it. Remember, a reducer is a pure function, so it should only work with information that's been passed in (or other pure functions).
-
-\inputminted{js}{04-hooks/figures/06-reducer-payload.js}
-
 It's sometimes tidier to pull the \texttt{case}s out into their own functions:
 
-\inputminted{js}{04-hooks/figures/07-reducer-pull.js}
+\inputminted{js}{04-hooks/figures/06-reducer-pull.js}
 
 If you do this make sure you pass \texttt{state} and, if necessary, \texttt{action} as arguments.
+
+
+\subsection{Action Payloads}
+
+Remember, a reducer is a pure function, so it should only work with information that's been passed in (or other pure functions).
+\\
+
+But because an action is just an object literal, we can have as many properties as we like on it.
+\\
+
+Say we wanted to keep track of lots of different player scores. It would be nice to be able to just have a single action and say \textit{which} player has scored:\footnote{This can be made even shorter using ``Computed Property Names''}
+
+\inputminted{js}{04-hooks/figures/07-reducer-payload.js}
+
+This additional data is often referred to as the ``payload''.
+
 
 \subsection{Dispatching Actions}
 
@@ -191,7 +203,7 @@ Sometimes, if the component has more than one value in state, the update will no
 React only does a shallow check of the values in the array, so be careful passing in data structures, as it might not behave as you expect.
 \\
 
-If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an empty array as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
+If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an \textit{empty array} as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
 
 \inputminted{javascript}{04-hooks/figures/11-StarWarsFolks.js}
 
