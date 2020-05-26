@@ -1,11 +1,6 @@
-# Days 2 & 3: Hooks
+# Days 3 & 4: Hooks
 
-Breaks:
-    - 11:30-12:00 Morning Break
-    - 13:00-14:00 Lunch
-    - 15:30-16:00 Afternoon Break
-
-## Day 2: Morning
+## Day 3: Morning
 
 - Hooks are a newer way of writing stateful components
 - More functional style, without needing to use a `class`
@@ -31,11 +26,11 @@ Breaks:
     - Not part of JS
     - Joins two values together, don't have to be same type
 
-**Challenges**: `challenges/02-hooks/01-basic-hooks/README.md`
+**Challenges**: `challenges/03-hooks/01-basic-hooks/README.md`
 
 ---
 
-## Day 2: Afternoon
+## Day 3: Afternoon
 
 ### `useReducer`
 
@@ -57,11 +52,11 @@ Breaks:
 - Show dispatching an action
 - Destructure `state`
 
-**Challenges**: `challenges/02-hooks/02-useReducer/README.md`
+**Challenges**: `challenges/03-hooks/02-useReducer/README.md`
 
 ---
 
-## Day 3
+## Day 4
 
 ### `useEffect`
 
@@ -77,4 +72,4 @@ Breaks:
 - `useEffect` needs access to state variables
 - Create hook to pull out API fetching behaviour
 
-**Challenges**: `challenges/02-hooks/03-advanced-hooks/README.md`
+**Challenges**: `challenges/03-hooks/03-advanced-hooks/README.md`

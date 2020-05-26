@@ -1,13 +1,4 @@
-# Day 1
-
-Breaks:
-    - 11:30-12:00 Morning Break
-    - 13:00-14:00 Lunch
-    - 15:30-16:00 Afternoon Break
-
-**This week is just a continuation of the previous week's material**
-
-**You're probably yearning to make more complex apps, but shouldn't until we learn about state management**
+# Day 2
 
 ### Lifecycle Methods
 
@@ -69,4 +60,4 @@ Breaks:
 
 
 
-**Challenges**: `challenges/01-api/README.md`
+**Challenges**: `challenges/02-api/README.md`

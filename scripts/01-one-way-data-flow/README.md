@@ -1,9 +1,8 @@
-# Day 4
+# Day 1
 
-Breaks:
-    - 11:30-12:00 Morning Break
-    - 13:00-14:00 Lunch
-    - 15:30-16:00 Afternoon Break
+**This week is just a continuation of the previous week's material**
+
+**You're probably yearning to make more complex apps, but shouldn't until we learn about state management**
 
 ## Morning
 
@@ -15,7 +14,7 @@ Breaks:
 - Pass a function for click handler
 
 
-**Challenges**: `challenges/03-one-way-data-flow/01-lifting-state/README.md`
+**Challenges**: `challenges/01-one-way-data-flow/01-lifting-state/README.md`
 
 ---
 
@@ -27,4 +26,4 @@ Breaks:
 - Can get value out by passing it up with a function call
 
 
-**Challenges**: `challenges/03-one-way-data-flow/02-passing-data-up/README.md`
+**Challenges**: `challenges/01-one-way-data-flow/02-passing-data-up/README.md`

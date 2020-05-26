@@ -5,18 +5,18 @@ We can use a similar process to get data out of a component without needing to b
 
 Say that you have a \texttt{<Counter>} component:
 
-\inputminted{js}{05-one-way-data-flow/figures/07-Counter.jsx}
+\inputminted{js}{01-one-way-data-flow/figures/07-Counter.jsx}
 
 How could we add a button which, when clicked, passes the current value of the counter up to the parent component?
 \\
 
 We can't pass data up with props, but we can pass arguments to functions:
 
-\inputminted{js}{05-one-way-data-flow/figures/08-Counter-with-parent.jsx}
+\inputminted{js}{01-one-way-data-flow/figures/08-Counter-with-parent.jsx}
 
 In the parent component we can accept this argument as a parameter to the function we pass in:
 
-\inputminted{js}{05-one-way-data-flow/figures/09-Parent.jsx}
+\inputminted{js}{01-one-way-data-flow/figures/09-Parent.jsx}
 
 Again, we've still got one-way data flow: the \texttt{<Counter>} component doesn't need to know \textit{anything} about the \texttt{<Parent>} component. As long as the parent component passes in a \texttt{handleSubmit} prop, which is a function that accepts a single argument, everything will work.
 \\
