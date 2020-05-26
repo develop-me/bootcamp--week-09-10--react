@@ -53,15 +53,6 @@ You can install it with:
     npm install axios
 \end{minted}
 
-
-\begin{infobox}{Axios 0.19}
-    Axios 0.19 introduced a bug which means that the \texttt{params} property of \\ \texttt{axios.create} gets lost. This bug was reported on GitHub six months ago, but remains unfixed.
-    \\
-
-    \textbf{For now you will want to run \texttt{npm install axios@0.18} to force NPM to install an older, but working, version of Axios}.
-\end{infobox}
-
-
 Axios provides us with methods for the various HTTP methods:
 
 \begin{minted}{js}
@@ -94,7 +85,7 @@ Axios provides us with methods for the various HTTP methods:
 One of Axios' best features is it's easy to configure the parts of your HTTP request that are the same every time.
 \\
 
-For example, if we're using a RESTful API, our base URL, API key, and the \texttt{Accept} header are going to be the same for every request, so we can setup a version of Axios that has those already setup:
+For example, if we're using a RESTful API, our base URL, the \texttt{Accept} header, and the \texttt{Authorization} header are going to be the same for every request, so we can setup a version of Axios that has those already setup:
 
 \begin{minted}{js}
     // import the library version of axios
@@ -102,14 +93,14 @@ For example, if we're using a RESTful API, our base URL, API key, and the \textt
 
     // create a version of axios with useful defaults
     export default axios.create({
-        // use your own url
-        baseURL: "http://username.restful.training/api/",
+        baseURL: "https://restful.training/api/",
+        headers: {
+            // make sure we get JSON back
+            Accept: "application/json"
 
-        // use your own key
-        params: {"key": "4fdea06a65ba1491091c0db709faf0cce944067a"},
-
-        // make sure we get JSON back
-        headers: {"Accept": "application/json"},
+            // use your own key
+            Authorization: "Bearer 4fdea06a65ba1491091c0db709faf0cce944067a"
+        },
     });
 \end{minted}
 

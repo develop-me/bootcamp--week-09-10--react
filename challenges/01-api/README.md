@@ -22,22 +22,16 @@ import axios from "axios";
 
 // create a version of axios with useful defaults
 export default axios.create({
-    // use your own url
-    baseURL: "http://wombat.restful.training/api/blog",
-
-    // use your own key
-    params: {
-        key: "1e1c27284c86wom8922bat0f217f784b097b513",
-    },
-
-    // make sure we get JSON back
+    baseURL: "https://restful.training/api/blog",
     headers: {
+        // make sure we get JSON back
         Accept: "application/json",
+
+        // use your own key
+        Authorization: "Bearer 1e1c27284c86wom8922bat0f217f784b097b513",
     },
 });
 ```
-
-**The `params` property is broken in axios v0.19. If you get a `401` error try running `npm install axios@0.18.0` and then re-running `npm start`**
 
 These challenges all involve making a `GET` request when a component first loads. You should show a loading message until you get back a response:
 

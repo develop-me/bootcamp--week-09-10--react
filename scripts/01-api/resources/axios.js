@@ -1,6 +1,9 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "https://swapi.co/api/",
-    headers: {Accept: "application/json"},
+    baseURL: "https://restful.training/api/blog",
+    headers: {
+        Accept: "application/json",
+        Authorization: "Bearer token",
+    },
 });
