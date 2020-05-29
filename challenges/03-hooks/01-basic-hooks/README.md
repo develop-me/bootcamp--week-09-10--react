@@ -24,6 +24,17 @@ Use Hooks for all of the challenges below. You should already have done them usi
 
 7) Create a `<RollCall names={ names }>` component. It should have a button "Next". When the component first loads it should show the first name in the array. Every time you click "Next" it should show the next name in the array. It should loop back to the beginning.
 
+8) Create a `<PasswordStrength>` component. It should contain an `<input>` with the type `password`. The background styling should change depending on the length of the password:
+
+    - If it's empty the background shouldn't have styling.
+    - If it's less than 9 it should be red.
+    - If it's less than 16 it should be orange.
+    - If it's 16 or more then it should be green.
+
+9) Create a `<TempConverter>` component. It should have a `°F` and `°C` `<input>`. When you type a number into one `<input>` it should update the value in the other.
+
+10) Create a `<List>` component that consists of a `<ul>`, an `<input>`, and a `<button>Add</button>`. When you click the "Add" button, whatever is in the `<input>` should get added to the `<ul>`.
+
 
 ## Tricksy Challenges
 
@@ -47,5 +58,3 @@ Use Hooks for all of the challenges below. You should already have done them usi
     let random = Math.random(); // a number between 0 and 1
     let number = Math.floor(random * 100); // a number between 0 and 99
     ```
-
-3) Create a `<LameGame aim={ x }>` component. When a "Start" button is pressed it displays "{ aim } seconds" and shows a "Now" button. The idea is to click the "Now" button as close to `aim` seconds after you pressed "Start". Once you click on "Now" it should tell you how close you were in 1/10ths of a second. The "Start" and "Now" buttons should only show when relevant.
