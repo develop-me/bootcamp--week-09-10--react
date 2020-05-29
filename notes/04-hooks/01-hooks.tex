@@ -18,7 +18,7 @@ Before we delve into exactly how this works, we'll need to look at destructuring
 So far we've only used destructuring to get properties from an object:
 
 \begin{minted}{js}
-    let person = { firstName: "Ben", lastName: "Folds", favouriteNumber: 5 };
+    let person = { firstName: "Ben", lastName: "Folds", favouriteNo: 5 };
 
     // get the firstName property and store it in a firstName variable
     let { firstName } = person;
@@ -54,7 +54,7 @@ Now we understand destructuring arrays, we can start to understand \texttt{useSt
 In the counter example, we want to keep track of a value that we're calling \texttt{counter}. It should have an initial value of \texttt{0}, so we call \texttt{useState(0)} passing in the initial value.
 \\
 
-The \texttt{useState} function returns an array containing two values: the current value and a function to update that value. We can then destructure this array to get the value and update function back, using whatever names are most appropriate (usually using the \texttt{x} and \texttt{setX} convention).\footnote{If it returned an object it would be messier to name them whatever we like}
+The \texttt{useState} function returns an array containing two values: the current value and a function to update that value. We can then destructure this array to get the value and update function back, using whatever names are most appropriate (usually using the \texttt{x} and \texttt{setX} convention):\footnote{If it returned an object it would be messier to name them whatever we like}
 
 \begin{minted}{js}
     // useState returns an array containing two values
@@ -69,8 +69,10 @@ As mentioned above, \texttt{useState} can only be used for setting/updating a \t
 
 As you can imagine, this gets quite messy if you have lots of values in state. In that case it's best to use \texttt{useReducer}.
 
+\pagebreak
+
 \begin{infobox}{Tuples}
-    You might notice that \texttt{useState} returns an array containing mixed data-types: any type for the first value and a function for the second. We've previously seen that mixing your types in an array is a bad idea, as generally you want to do the same thing to every item in an array. The exception to this is if you're using an array as a ``tuple''.
+    You might notice that \texttt{useState} returns an array containing mixed data-types: any type for the first value and a function for the second. We've previously seen that mixing your types in an array is a \textbf{bad idea}, as generally you want to do the same thing to every item in an array. The exception to this is if you're using an array as a ``tuple''.
     \\
 
     Many programming languages, particularly functional ones, have a data type called a tuple. A tuple is a data-structure that contains two values that are somehow related. It might look something like this:
@@ -80,7 +82,7 @@ As you can imagine, this gets quite messy if you have lots of values in state. I
         ("Marte", 99) -- a name and age
     \end{minted}
 
-    It's common, although not necessary, for the two parts of a tuple to be different data types: it just ties two values together so they don't get separated.
+    It's common, although not necessary, for the two parts of a tuple to be \textit{different} data types: it just ties two values together so they don't get separated.
     \\
 
     JavaScript doesn't have native support for tuples, so the closest approximation is to use an array with two values.
@@ -91,10 +93,10 @@ As you can imagine, this gets quite messy if you have lots of values in state. I
 
 \subsection{Reducers}
 
-``Reducers'' are like the \texttt{reduce} method of arrays, except that instead of accumulating a value by going through each item of an array, they accumulate the current value of state over time. Simples!
+\textbf{Reducers} are like the \texttt{reduce} method of arrays, except that instead of accumulating a value by going through each item of an array, they accumulate the current value of state over time. Simples!
 \\
 
-A reducer is a function which gets passed the current value of the state plus some additional data, it then has to return a new version of the state based on those two bits of information. Reducers should be pure functions and \textbf{must always return a valid copy of the state}.
+A reducer is a \textbf{pure} function which gets passed the current value of the state plus some additional data, it then has to return a new version of the state based on those two bits of information. Reducers should be pure functions and \textbf{must always return a valid copy of the state}.
 \\
 
 The simplest possible reducer is one that takes the current state and returns it:
@@ -138,11 +140,11 @@ Remember, a reducer is a pure function, so it should only work with information 
 But because an action is just an object literal, we can have as many properties as we like on it.
 \\
 
-Say we wanted to keep track of lots of different player scores. It would be nice to be able to just have a single action and say \textit{which} player has scored:\footnote{This can be made even shorter using ``Computed Property Names''}
+Say we wanted to keep track of lots of different player scores. It would be nice to be able to just have a single action and say \textit{which} player has scored:\footnote{This can be made even shorter using \href{https://tylermcginnis.com/computed-property-names/}{computed property names}}
 
 \inputminted{js}{04-hooks/figures/07-reducer-payload.js}
 
-This additional data is often referred to as the ``payload''.
+This additional data is often referred to as the \textbf{payload}.
 
 
 \subsection{Dispatching Actions}

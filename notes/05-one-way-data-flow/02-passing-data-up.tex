@@ -1,6 +1,6 @@
 \section{Passing Data Up}
 
-We can use the same process to get data out of a component without needing to break one-way data flow.
+We can use a similar process to get data out of a component without needing to break one-way data flow.
 \\
 
 Say that you have a \texttt{<Counter>} component:
@@ -8,10 +8,7 @@ Say that you have a \texttt{<Counter>} component:
 \inputminted{js}{05-one-way-data-flow/figures/07-Counter.jsx}
 
 How could we add a button which, when clicked, passes the current value of the counter up to the parent component?
-
-
-\pagebreak
-
+\\
 
 We can't pass data up with props, but we can pass arguments to functions:
 
