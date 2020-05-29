@@ -5,6 +5,10 @@ Breaks:
     - 13:00-14:00 Lunch
     - 15:30-16:00 Afternoon Break
 
+**This week is just a continuation of the previous week's material**
+
+**You're probably yearning to make more complex apps, but shouldn't until we learn about state management**
+
 ### Lifecycle Methods
 
 - For class based components, methods that React calls for us
