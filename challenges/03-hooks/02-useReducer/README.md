@@ -6,9 +6,7 @@
 
 ## Reducers
 
-The following challenges are a bit overkill, as you could just use `useState` for them, as they only involve a single bit of state, but it's good practice before we jump into something more complicated.
-
-- Try recreating the `<Clicked>` component from the previous set of challenges using `useReducer` instead of `useState`.
+- Try recreating the `<Clicked>` component from the previous set of challenges using `useReducer` instead of `useState`. This would be overkill in a real app, but good practice.
 
     Your initial state should be:
 
@@ -22,7 +20,9 @@ The following challenges are a bit overkill, as you could just use `useState` fo
     { type: "CLICKED" }
     ```
 
-- Try recreating the `<Square colour="hotpink">` component from the previous set of challenges using `useReducer` instead of `useState`.
+- Try recreating the `<StepCounter max={ 100 } step={ 5 } />` component from the previous set of challenges using `useReducer` instead of `useState`. This would be overkill in a real app, but good practice.
+
+- Try recreating the `<TempConverter>` component from the previous set of challenges using `useReducer` instead of `useState`.
 
 
 ---
