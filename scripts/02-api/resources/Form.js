@@ -34,18 +34,18 @@ class Form extends Component {
         return (
             <form className="form">
                 <div className="form-group">
-                    <label>Title</label>
-                    <input className="form-control" onChange={ this.handleTitle } value={ title } />
+                    <label htmlFor="title">Title</label>
+                    <input id="title" className="form-control" onChange={ this.handleTitle } value={ title } />
                 </div>
 
                 <div className="form-group">
-                    <label>Content</label>
-                    <input className="form-control" onChange={ this.handleContent } value={ content } />
+                    <label htmlFor="content">Content</label>
+                    <input id="content" className="form-control" onChange={ this.handleContent } value={ content } />
                 </div>
 
                 <div className="form-group">
-                    <label>Tags</label>
-                    <input className="form-control" onChange={ this.handleTags } value={ tags } />
+                    <label htmlFor="tags">Tags</label>
+                    <input id="tags" className="form-control" onChange={ this.handleTags } value={ tags } />
                 </div>
             </form>
         );

@@ -24,13 +24,13 @@ const Form = ({ handleSubmit }) => {
     return (
         <form onSubmit={ formSubmitted } className="container">
             <div className="form-group">
-                <label>Name</label>
-                <input className="form-control" onChange={ updateName } value={ name } />
+                <label htmlFor="name">Name</label>
+                <input id="name" className="form-control" onChange={ updateName } value={ name } />
             </div>
 
             <div className="form-group">
-                <label>E-mail</label>
-                <input className="form-control" onChange={ updateEmail } value={ email } />
+                <label htmlFor="email">E-mail</label>
+                <input id="email" className="form-control" onChange={ updateEmail } value={ email } />
             </div>
 
             <button className="btn btn-primary">Submit</button>
