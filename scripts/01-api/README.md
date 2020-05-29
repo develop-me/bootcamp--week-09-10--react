@@ -56,5 +56,13 @@ Breaks:
     - Useful for form validation
 - Use Network console to debug
 
+### In components
+
+- Change state in `then` if on a form submission (**`Form.js`**)
+- `componentDidMount` if we need the data straight away
+    - **`Articles.js`**
+- **Not ideal**: limits reusability of components
+
+
 
 **Challenges**: `challenges/01-api/README.md`

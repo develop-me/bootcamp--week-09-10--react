@@ -1,41 +1,38 @@
 import React, { Component } from "react";
-import axios from "axios";
+import axios from "./axios";
 
-class StarWarsFolks extends Component {
+class Articles extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       loaded: false,
-      people: [],
+      articles: [],
     };
   }
 
   // runs when the component first renders
   componentDidMount() {
     // make the GET request
-    axios.get("https://swapi.co/api/people").then(({ data }) => {
+    axios.get("/articles").then(({ data }) => {
       // once the data has come back update the component state
       this.setState({
         loaded: true,
-        people: data.results,
+        articles: data.data,
       });
     });
   }
 
   render() {
-    let { people, loaded } = this.state;
+    let { articles, loaded } = this.state;
 
     return !loaded ? <p>Loading...</p> : (
       <>
-        <h2>Some Star Wars Peeps</h2>
+        <h2>Articles</h2>
         <ul className="list-group">
-          { people.map(person => (
-            <li
-              key={ person.url }
-              className="list-group-item"
-            >
-              { person.name }
+          { articles.map(article => (
+            <li key={ article.id } className="list-group-item">
+                { article.title }
             </li>
           )) }
         </ul>
@@ -44,4 +41,4 @@ class StarWarsFolks extends Component {
   }
 }
 
-export default StarWarsFolks;
+export default Articles;
