@@ -70,10 +70,10 @@ If we forget to do this, over the life of our app multiple copies of the same ev
 
 \section{\texttt{componentDidUpdate}}
 
-Sometimes we want to run a bit of code every time the component updates.
+Sometimes we want to run a bit of code every time the component updates (either props or state), but \textit{after} it has finished rendering.
 \\
 
-Again, \texttt{componentDidUpdate} is a safe place to perform DOM manipulation and other side-effects.
+Again, \texttt{componentDidUpdate} is a safe place to perform things that might take a while, perform DOM manipulation or create other side-effects.
 \\
 
 For example, say we wanted to update the \texttt{<title>} tag of the web-page every time some value in state changes:
@@ -84,6 +84,8 @@ For example, say we wanted to update the \texttt{<title>} tag of the web-page ev
         document.title = `Hello ${name}`;
     }
 \end{minted}
+
+Make sure you don't use \texttt{setState} inside \texttt{componentDidUpdate} unless it's inside a conditional, otherwise you'll create an infinite loop.
 
 \hr
 

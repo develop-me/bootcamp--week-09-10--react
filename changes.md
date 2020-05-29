@@ -1,9 +1,12 @@
 ## To Do
 
-- Talk about `useCallback` in lifting state (and mention for pre-built components too)
+- useEffect Challenges
+- Custom hooks challenges
+- Cover `useCallback`
 
 ## Doing
 
+- Lifecyle Challenges
 
 ## Done
 

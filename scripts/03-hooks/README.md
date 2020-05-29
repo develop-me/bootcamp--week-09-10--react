@@ -26,7 +26,7 @@
     - Not part of JS
     - Joins two values together, don't have to be same type
 
-**Challenges**: `challenges/03-hooks/01-basic-hooks/README.md`
+**Challenges**: `challenges/04-hooks/01-basic-hooks/README.md`
 
 ---
 
@@ -52,7 +52,7 @@
 - Show dispatching an action
 - Destructure `state`
 
-**Challenges**: `challenges/03-hooks/02-useReducer/README.md`
+**Challenges**: `challenges/04-hooks/02-useReducer/README.md`
 
 ---
 
@@ -72,4 +72,4 @@
 - `useEffect` needs access to state variables
 - Create hook to pull out API fetching behaviour
 
-**Challenges**: `challenges/03-hooks/03-advanced-hooks/README.md`
+**Challenges**: `challenges/04-hooks/03-advanced-hooks/README.md`

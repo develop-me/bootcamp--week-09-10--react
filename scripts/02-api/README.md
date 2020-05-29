@@ -11,7 +11,15 @@
 - `componentWillUnmount`: when the component is about to be removed
     - show removing `window` event handler
 - `componentDidUpdate`: gets called every time component updates
+    - runs *after* rendered
     - show updated `document.title` each time counter changes
+    - often other ways to get same behaviour
+    - don't use unconditional `setState` - infinite loop
+
+
+**Challenges**: `challenges/02-lifecycle-methods/README.md`
+
+---
 
 ### AJAX
 
@@ -60,4 +68,4 @@
 
 
 
-**Challenges**: `challenges/02-api/README.md`
+**Challenges**: `challenges/03-api/README.md`
