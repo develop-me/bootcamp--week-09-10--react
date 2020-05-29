@@ -8,7 +8,11 @@
 
 - Use Postman to check your API requests if you're not sure what you need to send.
 
+
+## Setup
+
 - Put these components in a `blog` directory inside your existing React app.
+- Make sure you've got React Router installed
 
 ## APIs with React
 
@@ -35,11 +39,11 @@ export default axios.create({
 
 These challenges all involve making a `GET` request when a component first loads. You should show a loading message until you get back a response:
 
-- Create a component `<Articles>` which lists all of the articles. It should show when you visit `/articles`
+- Create a component `<Articles>` which lists all of the articles. Using ReactRouter, it should show when you go to `/news`
 
 ![Articles](img/articles.png)
 
-- Create a component `<Article id={ number }>` which shows a specific article based on its `id`. It should show when you visit `/articles/{id}`
+- Create a component `<Article id={ number }>` which shows a specific article based on its `id`. It should show when you go to `/news/{id}`
     - Update your `<Articles>` component to link through to `<Article>`
 
 ![Article](img/article.png)
@@ -53,7 +57,7 @@ These challenges all involve making a `GET` request when a component first loads
 
 These challenges all involve sending data to the server when a form is submitted.
 
-- Create a component `<CreateArticle>` which allows you to submit an article to the API. You should be able to get to it by visiting `/articles/create`
+- Create a component `<CreateArticle>` which allows you to submit an article to the API. You should be able to get to it by going to `/news/create`
 
 ![Create Article](img/create-article.png)
 
@@ -65,7 +69,7 @@ These challenges all involve sending data to the server when a form is submitted
 
 ## Tricksy
 
-- Create a component `<EditArticle>` which allows you to update an article. You should be able to get to it by visiting `/articles/{id}`. It will need to load the article information when the component first loads and submit it with a `PUT` request when the form is submitted.
+- Create a component `<EditArticle>` which allows you to update an article. You should be able to get to it by going to `/news/{id}`. It will need to load the article information when the component first loads and submit it with a `PUT` request when the form is submitted.
 
 ![Edit Article](img/edit-article.png)
 

@@ -21,14 +21,22 @@ const App = () => (
             </Link>
 
             <Switch>
-                <Route exact path="/articles" component={ Articles } />
-                <Route exact path="/articles/create" component={ CreateArticle } />
-                <Route exact path="/articles/:id" render={ ({ match }) => (
+                <Route exact path="/news">
+                    <Articles />
+                </Route>
+
+                <Route exact path="/news/create">
+                    <CreateArticle />
+                </Route>
+
+                <Route exact path="/news/:id" render={ ({ match }) => (
                     <Article id={ match.params.id } />
                 ) } />
-                <Route exact path="/articles/:id/edit" render={ ({ match }) => (
+
+                <Route exact path="/news/:id/edit" render={ ({ match }) => (
                     <EditArticle id={ match.params.id } />
                 ) } />
+
                 <FourOhFour />
             </Switch>
         </>
