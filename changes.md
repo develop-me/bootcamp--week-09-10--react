@@ -9,3 +9,4 @@
 
 - Make sure basic hooks challenge includes some controlled components
 - `initial` -> `initialState`
+- API challenges need more explaining

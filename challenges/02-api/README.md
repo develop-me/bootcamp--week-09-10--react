@@ -9,14 +9,16 @@
 - Use Postman to check your API requests if you're not sure what you need to send.
 
 
-## Setup
-
-- Put these components in a `blog` directory inside your existing React app.
-- Make sure you've got React Router installed
-
 ## APIs with React
 
-For all of these challenges use the [`restful.training`](https://github.com/develop-me/restful.training#restfultraining) API that you worked with in the Laravel week. (You'll need the password `wsYZzT8_m_pwBNDjSk77` to sign-up if you've lost your login.)
+We're going to add a "News" section to our (quite bizarre) app.
+
+We'll use the [`restful.training`](https://github.com/develop-me/restful.training#restfultraining) API that you worked with when your first learnt about APIs. (You'll need the password `wsYZzT8_m_pwBNDjSk77` to sign-up if you've lost your login.)
+
+### Setup
+
+- Put these components in a `news` directory inside your existing React app.
+- Make sure you've got React Router installed
 
 Make sure you install the axios library and then setup a config file that looks something like this:
 
@@ -37,6 +39,8 @@ export default axios.create({
 });
 ```
 
+### `GET`
+
 These challenges all involve making a `GET` request when a component first loads. You should show a loading message until you get back a response:
 
 - Create a component `<Articles>` which lists all of the articles. Using ReactRouter, it should show when you go to `/news`
@@ -53,7 +57,8 @@ These challenges all involve making a `GET` request when a component first loads
 
 ![Comments](img/comments.png)
 
----
+
+### `POST`
 
 These challenges all involve sending data to the server when a form is submitted.
 
