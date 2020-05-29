@@ -8,13 +8,13 @@
 
 All of the following challenges will require more than one component. You may want to create a directory per challenge.
 
-1) Create a component `<Button>` which uses Hooks to keep track of how many times it's been clicked (it doesn't need to display it anywhere). It should have a `handleUpdate` prop which accepts a function. Whenever the value of the `<Button>` changes it should also call the `handleUpdate` function and pass it the current value. Use the `<Button>` as follows and check that it logs the value to the console each time the button is clicked.
+1) Create a component `<Button>` which keeps track of how many times it's been clicked (it doesn't need to display it anywhere). It should have a `handleUpdate` prop which accepts a function. Whenever the value of the `<Button>` changes it should also call the `handleUpdate` function and pass it the current value. Use the `<Button>` as follows and check that it logs the value to the console each time the button is clicked.
 
     ```js
     <Button handleUpdate={ console.log } />
     ```
 
-2) Create a component `<Form>` which uses Hooks to keep track of a `name` and `email` value from `<input>` elements. It should have a `handleSubmit` prop which takes a function. The form should also have a submit button. When the form is submitted it should pass up an object containing both the `name` and `email` values:
+2) Create a component `<Form>` which keeps track of a `name` and `email` value from `<input>` elements. It should have a `handleSubmit` prop which takes a function. The form should also have a submit button. When the form is submitted it should clear the `<input>`s and pass up an object containing both the `name` and `email` values:
 
     ```js
     {
@@ -33,6 +33,40 @@ All of the following challenges will require more than one component. You may wa
 
 ## Tricksy Challenges
 
-- Create a `<Calculator>` component. It should have one button for each digit between 0 and 9, four buttons for `+`, `-`, `×`, and `÷`, and an `=` button. It should work like an old-school calculator: as you press digits they appear on the screen, then you click an operator, then you type in another number. When you press the `=` button the answer appears on screen. If you're feeling fancy add memory buttons too: `M+` (add to memory), `MC` (clear memory), and `MRC` (memory recall).
+- Update your `<Form>` component so that the `<input>`s are separate sub-components. You'll need to lift some state.
 
-- Create a two-player noughts and crosses game (i.e. two users playing, no AI). It should alternate automatically between noughts and crosses. It should also know when the game is over and display who has won.
+- Update your `<Form>` so that you can pass in an array containing any number of fields. It should continue to work as before.
+
+    For example:
+
+    ```jsx
+    <Form fields={ [
+        { label: "Name", name: "name", type: "text" },
+        { label: "E-mail", name: "email", type: "email" },
+        { label: "Telephone Number", name: "telephone", type: "tel" },
+        { label: "Date of Birth", name: "dob", type: "date" },
+    ]} />
+    ```
+
+    Would generate the following HTML:
+
+    ```html
+    <form class="form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input class="form-control" id="name" name="name" type="text" />
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input class="form-control" id="email" name="email" type="email" />
+        </div>
+        <div class="form-group">
+            <label for="telephone">Telephone Number</label>
+            <input class="form-control" id="telephone" name="telephone" type="tel" />
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input class="form-control" id="dob" name="dob" type="date" />
+        </div>
+    </form>
+    ```

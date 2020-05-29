@@ -1,41 +1,61 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
-const Form = ({ handleSubmit }) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+class Form extends Component {
+    contructor(props) {
+        super(props);
 
-    const updateName = e => {
-        setName(e.currentTarget.value);
+        this.state = {
+            name: "",
+            email: "",
+        };
+
+        this.handleName = this.handleName.bind(this);
+        this.handleEmail = this.handleEmail.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    }
+
+    handleName(e) {
+        this.setState({ name: e.currentTarget.value });
     };
 
-    const updateEmail = e => {
-        setEmail(e.currentTarget.value);
+    handleEmail(e) {
+        this.setState({ email: e.currentTarget.value });
     };
 
     // when form submitted
-    const formSubmitted = e => {
+    handleFormSubmit(e) {
         // prevent default
         e.preventDefault();
 
+        // clear inputs
+        this.setState({
+            name: "",
+            email: "",
+        });
+
         // pass all data up
-        handleSubmit({ name: name, email: email });
+        this.props.handleSubmit({ ...this.state });
     };
 
-    return (
-        <form onSubmit={ formSubmitted } className="container">
-            <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input id="name" className="form-control" onChange={ updateName } value={ name } />
-            </div>
+    render() {
+        const { name, email } = this.state;
 
-            <div className="form-group">
-                <label htmlFor="email">E-mail</label>
-                <input id="email" className="form-control" onChange={ updateEmail } value={ email } />
-            </div>
+        return (
+            <form onSubmit={ this.handleFormSubmit } className="container">
+                <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input id="name" className="form-control" onChange={ this.handleName } value={ name } />
+                </div>
 
-            <button className="btn btn-primary">Submit</button>
-        </form>
-    );
+                <div className="form-group">
+                    <label htmlFor="email">E-mail</label>
+                    <input id="email" className="form-control" onChange={ this.handleEmail } value={ email } />
+                </div>
+
+                <button className="btn btn-primary">Submit</button>
+            </form>
+        );
+    }
 }
 
 export default Form;

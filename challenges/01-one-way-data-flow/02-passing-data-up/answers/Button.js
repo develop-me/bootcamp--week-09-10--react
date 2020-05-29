@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 
-const Button = ({ handleUpdate }) => {
-    // standard counter logic
-    const [counter, setCounter] = useState(0);
+class Button extends Component {
+    constructor(props) {
+        super(props);
 
-    const updateCounter = () => {
+        this.state = {
+            counter: 0,
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        const { counter } = this.state;
         let value = counter + 1;
-        setCounter(value);
+
+        this.setState({ counter: value });
 
         // call the handle update method prop
         // and pass it the value
-        handleUpdate(value);
-    };
+        this.props.handleUpdate(value);
+    }
 
-    return <button className="btn btn-primary" onClick={ updateCounter }>Click!</button>;
+    render() {
+        return (
+            <button className="btn btn-primary" onClick={ this.handleClick }>Click!</button>
+        );
+    }
 }
 
 export default Button;
