@@ -8,7 +8,7 @@ const StarWarsFolks = () => {
 
   // wrap API request with useEffect
   useEffect(() => {
-    axios.get("https://swapi.co/api/people").then(({ data }) => {
+    axios.get("https://swapi.dev/api/people").then(({ data }) => {
       setLoaded(true);
       setPeople(data.results);
     });
