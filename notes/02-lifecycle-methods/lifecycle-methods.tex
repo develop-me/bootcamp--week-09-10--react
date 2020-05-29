@@ -1,0 +1,103 @@
+The ``lifecycle methods'' are the special named methods of class based components that get called by React. We've already been using \texttt{constructor} and \texttt{render}, but there are some other useful ones to cover.
+
+
+\section{\texttt{render}}
+
+The \texttt{render} method is called by React when it needs to re-render the component. It should return valid JSX. The only code that should go in \texttt{render} should be related to generating the JSX. It should not make changes to the DOM or have any other side-effects, as these can create all sorts of bugs.
+
+
+\section{\texttt{constructor}}
+
+The \texttt{constructor} method is not a React-specific method, it's part of JavaScript, but it does have a very specific use for React components.
+\\
+
+It should only be used for:
+
+\begin{itemize}
+    \item Setting up the initial state
+    \item Binding methods
+\end{itemize}
+
+If you don't need to do either of these then you don't need to write a \texttt{constructor} method at all and it will fallback to the parent's (\texttt{Component}) \texttt{constructor}.
+
+
+\section{\texttt{componentDidMount}}
+
+This method is called for us by React when the component first renders, so any code we put in it will run when a component is rendered on screen.\footnote{If a component is removed and then re-added, the \texttt{componentDidMount} method will run again.} This is \href{https://medium.com/@mahcloud/actions-in-the-constructor-or-componentdidmount-be3720e4a9a6}{subtly different} from the \texttt{constructor}.
+\\
+
+\texttt{componentDidMount} is a safe place to perform DOM manipulation and other side-effects.
+\\
+
+We could use this, for example, to setup a timer so that our component hides itself after 5 seconds:
+
+\begin{minted}{javascript}
+    componentDidMount() {
+        setTimeout(() => {
+            // assumes logic in JSX to hide component
+            this.setState({ hide: true });
+        }, 5000);
+    }
+\end{minted}
+
+Sometimes it's also necessary to add event handlers to, say, the \texttt{window} object. We can set this up in \texttt{componentDidMount} too:
+
+\begin{minted}{javascript}
+    componentDidMount() {
+        // a drag-and-drop component might need to know when the mouse
+        // is no longer held down, no matter what component it's over
+        window.addEventListener("mouseup", this.handleStopDragging);
+    }
+\end{minted}
+
+If you do setup event handlers in \texttt{componentDidMount}, make sure you remove them using \texttt{componentWillUnmount}.
+
+
+\section{\texttt{componentWillUnmount}}
+
+React does all sorts of clever stuff for us, including adding and removing all necessary event listeners to DOM elements that it creates. However, if we add event listeners ourselves (as in the \texttt{componentDidMount} example), we need to make sure we remove them when the component is no longer needed:
+
+\begin{minted}{javascript}
+    componentWillUnmount() {
+        // we need to remove any event listeners
+        // that React hasn't setup itself
+        window.removeEventListener("mouseup", this.handleStopDragging);
+    }
+\end{minted}
+
+If we forget to do this, over the life of our app multiple copies of the same event listener will build up, using memory and CPU unnecessarily (and potentially leading to all sorts of weird bugs).
+
+
+\section{\texttt{componentDidUpdate}}
+
+Sometimes we want to run a bit of code every time the component updates.
+\\
+
+Again, \texttt{componentDidUpdate} is a safe place to perform DOM manipulation and other side-effects.
+\\
+
+For example, say we wanted to update the \texttt{<title>} tag of the web-page every time some value in state changes:
+
+\begin{minted}{javascript}
+    componentDidUpdate() {
+        let { name } = this.state;
+        document.title = `Hello ${name}`;
+    }
+\end{minted}
+
+\hr
+
+If you're  using any of the lifecycle methods to perform DOM manipulation, \textbf{make sure there isn't a React way to achieve the same thing first}. As a general rule of thumb, if the DOM manipulation is on DOM elements that are part of the component (or its children), you should be able to use React-specific methods.
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/react-component.html#the-component-lifecycle}{React: The Component Lifecycle}
+    \item \href{https://reactjs.org/docs/react-component.html#render}{React: \texttt{render}}
+    \item \href{https://reactjs.org/docs/react-component.html#constructor}{React: \texttt{constructor}}
+    \item \href{https://reactjs.org/docs/react-component.html#componentdidmount}{React: \texttt{componentDidMount}}
+    \item \href{https://reactjs.org/docs/react-component.html#componentdidupdate}{React: \texttt{componentDidUpdate}}
+    \item \href{https://reactjs.org/docs/react-component.html#componentwillunmount}{React: \texttt{componentWillUnmount}}
+\end{itemize}

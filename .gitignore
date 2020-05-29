@@ -9,3 +9,4 @@ examples/
 node_modules/
 .brokdb
 .cmt.bkp
+api-token.json
