@@ -3,7 +3,7 @@ import reducer from "./reducer";
 
 // initial state
 // put in some dummy content to start with
-const initial = {
+const initialState = {
   items: [{
     task: "Do First Thing",
     completed: false,
@@ -17,7 +17,7 @@ const initial = {
 const List = () => {
   // setup reducer
   // get items from state
-  const [{ items }, dispatch] = useReducer(reducer, initial);
+  const [{ items }, dispatch] = useReducer(reducer, initialState);
 
   // controlled component stuff
   // keep track of input value

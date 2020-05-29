@@ -12,5 +12,5 @@ const reducer = (state, action) => {
 
 // run the reducer, passing in state and action
 let action = { type: "PLAYER_1_SCORES" };
-let newState = reducer(initial, action);
+let newState = reducer(initialState, action);
 console.log(newState); // { player1: 1, player2: 0 }

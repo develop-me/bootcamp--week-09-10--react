@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 
 // the intial state
-const initial = {
+const initialState = {
   player1: 0,
   player2: 0,
 };
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 const Scorer = () => {
   // useReducer returns the *current* state
   // and a dispatch function
-  const [ state, dispatch ] = useReducer(reducer, initial);
+  const [ state, dispatch ] = useReducer(reducer, initialState);
   const { player1, player2 } = state;
 
   return (

@@ -11,7 +11,7 @@ import reducer, {
 /*
  * The initial state, used in some of the tests
  */
-const initial = {
+const initialState = {
     items: []
 };
 
@@ -20,13 +20,13 @@ const initial = {
  */
 it('adds items', () => {
     // add a new item
-    let result = addItem(initial, { value: "Hello" });
+    let result = addItem(initialState, { value: "Hello" });
 
     // first item in the items array should be a new task with "Hello"
     expect(result.items[0]).toEqual({ task: "Hello", completed: false });
 
     // shouldn't be the same array we started with
-    expect(result.items).not.toBe(initial.items);
+    expect(result.items).not.toBe(initialState.items);
 
     // passing in the previous result, which already had one item
     result = addItem(result, { value: "Mum" });
@@ -137,10 +137,10 @@ it('reduces', () => {
      */
 
     // pass in a nonsense action
-    let newState = reducer(initial, { type: "GOTTA_CATCH_EM_ALL" });
+    let newState = reducer(initialState, { type: "GOTTA_CATCH_EM_ALL" });
 
     // get back initial
-    expect(newState).toBe(initial);
+    expect(newState).toBe(initialState);
 
 
     /*
@@ -148,7 +148,7 @@ it('reduces', () => {
      */
 
     // use the NEW_ITEM action, passing a value
-    newState = reducer(initial, { type: "NEW_ITEM", value: "Hello" });
+    newState = reducer(initialState, { type: "NEW_ITEM", value: "Hello" });
 
     // make sure it's been added
     expect(newState.items[0]).toEqual({ task: "Hello", completed: false });

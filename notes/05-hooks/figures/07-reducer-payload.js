@@ -21,5 +21,5 @@ const reducer = (state, action) => {
 
 // add an additional property, "player", to the action object
 let action = { type: "PLAYER_SCORES", player: "player1" };
-let newState = reducer(initial, action);
+let newState = reducer(initialState, action);
 console.log(newState); // { player1: 1, player2: 0 }

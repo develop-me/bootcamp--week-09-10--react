@@ -13,7 +13,7 @@ The following challenges are a bit overkill, as you could just use `useState` fo
     Your initial state should be:
 
     ```js
-    const initial = { clicked: false };
+    const initialState = { clicked: false };
     ```
 
     Your action should be:
@@ -24,7 +24,6 @@ The following challenges are a bit overkill, as you could just use `useState` fo
 
 - Try recreating the `<Square colour="hotpink">` component from the previous set of challenges using `useReducer` instead of `useState`.
 
-- Try recreating the `<Counter initial={ 50 } max={ 100 } />` component from the previous set of challenges using `useReducer` instead of `useState`.
 
 ---
 
@@ -57,7 +56,7 @@ Your react app already has testing built in, so it's fairly easy to setup.
         completeItem
     } from './reducer';
 
-    const initial = {
+    const initialState = {
         items: []
     };
 
@@ -110,10 +109,10 @@ Notice that we `export` it, to make it available to the test file.
 
 ```js
 it('adds items', () => {
-    let result = addItem(initial, { value: "Hello" });
+    let result = addItem(initialState, { value: "Hello" });
 
     expect(result.items[0]).toEqual({ task: "Hello", completed: false });
-    expect(result.items).not.toBe(initial.items);
+    expect(result.items).not.toBe(initialState.items);
 
     result = addItem(result, { value: "Mum" });
 
@@ -126,7 +125,7 @@ it('adds items', () => {
 1) If we pass in a `value` property, we get back a version of the state with an `items` array containing a task that has not been completed:
 
     ```js
-    let result = addItem(initial, { value: "Hello" });
+    let result = addItem(initialState, { value: "Hello" });
 
     // first item in the items array should be a new task with "Hello"
     expect(result.items[0]).toEqual({ task: "Hello", completed: false });
@@ -138,7 +137,7 @@ it('adds items', () => {
 
     ```js
     // shouldn't be the same array we started with
-    expect(result.items).not.toBe(initial.items);
+    expect(result.items).not.toBe(initialState.items);
     ```
 
     This one might already go green.
@@ -337,17 +336,17 @@ export default (state, action) => {
 
     ```js
     // pass in a nonsense action
-    let newState = reducer(initial, { type: "GOTTA_CATCH_EM_ALL" });
+    let newState = reducer(initialState, { type: "GOTTA_CATCH_EM_ALL" });
 
-    // get back initial
-    expect(newState).toBe(initial);
+    // get back initial state
+    expect(newState).toBe(initialState);
     ```
 
 1) If the action type is `NEW_ITEM` it should add an item:
 
     ```js
     // use the NEW_ITEM action, passing a value
-    newState = reducer(initial, { type: "NEW_ITEM", value: "Hello" });
+    newState = reducer(initialState, { type: "NEW_ITEM", value: "Hello" });
 
     // make sure it's been added
     expect(newState.items[0]).toEqual({ task: "Hello", completed: false });
@@ -414,7 +413,7 @@ We'll work through things in difficulty order, rather than the order that we cre
 
 - Make it so that when the form is submitted it creates a new list item with the value of `input` as its `task`. **As always, your reducer should do most the work here**.
 
-- Update the `initial` state so that you start with an empty list.
+- Update `initialState` so that you start with an empty list.
 
 ### Tricksy
 

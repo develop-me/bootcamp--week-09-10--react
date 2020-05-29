@@ -1,7 +1,7 @@
 import React, { useState, useReducer } from "react";
 import reducer from "./reducer";
 
-const initial = {
+const initialState = {
     items: [],
 };
 
@@ -10,7 +10,7 @@ const List = () => {
     const [input, setInput] = useState("");
 
     // use the reducer
-    const [{ items }, dispatch] = useReducer(reducer, initial);
+    const [{ items }, dispatch] = useReducer(reducer, initialState);
 
     // update input state
     const handleInput = (e) => {

@@ -7,3 +7,5 @@
 
 ## Done
 
+- Make sure basic hooks challenge includes some controlled components
+- `initial` -> `initialState`

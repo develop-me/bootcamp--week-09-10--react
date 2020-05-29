@@ -20,13 +20,13 @@ const reducer = (state, action) => {
 };
 
 const LameGame = ({ aim }) => {
-    const initial = {
+    const initialState = {
         playing: false,
         start: null,
         finish: null,
     };
 
-    const [ state, dispatch ] = useReducer(reducer, initial)
+    const [ state, dispatch ] = useReducer(reducer, initialState)
     const { playing, start, finish } = state;
 
     const diff = ((finish - start) / 1000) - aim;
