@@ -26,26 +26,38 @@ All of the following challenges will require more than one component. You may wa
     Use it as follow and make sure an object is printed in the console:
 
     ```js
-    <Form handleUpdate={ console.log } />
+    <Form handleSubmit={ console.log } />
+    ```
+
+    Use the following Bootstrap HTML for each field:
+
+    ```html
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" id="name" name="name" type="text" />
+    </div>
     ```
 
 
 
 ## Tricksy Challenges
 
-- Update your `<Form>` component so that the `<input>`s are separate sub-components. You'll need to lift some state.
+- Update your `<Form>` component so that each field is separate sub-components. You'll need to lift some state.
 
 - Update your `<Form>` so that you can pass in an array containing any number of fields. It should continue to work as before.
 
     For example:
 
     ```jsx
-    <Form fields={ [
-        { label: "Name", name: "name", type: "text" },
-        { label: "E-mail", name: "email", type: "email" },
-        { label: "Telephone Number", name: "telephone", type: "tel" },
-        { label: "Date of Birth", name: "dob", type: "date" },
-    ]} />
+    <Form
+        handleSubmit={ console.log }
+        fields={ [
+            { label: "Name", name: "name", type: "text" },
+            { label: "E-mail", name: "email", type: "email" },
+            { label: "Telephone Number", name: "telephone", type: "tel" },
+            { label: "Date of Birth", name: "dob", type: "date" },
+        ]}
+    />
     ```
 
     Would generate the following HTML:
