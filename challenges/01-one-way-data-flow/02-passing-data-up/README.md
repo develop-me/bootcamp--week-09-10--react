@@ -6,8 +6,6 @@
 
 ---
 
-All of the following challenges will require more than one component. You may want to create a directory per challenge.
-
 1) Create a component `<Button>` which keeps track of how many times it's been clicked (it doesn't need to display it anywhere). It should have a `handleUpdate` prop which accepts a function. Whenever the value of the `<Button>` changes it should also call the `handleUpdate` function and pass it the current value. Use the `<Button>` as follows and check that it logs the value to the console each time the button is clicked.
 
     ```js
