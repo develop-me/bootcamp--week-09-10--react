@@ -43,7 +43,7 @@ export default axios.create({
 - Make sure you import `ajax` in your `index.js`
 
     ```js
-    import ajax from "./ajax";
+    import "./ajax";
     ```
 
 - So you'll have:
