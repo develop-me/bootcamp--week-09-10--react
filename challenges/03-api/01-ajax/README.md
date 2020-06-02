@@ -126,5 +126,5 @@ export default axios.create({
     ```js
     spoons            4
     science           2
-    dated refernce    1
+    dated reference    1
     ```
