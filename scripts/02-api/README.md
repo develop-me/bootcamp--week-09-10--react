@@ -1,18 +1,5 @@
 # Day 2
 
-### Lifecycle Methods
-
-- For class based components, methods that React calls for us
-- `render`: should just return JSX, not side-effects
-- `constructor`: settings up initial state and binding methods
-- `componentDidMount`: side-effects when the component first renders
-    - show `setTimeout` example
-    - show adding `window` event handler
-- `componentWillUnmount`: when the component is about to be removed
-    - show removing `window` event handler
-- `componentDidUpdate`: gets called every time component updates
-    - show updated `document.title` each time counter changes
-
 ### AJAX
 
 - So far we only know `GET` and `POST` in browsers - by navigating or submitting a form
@@ -26,7 +13,7 @@
 - Axios - nice
 - `npm install axios`
 - Can configure with defaults (see `axios.js`)
-- In `index.js`: `axios.get("/people")`
+- In `index.js`: `axios.get("/articles")`
 
 ### Asynchronous Programming
 
@@ -51,7 +38,26 @@
     - Useful for form validation
 - Use Network console to debug
 
-### In components
+
+**Challenges**: `challenges/02-api/01-ajax/README.md`
+
+
+
+### Lifecycle Methods
+
+- For class based components, methods that React calls for us
+- `render`: should just return JSX, not side-effects
+- `constructor`: settings up initial state and binding methods
+- `componentDidMount`: side-effects when the component first renders
+    - show `setTimeout` example
+    - show adding `window` event handler
+- `componentWillUnmount`: when the component is about to be removed
+    - show removing `window` event handler
+- `componentDidUpdate`: gets called every time component updates
+    - show updated `document.title` each time counter changes
+
+
+### AJAX in components
 
 - Change state in `then` if on a form submission (**`Form.js`**)
 - `componentDidMount` if we need the data straight away
@@ -59,5 +65,4 @@
 - **Not ideal**: limits reusability of components
 
 
-
-**Challenges**: `challenges/02-api/README.md`
+**Challenges**: `challenges/02-api/02-components/README.md`
