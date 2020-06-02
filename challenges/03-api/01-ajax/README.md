@@ -14,22 +14,22 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
 
 - Make sure you install the axios library and then setup a config file that looks something like this:
 
-```javascript
-// import the library version of axios
-import axios from "axios";
+    ```javascript
+    // import the library version of axios
+    import axios from "axios";
 
-// create a version of axios with useful defaults
-export default axios.create({
-    baseURL: "https://restful.training/api/blog",
-    headers: {
-        // make sure we get JSON back
-        Accept: "application/json",
+    // create a version of axios with useful defaults
+    export default axios.create({
+        baseURL: "https://restful.training/api/blog",
+        headers: {
+            // make sure we get JSON back
+            Accept: "application/json",
 
-        // use your own key
-        Authorization: "Bearer 1e1c27284c86wom8922bat0f217f784b097b513",
-    },
-});
-```
+            // use your own key
+            Authorization: "Bearer 1e1c27284c86wom8922bat0f217f784b097b513",
+        },
+    });
+    ```
 
 - Create a new file `src/ajax.js` and write all of the following challenges in there. Make sure you use the local version of axios with your configuration
 
