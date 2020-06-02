@@ -43,7 +43,7 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
 - Make sure you import `ajax` in your `index.js`
 
     ```js
-    import ajax from "./ajax";
+    import "./ajax";
     ```
 
 - So you'll have:
