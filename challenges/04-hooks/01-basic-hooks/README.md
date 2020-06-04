@@ -35,10 +35,7 @@ Use Hooks for all of the challenges below. You should already have done them usi
 
 10) Create a `<List>` component that consists of a `<ul>`, an `<input>`, and a `<button>Add</button>`. When you click the "Add" button, whatever is in the `<input>` should get added to the `<ul>`.
 
-
-## Tricksy Challenges
-
-1) Create a `<Colours colours={ colours }>` component. It should display a `<div>` that's 200×200px.  When you click on it, it should cycle background colour through the `colours` array that you pass in. Here are some nice colours:
+11) Create a `<Colours colours={ colours }>` component. It should display a `<div>` that's 200×200px.  When you click on it, it should cycle background colour through the `colours` array that you pass in. Here are some nice colours:
 
     ```js
     let colours = [
@@ -50,7 +47,7 @@ Use Hooks for all of the challenges below. You should already have done them usi
     ];
     ```
 
-2) Create a `<Die sides={ 6 }>` component that shows a random number between 1 and `sides` whenever you click on it
+12) Create a `<Die sides={ 6 }>` component that shows a random number between 1 and `sides` whenever you click on it
 
     **Hint**: `Math.random()` generates a random number between 0 and 1. If you multiply the result by, say 100, and then use `Math.floor()`, you will get a number between 0 and 99.
 
