@@ -24,6 +24,7 @@
 
 - Update `Counter` with submit button (see `Counter.js`)
 - Can get value out by passing it up with a function call
+- Can only happen on an event inside the child component
 
 
 **Challenges**: `challenges/01-one-way-data-flow/02-passing-data-up/README.md`

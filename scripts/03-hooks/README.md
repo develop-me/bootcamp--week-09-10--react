@@ -4,7 +4,7 @@
 
 - Hooks are a newer way of writing stateful components
 - More functional style, without needing to use a `class`
-- Look at a basic class component (`counter.js`)
+- Can seem a bit magical
 
 ### Destructuring Array Assignment
 
@@ -13,6 +13,7 @@
 
 ### `useState`
 
+- Look at a basic class component (`counter.js`)
 - Rewrite `counter.js` using hooks
 - Go through counter example
 - Keeps track of a single value in state

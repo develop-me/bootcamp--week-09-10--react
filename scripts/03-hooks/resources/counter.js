@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  constructor(super) {
+  constructor(props) {
     super(props);
 
     // setup initial state
     this.state = {
       counter: 0,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // click handler method
