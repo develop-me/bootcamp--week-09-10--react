@@ -7,6 +7,7 @@
 ## Doing
 
 - Lifecyle Challenges
+    * [ ] Create a pop-over where clicking on window hides it (stopPropagation on element itself)
 
 ## Done
 
