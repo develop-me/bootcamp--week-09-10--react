@@ -43,22 +43,6 @@
 
 
 
-### Lifecycle Methods
-
-- For class based components, methods that React calls for us
-- `constructor`: settings up initial state and binding methods
-- `render`: should just return JSX, not side-effects
-- `componentDidMount`: side-effects after the component first renders
-    - show `setTimeout` example
-    - show adding `window` event handler
-- `componentWillUnmount`: when the component is about to be removed
-    - show removing `window` event handler
-- `componentDidUpdate`: gets called every time component updates
-    - state or props changing
-    - e.g. to autosave a change to any field on a form
-    - can be used if state has been derived from props to update state
-
-
 ### AJAX in components
 
 - Change state in `then` if on a form submission (**`Form.js`**)

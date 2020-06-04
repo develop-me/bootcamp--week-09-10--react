@@ -4,7 +4,6 @@
     - Morning: Lifting State
     - Afternoon: Passing Data Up
 - Day 2: [API Request](02-api/)
-    - Lifecycle Methods
     - AJAX
     - Asynchronous Programming
 - Day 3: [Hooks](03-hooks/)
