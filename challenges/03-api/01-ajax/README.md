@@ -1,7 +1,7 @@
 # Challenges
 
 - Use your existing React App
-- Use the Network panel to check requests are being made
+- Use the Network panel to check requests are being made (filter by "XHR" to just see AJAX requests)
 - Use Postman to check your API requests if you're not sure what you need to send
 
 ## AJAX
@@ -61,6 +61,8 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
 ## Challenges
 
 **Make sure you get the appropriate output**: you shouldn't have any stray `data` properties lying around.
+
+After you've got a challenge working, comment it out and move onto the next one. Otherwise later challenges (such as `DELETE`) can cause issues with earlier ones.
 
 1) Use `console.log()` to output an array with all of your article data from the API:
 

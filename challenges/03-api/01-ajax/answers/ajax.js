@@ -21,9 +21,7 @@ axios.get("/articles/48").then(({data}) => console.log(data.data));
 
 // 4) Add a new tag to one of your articles and `console.log()` the tags array from the response:
 
-axios.put("/articles/48", {
-    title: "The debate continues",
-    content: "Spoons probably exist",
+axios.patch("/articles/48", {
     tags: ["spoons" ,"science", ,"spoon truther"],
 }).then(({data}) => console.log(data.data.tags));
 

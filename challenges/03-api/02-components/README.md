@@ -4,7 +4,7 @@
 
 - Make sure you keep React DevTools ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/)/[Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi)) + JS console open at all times and correct anything that it flags up.
 
-- Use the Network panel to check things are working as you'd expect.
+- Use the Network panel to check requests are being made (filter by "XHR" to just see AJAX requests)
 
 - Use Postman to check your API requests if you're not sure what you need to send.
 
@@ -19,25 +19,8 @@ We'll use the [`restful.training`](https://github.com/develop-me/restful.trainin
 
 - Put these components in a `news` directory inside your existing React app.
 - Make sure you've got React Router installed
+- Use your axios config from earlier
 
-Make sure you install the axios library and then setup a config file that looks something like this:
-
-```javascript
-// import the library version of axios
-import axios from "axios";
-
-// create a version of axios with useful defaults
-export default axios.create({
-    baseURL: "https://restful.training/api/blog",
-    headers: {
-        // make sure we get JSON back
-        Accept: "application/json",
-
-        // use your own key
-        Authorization: "Bearer 1e1c27284c86wom8922bat0f217f784b097b513",
-    },
-});
-```
 
 ### `GET`
 
@@ -66,7 +49,7 @@ These challenges all involve sending data to the server when a form is submitted
 
 ![Create Article](img/create-article.png)
 
-- Create a component `<CreateComment>` which allows you to submit a comment for a specific article to the API
+- Create a component `<CreateComment articleID={ number }>` which allows you to submit a comment for a specific article to the API
     - Add it to the `<Article>` component  above the `<Comments>` component
 
 ![Create Comment](img/create-comment.png)
@@ -74,7 +57,7 @@ These challenges all involve sending data to the server when a form is submitted
 
 ## Tricksy
 
-- Create a component `<EditArticle>` which allows you to update an article. You should be able to get to it by going to `/news/{id}`. It will need to load the article information when the component first loads and submit it with a `PUT` request when the form is submitted.
+- Create a component `<EditArticle>` which allows you to update an article. You should be able to get to it by going to `/news/{id}/edit`. It will need to load the article information when the component first loads and submit it with a `PUT` request when the form is submitted.
 
 ![Edit Article](img/edit-article.png)
 
