@@ -1,13 +1,14 @@
 ## To Do
 
+- Add a few more tests to the ToDo reducers
+- Cover testing components?
 - useEffect Challenges
+    > Do Week 9 Lifecycle Challenges first
 - Custom hooks challenges
-- Cover `useCallback`
+- Cover `useCallback`?
 
 ## Doing
 
-- Lifecyle Challenges
-    * [ ] Create a pop-over where clicking on window hides it (stopPropagation on element itself)
 
 ## Done
 
