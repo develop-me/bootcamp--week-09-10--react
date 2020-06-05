@@ -88,6 +88,7 @@ Your react app already has testing built in, so it's fairly easy to setup.
     - Copy the test into `reducer.test.js`
     - Make sure you get **red** before you go for **green**
     - Make sure you `export` all your functions, so that they're available to the test file
+    - Consider using split view so you can see `reducer` and `reducer.test.js`
 
 
 ---
@@ -131,7 +132,8 @@ it('adds items', () => {
     expect(result.items[0]).toEqual({ task: "Hello", completed: false });
     ```
 
-    Make sure you write the least code you need to for it to work. Remember, to test it when you're done.
+   **Make sure you write the least code you need to for it to work. Remember, to test it when you're done**.
+
 
 1)  We need to make sure we're not returning the *same* array. It should be a copy:
 
