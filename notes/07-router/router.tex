@@ -1,0 +1,182 @@
+\section{Routing}
+
+\textbf{Routing} is the process of taking a URL and deciding what code should run.
+\\
+
+For example:
+
+\begin{itemize}
+    \item \texttt{app.dev/}: go to the homepage
+    \item \texttt{app.dev/login}: show a login form
+    \item \texttt{app.dev/register}: show a registration form
+    \item \texttt{app.dev/posts}: show a list of all the posts
+    \item \texttt{app.dev/posts/24}: show the post that has the \texttt{id} of 24
+\end{itemize}
+
+There are a lot of intricacies to writing routing code, so we're better to let someone else do it for us.
+\\
+
+That's where \textbf{ReactRouter} comes in.
+
+
+
+\section{Setup}
+
+First we need to install ReactRouter:
+
+\begin{minted}{shell}
+    npm install react-router-dom
+\end{minted}
+
+There are various versions of ReactRouter. We want the DOM version as we're building a single page web app.
+\\
+
+Then we need to update our \texttt{App} to use routing.
+\\
+
+First we need to import the ReactRouter components \texttt{<Router>} and \texttt{<Route>}. Then we need to wrap our existing \texttt{App} code with the \texttt{<Router>} component:
+
+\js{}{07-router/figures/01-Router}
+
+Now we can begin to add \textbf{routes}.
+
+
+\pagebreak
+
+
+\section{Routes}
+
+\subsection{Basic Routes}
+
+Visiting any URL will result in seeing the \texttt{<Header>} and \texttt{<Content>}.
+\\
+
+But, let's say we only wanted to show the \texttt{<Content>} element on the homepage. We could add a \texttt{<Route>} with a \texttt{component} prop:
+
+\js{}{07-router/figures/02-component}
+
+Now if we visit the homepage of our app we'll see \texttt{<Content>}, but if we go to any other URL we'll only see the \texttt{<Header>}.
+\\
+
+Effectively a \texttt{<Route>} is like a conditional that says ``if the URL matches the given path, show the component''. Anything not in a \texttt{<Route>} component will \textit{always} render.
+
+
+\subsection{Routes with Props}
+
+How about if we wanted to show our \texttt{<Figure>} element if we visit \texttt{/figure}?
+\\
+
+A \texttt{<Figure>} component requires specific props in order to work, so we need to provide a bit more information.
+
+\pagebreak
+
+To do this we can wrap a component with a \texttt{<Route>}:
+
+\begin{minted}{jsx}
+    <Route path="/figure">
+        <Figure
+            caption="A cat, strutting its stuff!"
+            src="https://goo.gl/tRdW93"
+        />
+    </Route>
+\end{minted}
+
+This lets us pass in a fully formed component \textit{including} props.
+
+
+
+\section{Matches}
+
+Say we had a list of articles and we wanted to show the user one specific article. On a standard website we might use a URL structure like the following:
+
+\begin{itemize}
+    \item \texttt{/articles/1}: show the article with id 1
+    \item \texttt{/articles/2}: show the article with id 2
+    \item \texttt{/articles/3}: show the article with id 3
+    \item \&c.
+\end{itemize}
+
+We can reproduce this using ReactRouter's \texttt{render} prop and the \texttt{match} property:
+
+\begin{minted}{jsx}
+    <Route path="/articles/:id" render={ ({ match }) => (
+        <Article article={ match.params.id } />
+    ) } />
+\end{minted}
+
+The \texttt{:id} part of the URL is a \textbf{parameter}. We can call it whatever we like, as long as it starts with \texttt{:}. We can then access the value of a specific parameter by looking at the \texttt{match.params.<parameterName>} property that ReactRouter passes into the \texttt{render} function.\footnote{It also passes this as a prop to any components when we use the \texttt{component} prop on a \texttt{Route}.}
+
+
+\pagebreak
+
+
+For example, We can then use the passed value to show a particular article:
+
+\js{}{07-router/figures/03-Article}
+
+
+
+\section{Links}
+
+We need a way of getting round our app. Normally we'd use an \texttt{<a>} tag, but that would cause the browser to load the page from scratch, and all our app's state would be lost.
+\\
+
+ReactRouter provides us with the \texttt{<Link>} component:
+
+\js{}{07-router/figures/04-Link}
+
+As long as we use \texttt{<Link>} components we'll never cause a hard-refresh, so our app's state will not be lost.
+\\
+
+Under the hood ReactRouter is creating an \texttt{<a>} element, adding an event handler with a call to \texttt{e.preventDefault()}, and then updating the address bar and browser history for us.
+
+
+
+\section{404s}
+
+
+We need some way to handle 404 errors.
+\\
+
+First, we'll need to create a \texttt{<FourOhFour>} component:
+
+\begin{minted}{jsx}
+    import React from "react";
+
+    const FourOhFour = () => <p>Page not found</p>;
+
+    export default FourOhFour;
+\end{minted}
+
+
+Next we will need the \texttt{<Switch>} component:
+
+\begin{minted}{jsx}
+    import {
+        BrowserRouter as Router,
+        Route,
+        Switch,
+    } from "react-router-dom";
+\end{minted}
+
+We can then wrap all our routes in the \texttt{<Switch>} component and add our \texttt{<FourOhFour>} component as the last item:
+
+\begin{minted}{jsx}
+    <Switch>
+        <Route exact path="/" component={ Content }/>
+        <FourOhFour />
+    </Switch>
+\end{minted}
+
+Now, if none of the routes match it will display the last item in the \texttt{<Switch>} - like a \texttt{default} statement in a standard \texttt{switch()} conditional.
+\\
+
+Other than your 404 component, you should only wrap \texttt{<Route>} components with \texttt{<Switch>}, otherwise things won't display as you'd expect.
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reacttraining.com/react-router/web/guides/philosophy}{React Router}
+\end{itemize}

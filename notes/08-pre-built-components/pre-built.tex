@@ -1,0 +1,139 @@
+As we've seen already, a nice feature of React's one-way data flow is that it's easy to create a component that we can then use in multiple places in an app: because it doesn't need to know anything about \textit{where} it's being used we can use it \textit{anywhere}.
+\\
+
+But it doesn't even need to be the same app: we can reuse a component in \textit{any} React app. And that means that other people can write components that we can then use in our own React apps.
+\\
+
+There is a large ecosystem of pre-built React components that we can tap into. These go from individual components that do a single thing to entire component libraries.
+\\
+
+We're going to look at two examples: React Bootstrap and React Datepicker.
+
+\begin{infobox}{Documentation}
+    When we're using other people's code good documentation is essential: how else are you supposed to know the details of how something is meant to work?
+    \\
+
+    This is worth mentioning for two reasons:
+
+    \begin{itemize}
+        \item If a component doesn't have good documentation, then look elsewhere: it's not worth the effort.
+        \item You will spend quite a bit of your time reading documentation. That's perfectly normal.
+    \end{itemize}
+
+    A good part of your time as a developer is spent trying to understand how to use code other people wrote. Getting good at reading documentation is therefore a key programming skill.
+\end{infobox}
+
+\section{React Bootstrap}
+
+\href{https://react-bootstrap.github.io}{React Bootstrap} supplies us with pre-styled Bootstrap components, meaning that we don't need to worry about assigning \texttt{className}s.
+\\
+
+First, make sure that you're including the Bootstrap 4 CSS in your \texttt{index.html}:
+
+\begin{minted}[fontsize=\scriptsize]{html}
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+    />
+\end{minted}
+
+Now, install the \texttt{react-bootstrap} package:
+
+\begin{minted}{bash}
+    npm install react-bootstrap
+\end{minted}
+
+Let's create a simple button with a blue background. First, we need to import the relevant component from \texttt{react-bootstrap}:
+
+\begin{minted}{jsx}
+    import { Button } from "react-bootstrap";
+\end{minted}
+
+This component has a \texttt{variant} prop and whatever it is given as children appears as the button text:
+
+\begin{minted}{jsx}
+    <Button variant="primary">I'm Blue Da Ba De Da Ba Di</Button>
+\end{minted}
+
+This is why documentation is important: without the React Bootstrap documentation there's no way I could know how to use the \texttt{Button} component without looking at the source code (and even then it might not be obvious). I can't just guess that there's a \texttt{variant} prop and hope it works.
+\\
+
+React Bootstrap components have prop pass-through, meaning that any valid DOM props that you pass to a component will automatically get added to the underlying DOM element. For example, we could pass an \texttt{onClick} prop and this would get added as an \texttt{onClick} event-handler to the underlying HTML element:
+
+\begin{minted}{jsx}
+    <Button
+      variant="primary"
+      onClick={ this.handleClick }
+    >
+      I'm Blue Da Ba De Da Ba Di
+    </Button>
+\end{minted}
+
+Let's recreate something a bit more complicated:
+
+\js{}{08-pre-built-components/figures/01-Figure}
+
+As you can see, it's very similar to before, except we use React Bootstrap components instead of DOM elements.
+
+
+\begin{infobox}{React Native}
+    \href{https://facebook.github.io/react-native/}{React Native} is a system that allows you to turn regular JavaScript React apps into ``native'' mobile apps for iPhone and Android.
+    \\
+
+    It does this by giving you a set of pre-built components, just like React Bootstrap. However, rather than representing HTML elements, React Native components represent native UI components: like buttons, sliders, etc.
+\end{infobox}
+
+
+\section{React Datepicker}
+
+\href{https://github.com/Hacker0x01/react-datepicker/}{React Datepicker} is a single component, but it adds some very useful functionality.
+\\
+
+It's not uncommon on websites to have a date-picker for one reason or another. Some browsers support a built-in date-picker, but support is sporadic and inconsistent. Some of them don't look/work very nice either.
+\\
+
+Writing your own date-picker is \textit{a lot} of work: doing anything involving dates and times is always more complicated than you'd think. So it's not something you'd want to write yourself.
+\\
+
+First, install the package:
+
+\begin{minted}{bash}
+    npm install react-datepicker
+\end{minted}
+
+Then we need to import the React Datepicker CSS:
+
+\begin{minted}{jsx}
+    import "react-datepicker/dist/react-datepicker.css";
+\end{minted}
+
+Now we can use the date picker:
+
+\js{}{08-pre-built-components/figures/02-Dates}
+
+As you can see, we've used the \texttt{selected} and \texttt{onChange} props of the \texttt{DatePicker} component. Again, we only know about these because of the documentation.
+\\
+
+If you have a look at the documentation you'll see that there are lots of other options that we can configure using props.
+
+\hr
+
+Pre-built components are a great way of adding functionality to your React app without having to write everything from scratch. If you're ever creating an app and you've got a bit of functionality that seems like it might be quite common, then have a look on NPM and see if someone's already written it for you.
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://rsuitejs.com/en/}{React Suite}: A suite of React components
+    \item \href{https://react-rainbow.web.app}{React Rainbow}: Another suite of React components
+    \item \href{https://github.com/JoshK2/react-spinners-css}{React Spinners CSS Loaders}
+    \item \href{https://github.com/atlassian/react-beautiful-dnd}{Drag and Drop List Items}
+    \item \href{https://github.com/uiwjs/react-md-editor}{Markdown Editor}
+    \item \href{https://catc.github.io/react-timekeeper/}{React Timekeeper}
+    \item \href{https://react-select.com/home}{React Select}: Select box
+    \item \href{https://github.com/catamphetamine/react-phone-number-input}{React Phone Number Input}
+    \item \href{https://github.com/jossmac/react-images}{React Images}: Carousel
+\end{itemize}

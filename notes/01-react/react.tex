@@ -1,0 +1,120 @@
+\section{What is React?}
+
+\quoteinline{React is a declarative, efficient, and flexible JavaScript library for building user interfaces}{\href{https://facebook.github.io/react/}{The React Docs}}
+
+React is a library, created by Facebook\footnote{But it's open source, so they can't put the usual tracking/democracy-sabotaging code in there}, that makes doing DOM stuff nice. It's currently the most popular JS library for doing UIs and it looks like it may remain so.\footnote{Fingers crossed}
+\\
+
+You'll probably remember that doing stuff with the DOM was long winded, overly-complicated, and you had to be very careful about performance issues: making sure you didn't use the DOM more frequently than you needed to.
+\\
+
+React deals with all the DOM stuff for us: we just write basic components, that look almost like HTML, and it wires everything up.
+\\
+
+React is built on the philosophy that large complex apps should be built by combining small simple components.
+
+\section{What React \textit{Isn't}}
+
+React is \textit{not} a framework: it only deals with the rendering of HTML and DOM events. That doesn't stop a lot of people from trying to build their entire app using just React components, but that is not its intended purpose.
+\\
+
+For this reason we'll also need to use a few other libraries:
+
+\begin{itemize}
+    \item \textbf{ReactRouter}: handles page/URL changes
+    \item \textbf{Redux}: looks after the \textbf{state} of our app
+    \item \textbf{Axios}: lets us deal with HTTP requests
+\end{itemize}
+
+This is a common combination of libraries - an \textit{ad hoc} framework of sorts. As an added bonus, Redux and Axios are both useful even when not making React apps.
+\\
+
+Because React only deals with the UI side of things, we won't be able to build a fully working app until we've also learnt Redux. This means that we'll be a little limited in what we can built over the next two weeks: we'll be able to build lots of stand-alone components, but not an app where they all talk to each other.
+
+
+\begin{infobox}{When to use React}
+    React is designed for building the UIs of complex single-page web-apps: if you just need a few bits of interactivity on an otherwise non-interactive page, then you probably shouldn't use React.
+    \\
+
+    When you're thinking about using React to build something it's important to consider whether you need to use React at all:
+
+    \begin{itemize}
+        \item Using React means the user has to have JavaScript switched on for the site to do \textit{anything}
+        \item Using React will add a significant amount of extra data that needs to be downloaded
+        \item Using React will run slowly on older computers
+    \end{itemize}
+
+    These rules apply equally to other libraries/frameworks such as Angular, Vue, and Ember.
+    \\
+
+    As a general rule of thumb: if you have various JS bits of the page that don't need to be aware of each other (e.g. a carousel, a menu system, some form validation) then you're probably best using DOM/jQuery. If the different parts of the page \textit{do} need to know about all the others, then you're probably building an app and React would be a good choice.
+\end{infobox}
+
+
+\pagebreak
+
+
+\section{Creating a Project}
+
+NPM allows us to easily create the \textbf{scaffolding} for a React app (this uses Facebook's \texttt{create-react-app} package under the hood):
+
+\begin{minted}{bash}
+    npm init react-app project-name
+\end{minted}
+
+This will create a directory called \texttt{project-name} in the current working directory. You'll probably want to call your project something more descriptive.
+\\
+
+Once the directory is setup we can go into the project directory and run:
+
+\begin{minted}{bash}
+    npm start
+\end{minted}
+
+This will run a web-server on your machine, with the \texttt{public} directory as its root, and then load a web browser:
+
+\img{12cm}{01-react/img/app}{0em}{Your shiny new app}
+
+The page will automatically refresh when you make changes to the code. It will also tell you about any errors that you make.\footnote{This is called \textbf{linting} your code}
+\\
+
+Under the hood various packages are being used:
+
+\begin{itemize}
+    \item \textbf{Babel}: converts JSX and modern JS into browser compatible code
+    \item \textbf{Webpack}: combines all the files together
+    \item \textbf{Webpack Server}: serves the web page
+    \item \textbf{ESLint}: checks your code for errors
+\end{itemize}
+
+One day you'll probably need to learn how to use all of these tools yourself. For now, it's best to let \texttt{create-react-app} do its thang.
+\\
+
+Let's have a look inside the newly created folder:
+
+\begin{minted}{bash}
+    .
+    ├── package.json        # which packages to install
+    ├── node_modules        # where npm installs packages
+    ├── public              # the server root
+    │   └── index.html          # the HTML template
+    └── src                 # where our code lives
+        ├── App.js              # the root React component
+        └── index.js            # the JS entry point
+\end{minted}
+
+We'll be doing most of our work in the \texttt{src} directory.
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/add-react-to-a-new-app.html#create-react-app}{React: Create React App}
+    \item \href{https://css-tricks.com/project-need-react/}{When Does a Project Need React?}
+    \item \href{https://www.seguetech.com/website-vs-web-application-whats-the-difference/}{Website vs Web Application}
+    \item \href{https://jscomplete.com/learn/complete-intro-react}{The Complete Introduction to React}
+    \item \href{http://react.statuscode.com/}{React Status}: Weekly React Newsletter
+    \item \href{https://overreacted.io}{Overreacted}: Blog about React by one of the core developers
+    \item \href{https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70}{Modern JavaScript Explained for Dinosaurs}
+    \item \href{https://pomb.us/build-your-own-react/}{Build Your Own React}
+\end{itemize}

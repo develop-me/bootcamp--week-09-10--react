@@ -1,0 +1,129 @@
+When we make a request to the API we don't get a response straight away. Even on a fast connection it can take 100ms or more to get a response. That might not sound like a long time, but for a computer that's ages.
+\\
+
+So, JavaScript doesn't just stop doing everything until you get a response back: it keeps on doing whatever else needs to be done until it gets a response.
+\\
+
+When we don't get back a response immediately, we need to deal with the response \textbf{asynchronously}: in other words, the code that runs when the response comes back could run at \textit{any time} in the future (or never).  We've dealt with a similar concept when we wrote event handlers.
+
+
+\section{Promises}
+
+So, when we make a request with Axios, we can't be given back the response to store in a variable, as the response doesn't exist yet. What we get back instead is a \textbf{Promise}.
+\\
+
+A Promise is an object with a \texttt{.then()} method. We can pass the \texttt{.then()} method a function, which will run once the response comes back. With Axios, the function will be passed the response as the first parameter.
+
+\begin{minted}{jsx}
+    // make the request
+    let promise = axios.get("/articles");
+
+    // setup the handler for when the response is successful
+    promise.then(response => {
+        console.log(response);
+    });
+\end{minted}
+
+Rather than using an intermediary variable, generally we use chaining with Promises:
+
+\begin{minted}{jsx}
+    // use destructuring to get the data property
+    axios.get("/articles").then(({ data }) => {
+        console.log(data);
+    });
+\end{minted}
+
+Be aware that \textbf{there's no guarantee the promises will resolve in the order you wrote them}. For example, \texttt{GET} requests tend to be quicker than other types of request as they generally involve less server activity.
+\\
+
+We can use \href{https://httpbin.org/#/Dynamic_data/get_delay__delay_}{https://httpbin.org/delay/<delay>} to play around with this:
+
+\begin{minted}{jsx}
+    // will take 5 seconds to return a response
+    axios.get("https://httpbin.org/delay/5").then(() => {
+        // will show after (at least) 5 seconds
+        console.log("Five");
+    });
+
+    // will take 1 second to return a response
+    axios.get("https://httpbin.org/delay/1").then(() => {
+        // will show after (at least) 1 second
+        console.log("One");
+    });
+\end{minted}
+
+
+
+\subsection{Errors}
+
+Sometimes things will go wrong: you might have sent invalid data, the API server might be down, or any number of other issues.
+\\
+
+The \texttt{.then()} method of a Promise accepts a second argument which will be called if something goes wrong:
+
+\begin{minted}{jsx}
+    axios.get("/articles").then(response => {
+        console.log("Everything has worked");
+    }, error => {
+        console.log(error); // logs an error message
+        console.log(error.response); // the response object
+        console.log("Something has gone wrong");
+    });
+\end{minted}
+
+Alternatively you can use the \texttt{.catch()} method:
+
+\begin{minted}{jsx}
+    axios.get("/articles").then(response => {
+        console.log("Everything has worked");
+    }).catch(error => {
+        console.log("Something has gone wrong", error.response);
+    });
+\end{minted}
+
+You could use the above methods to handle form validation errors and the like.
+
+\section{API Requests from Components}
+
+We can put API calls in our component methods, we just need to make sure that we use \texttt{this.setState()} \textit{inside} the \texttt{.then()} function:
+
+\begin{minted}{jsx}
+    handleSubmit() {
+        // get the values of some controlled components
+        let { title, article } = this.state;
+
+        // post data to an API
+        axios.post("/api/article", {
+            title: title,
+            article: article,
+        }).then(() => {
+            // once the server responds successfully, clear the inputs
+            this.setState({ title: "", article: "" });
+        });
+    }
+\end{minted}
+
+If we need to fetch data from the API to show in our component, then we'll need to use \texttt{componentDidMount}:
+
+\js{}{12-async/figures/01-Articles}
+
+If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
+
+\begin{infobox}{Not Ideal}
+    If we make an API request inside our component, then it means that the component can \textit{only} be used for displaying that specific data.
+    \\
+
+    However, the whole purpose of React components is that we can reuse the same bits of UI with different data. So this is far from ideal.
+    \\
+
+    When we look at Redux next week we'll see a much cleaner way to do API calls, which does not tie a component to a specific API call.
+\end{infobox}
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise}{MDN: Promises}
+    \item \href{http://exploringjs.com/es6/ch_promises.html}{Promises: A Technical Look}
+    \item \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function}{MDN: \texttt{async} functions}
+    \item \href{https://www.smashingmagazine.com/2019/10/asynchronous-tasks-modern-javascript/}{Writing Asynchronous Tasks In Modern JavaScript}
+\end{itemize}

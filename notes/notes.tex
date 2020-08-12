@@ -1,0 +1,83 @@
+% setup the document
+\documentclass[b5paper,openany]{book}
+
+% setup variables ------------------------------
+
+% your name
+\newcommand\authors{Mark Wales}
+
+% the week number
+\newcommand\weekno{9 \& 10}
+
+% week main title
+\newcommand\maintitle{Building UIs}
+
+% week subtitle
+\newcommand\subtitle{with React}
+
+% link to notes - relative to github.com/develop-me/
+\newcommand\github{bootcamp--week-09-10--react/blob/main/notes/}
+
+% setup functions, styling, etc.
+\input{../../latex-templates/template.tex}
+
+% the structure of the document
+\begin{document}
+
+% render the title page (uses variables above)
+\tp
+
+\quotepage{"[Debugging] is damnably troublesome work, and plagues me."}{Ada Lovelace, 1840}
+
+\tableofcontents
+
+\input{../../latex-templates/preface.tex}
+
+\chapter{React}
+\input{01-react/react.tex}
+
+\chapter{JSX}
+\input{02-jsx/jsx.tex}
+
+\chapter{Props}
+\input{03-props/props.tex}
+
+\chapter{Events \& State}
+\input{04-state/state.tex}
+
+\chapter{Lifecycle Methods}
+\input{05-lifecycle-methods/lifecycle-methods.tex}
+
+\chapter{Controlled Components}
+\input{06-forms/forms.tex}
+
+\chapter{React Router}
+\input{07-router/router.tex}
+
+\chapter{Pre-Built Components}
+\input{08-pre-built-components/pre-built.tex}
+
+\chapter{Deployment}
+\input{09-deployment/deployment.tex}
+
+\chapter{One-Way Data Flow}
+\input{10-one-way-data-flow/01-lifting-state.tex}
+\input{10-one-way-data-flow/02-passing-data-up.tex}
+\input{10-one-way-data-flow/03-additional-resources.tex}
+
+\chapter{AJAX}
+\input{11-ajax/ajax.tex}
+
+\chapter{Asynchronous Programming}
+\input{12-async/async.tex}
+
+\chapter{Hooks}
+\input{13-hooks/01-hooks.tex}
+
+\nchapter{Glossary}
+\input{glossary.tex}
+
+
+\input{../../latex-templates/colophon.tex}
+
+\end{document}
