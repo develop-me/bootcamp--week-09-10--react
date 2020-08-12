@@ -1,4 +1,4 @@
-# Day 4
+# Week 1: Day 4
 
 - Go through challenges from yesterday
 
@@ -8,7 +8,7 @@
 
 ## Pre-Built Components [5 mins]
 
-- You'll remember react props use this one way data flow 
+- You'll remember react props use this one way data flow
 	- Parent comp to child comp
 	- Means can use component anywhere in app
 - That also means we can use in *any* React app
@@ -37,7 +37,7 @@
 	```js
 	<Button variant="primary">I'm a blue button!</Button>
 	```
-	
+
 - The ease of this is all down to the excellent documentation!
 - DOM props get passed through to the component and it puts them on the jsx elements for us
 - Add an `onClick` handler to `<Button>`: works as you'd expect!
@@ -54,7 +54,7 @@
 - We can see the syntax is slightly different, but again - follow the documentation to understand that, and note it works with our props just like it was our own component
 - Only difference between using these and our own, as we can't immediately see what goes on inside their components
 - We can check the source code in node_modules or the github repo to see this!
-- Mention React Native: 
+- Mention React Native:
 	- The mobile phone app version of react, although react apps can exist on a mobile they run in a hidden browser
 	- A native app runs directly on the phone, compiles down to different code language than javascript depending on if the phone is iOS or android etc.
 	- The concept of pre-built components exists here too and is an actual part of the library - however instead of it being html and js, as these are browser based languages, the components represent UI components like buttons sliders

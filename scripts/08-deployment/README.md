@@ -1,4 +1,4 @@
-# Day 4: Afternoon
+# Week 1: Day 4 – Afternoon
 
 **Create a fresh repo to demonstrate**
 

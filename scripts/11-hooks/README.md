@@ -1,4 +1,4 @@
-# Days 3 & 4: Hooks
+# Week 2: Days 3 & 4 – Hooks
 
 ## Day 3: Morning
 

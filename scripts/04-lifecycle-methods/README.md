@@ -1,4 +1,4 @@
-# Day 2: Afternoon
+# Week 1: Day 2 – Afternoon
 
 ## Lifecycle Methods
 

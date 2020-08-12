@@ -1,4 +1,4 @@
-# Day 1: Afternoon
+# Week 1: Day 1 – Afternoon
 
 ## Props [40 mins]
 *(Straight after lunch unless big issues with exercises)*
@@ -17,7 +17,7 @@
 	- e.g. button, text placeholder - data passed in could be close, buy, enquire, banana
 	- all button component instances share same structure, logic, functionality, design pattern (for the most part) but the data that is rendered differently is what makes them truly re-usable, flexible and interactive
 - That data is called props
-- Stands for properties 
+- Stands for properties
 - Used for passing data from one component to another.
 - Gets passed in as an object
 - We can destructure them

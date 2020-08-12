@@ -1,4 +1,4 @@
-# Day 1: Morning
+# Week 1: Day 1 – Morning
 *(expect to finish between 11am and break)*
 
 • Morning: 11:30 - 12:00
@@ -16,7 +16,7 @@
 	3. so-called “special numeric values” which also belong to this data type: `Infinity`, `-Infinity` and `NaN`
 	4. Infinity: reference directly, or division by zero
 	5. NaN: represents a computational error. It is a result of an incorrect or an undefined mathematical operation.
-	6. NaN is sticky: any further operations on `NaN` return `NaN` 
+	6. NaN is sticky: any further operations on `NaN` return `NaN`
 - Strings
  	1. must be surrounded by quotes - `'`, `"` or ``
     2. can be concatentated (`+`)
@@ -99,7 +99,7 @@
 		return 'miaow';
 	   }
 	};
-	
+
 	// creating a new instance of the class
 	let tibbs = new Cat('Mr Tibbs', 'tabby');
 	tibbs.miaow();
@@ -154,11 +154,11 @@ Frameworks good for large companies as puts a constraint on the devs
 	- package.json: set confines for how much into the past to compile your code to both in dev and prod environments
 	- 0.2% means it would work for 98.8% of users
 	- browsers that are not dead
-	- opera mini ignored cos doesnt even use js 
+	- opera mini ignored cos doesnt even use js
 	- dev standards can be lower so machine doesnt have to do as much work whilst youre coding
 - Webpack: module bundling system built on top of Node. js.
 	-  Handles combination and minification of JavaScript and CSS files, and other assets such as image files through the use of plugins.
-- ESLint: a linter looks for anomallies in code, both errors and inconsistencies which can lead to bugs 
+- ESLint: a linter looks for anomallies in code, both errors and inconsistencies which can lead to bugs
 - Show working
 - Show that changes update things
 	- The webserver create react app sets up watches for file changes and then automatically refreshes the browser for you
@@ -180,7 +180,7 @@ Frameworks good for large companies as puts a constraint on the devs
 - GO TO APP.JS
 - **Emphasise that we're still just doing JavaScript**: JSX is on top of it, whats in the return
 - Some things do look different though
-- imports we haven't used yet 
+- imports we haven't used yet
 - function App() - capital letter looks a bit weird but thats just the old way of writing it
 - Look what its returning - its html. But not quite html - this is jsx
 - JSX = syntax extension for JS, a templating language
@@ -210,14 +210,14 @@ Frameworks good for large companies as puts a constraint on the devs
 - Under-the-hood: just creating classes and using DOM
 
 	```js
-	// all the same 
+	// all the same
 	<h1>Hello, world</h1>
 
 	// same as
 	React.createElement("h1", {}, "Hello, world")
-	
+
 	// same as
-	var newDiv = document.createElement("h1"); 
+	var newDiv = document.createElement("h1");
   	newDiv.innerHTML = "Hello, world";
 
   	let div = document.getElementById('root');

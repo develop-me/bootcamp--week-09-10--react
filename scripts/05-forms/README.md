@@ -1,4 +1,4 @@
-# Day 3: Morning
+# Week 1: Day 3 – Morning
 
 - Go through challenges from yesterday
 
@@ -9,7 +9,7 @@
 ## Forms [20 mins]
 - Need to be careful with inputs
 - State should track *anything* that changes, including the value of an input
-- Demo doing that and show the warning in the console 
+- Demo doing that and show the warning in the console
 	- set value to `this.state.input`
 	- set input state to something
 - Need to update the state, otherwise we can't edit the input

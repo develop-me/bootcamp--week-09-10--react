@@ -1,4 +1,4 @@
-# Day 1
+# Week 2: Day 1
 
 **This week is just a continuation of the previous week's material**
 

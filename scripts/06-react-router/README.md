@@ -1,4 +1,4 @@
-# Day 3: Afternoon
+# Week 1: Day 3 – Afternoon
 
 ## ReactRouter [30 mins]
 
@@ -8,7 +8,7 @@
 - Why do we need this?
 	- Client side routing: means we can navigate around without the page refreshing
 	- No flash of a white screen, no blank page
-	- Seamless more modern and responsive experience for users 
+	- Seamless more modern and responsive experience for users
 	- Seems like normal browser functionality to the user: can use the back and forward buttons as if it was any other website
     - We are not actually leaving the original page - just changing which components we can see, which components are RENDERED
 - Setup: `react-router-dom`
@@ -30,7 +30,7 @@
 	-`www.example.com/#/person/john`
 	- Client interprets bit after the hash
 	- Small client side app which doesn't need a backend OR has routes which should not effect the browser URL e.g a widget on a website
-    
+
 - Keep `Header` separate but use `Route` for rest
 - Add a route with `exact path="/"` to `Content` using the `component` prop
 	```js
@@ -54,9 +54,9 @@
 - Wrapping it in `Route` allows you to just pass in props like normal
 - Notice that we are passing the `<Figure/>` component as `children` to `<Route/>`
 - Matches *(resource `Article.js`)*:
-	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use the `render` prop 
+	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use the `render` prop
     - The render props contains a function
-    - Pass in the word `match` as a prop to the function 
+    - Pass in the word `match` as a prop to the function
     - Inside we return the component we want to pass part of the url to
     - Use `match.params.<parameter>` as the value of the prop we pass down
 	```js
@@ -65,8 +65,8 @@
 	) } />
 	```
 	- `match.params.id` becomes a prop: will change based on url
-	- `:id` tells the route to expect that part of the url to change, and to use that in the match 
-    - Whatever it is you're accessing you put the `:` before and then use the same word after `match.params` 
+	- `:id` tells the route to expect that part of the url to change, and to use that in the match
+    - Whatever it is you're accessing you put the `:` before and then use the same word after `match.params`
 - Discuss `exact`
 	- Will only match if the path matches the `location.pathname` exactly
 	- `location.pathname` refers to url in the browser after the `.com`
@@ -105,7 +105,7 @@
 		<Route component={FourOhFour} />
 	</Switch>
 	```
-- Make `<FourOhFour>` component to demonstrate 
+- Make `<FourOhFour>` component to demonstrate
 
 Structure:
 - `<Router/>` at the top level

@@ -1,4 +1,4 @@
-# Day 2
+# Week 1: Day 2
 
 - Go through challenges from yesterday
 
@@ -11,7 +11,7 @@
 
 ## Events [5 mins]
 - Use `onClick` to make `Header` do something
-	
+
 	```js
 	onClick={ () => console.log("clicked") }
 	```
@@ -41,7 +41,7 @@ returned
 		handleClick() {
 			console.log("hellooo");
   	   	}
-	
+
 		render() {
 			const { title, subTitle } = this.props;
 
@@ -59,7 +59,7 @@ returned
 	export default Header;
 	```
 
-- Best to start all components using the stateless/function syntax and only make them into class components when you need to 
+- Best to start all components using the stateless/function syntax and only make them into class components when you need to
 	- less code
 	- potential performance boost
 	- easier to read
@@ -72,7 +72,7 @@ returned
 - 3 parts:
 	- Initial state in the constructor: counter example
 	```js
-	
+
 	constructor(props) {
 		super(props);
 		// super() is used to call the parent constructor
@@ -81,13 +81,13 @@ returned
 	}
 
 	```
-	
+
 	- display values based on `this.state` in our JSX: destructure like props
 	```js
 	const { counter } = this.state;
 
 	<h1>{this.state.counter}</h1>
-	```	
+	```
 
 	- updating `this.state` when events fire and trigger our methods: `this.setState();`
 
@@ -131,7 +131,7 @@ returned
 - How to put it all together
 	1. The boilerplate: imports, exports and basic class declaration
 		- Don't be afraid to copy paste it, you will get used to it overtime but it's good practice to try and write it out because it encourages you to understand it
-	2. Pop in your render method and focus on getting some JSX to display the way you want it to 
+	2. Pop in your render method and focus on getting some JSX to display the way you want it to
 		- Doesn't have to perfect or too complicated just take it one step and a time
 	3. State time: Ask yourself the questions we spoke about
 	4. Update the render method to use the initial state
