@@ -107,6 +107,51 @@
 	```
 - Make `<FourOhFour>` component to demonstrate
 
+Programmatic navigation:
+
+- Sometimes it would be nice if our app could navigate for us.
+- For example, when we submit a form.
+- ReactRouter's `history` functionality.
+- Create a new file src/history.js:
+
+    ```js
+    import { createBrowserHistory } from "history";
+    export default createBrowserHistory();
+    ```
+
+    - If using `HashRouter` needs to be `createHashHistory`
+
+- Then import and add a `history` prop to your `<Router>` in `<App>`:
+
+    ```js
+    // import your history file
+    import history from "../history";
+
+    // use Router instead of BrowserRouter
+    import { Router } from "react-router-dom";
+    ```
+
+    ```js
+    // pass history in as a prop to the Router
+    <Router history={ history }>
+    ```
+
+- Add to a form submission:
+
+    ```js
+    import history from "../history";
+    ```
+
+    ```js
+    handleSumbit(e) {
+        // ...existing form submission stuff
+
+        // go to the homepage
+        history.push("/");
+    }
+    ```
+
+
 Structure:
 - `<Router/>` at the top level
 - Components to appear on all pages either here or after your `<Switch>`
