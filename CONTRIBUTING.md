@@ -1,7 +1,7 @@
 Please use [Git Flow](https://jeffkreeftmeijer.com/git-flow/)
 
 - Make most changes on `develop`
-- Only push changes to `master` when the material is ready for students using a `release`
+- Only push changes to `main` when the material is ready for students using a `release`
 - If you need to make quick changes (e.g. whilst teaching the week) then use a `hotfix`
 
 Generally works out as a `release` per cohort – a week or so before teaching – and maybe a few `hotfix`es whilst teaching.
