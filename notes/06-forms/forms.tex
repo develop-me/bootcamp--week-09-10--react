@@ -1,0 +1,80 @@
+\section{Forms}
+
+One thing that we have to be particularly careful with is form inputs.
+\\
+
+A component's state is meant to represent \textit{any} values that change in the DOM. That means that, as the user types into a form input, the state should be updated.
+
+\inputminted{jsx}{06-forms/figures/01-input.jsx}
+
+
+\pagebreak
+
+
+So, we should store the current value of the input item in the \texttt{state}:
+
+\inputminted{jsx}{06-forms/figures/02-input-state.jsx}
+
+The input's value is now stored in the state but \textit{we can't change the value of the input!}
+\\
+
+So, we'll need to update the state when the value changes. We can use the \textbf{event object} to do this. React passes the same event object that we got given when we added events to the DOM.
+\\
+
+We can use the \texttt{currentTarget} property of the event object to get back whatever DOM element our event was called on, in this case the \texttt{<input>}. We can then get the value of the \texttt{<input>} using the DOM \texttt{value} property:
+
+\begin{minted}{js}
+    // e is the standard DOM event object
+    handleChange(e) {
+        // e.currentTarget: DOM element we attached the event handler to
+        // use the value property to read its current value
+        this.setState({ input: e.currentTarget.value });
+    }
+\end{minted}
+
+We'll need to add an event handler to the \texttt{<input>}:
+
+\begin{minted}{jsx}
+    <input
+      onChange={ this.handleChange }
+      value={ this.state.input }
+      name={ this.props.name }
+      className="form-control"
+    />
+\end{minted}
+
+And don't forget to \texttt{bind} the \texttt{handleChange} method:
+
+\begin{minted}{jsx}
+constructor(props) {
+    // ...
+    this.handleChange = this.handleChange.bind(this);
+}
+\end{minted}
+
+Now when a user types into the input the state will update too. This is called a \textbf{controlled component}. All form elements in a React app should be controlled components.
+\\
+
+Some libraries/frameworks like Vue.js support ``two-way data binding'' which removes the need to handle form input manually. It seems like a good idea initially, but actually once you start building more complex apps it stops being particularly useful and can lead to all sorts of hard-to-spot bugs. You can remove a lot of the repetitive boilerplate just by using sub-components carefully.
+
+
+\pagebreak
+
+
+\section{Notes About React Form Elements}
+
+There are a few things to be aware of when using form elements with React:
+
+\begin{itemize}
+    \item If you set the \texttt{value} attribute you \textit{have} to set an \texttt{onChange} event handler (otherwise it would be impossible for the user to change the input's value)
+    \item The \texttt{onChange} event is closer to the \texttt{input} DOM event: it gets fired on every keystroke for an input.
+    \item If you want to set a default value you should use the \texttt{defaultValue} attribute.
+    \item The \texttt{value} property works for all form elements, including ones like \texttt{<select>} which don't have a \texttt{value} property when using native DOM.
+\end{itemize}
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/forms.html}{React: Forms}
+\end{itemize}

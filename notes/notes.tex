@@ -1,0 +1,69 @@
+% setup the document
+\documentclass[b5paper,openany]{book}
+
+% setup variables ------------------------------
+
+% your name
+\newcommand\instructor{Mark Wales}
+
+% the week number
+\newcommand\weekno{9}
+
+% week main title
+\newcommand\maintitle{Building UIs}
+
+% week subtitle
+\newcommand\subtitle{with React}
+
+% link to notes - relative to github.com/develop-me/
+\newcommand\github{bootcamp--week-09--react/blob/master/notes/}
+
+% setup functions, styling, etc.
+\input{../../latex-templates/template.tex}
+
+% the structure of the document
+\begin{document}
+
+% render the title page (uses variables above)
+\tp
+
+\quotepage{Success consists of going from failure to failure without loss of enthusiasm.}{Winston Churchill}
+
+\tableofcontents
+
+\input{../../latex-templates/preface.tex}
+
+\chapter{React}
+\input{01-react/react.tex}
+
+\chapter{JSX}
+\input{02-jsx/jsx.tex}
+
+\chapter{Props}
+\input{03-props/props.tex}
+
+\chapter{Events \& State}
+\input{04-state/state.tex}
+
+\chapter{Lifecycle Methods}
+\input{05-lifecycle-methods/lifecycle-methods.tex}
+
+\chapter{Controlled Components}
+\input{06-forms/forms.tex}
+
+\chapter{React Router}
+\input{07-router/router.tex}
+
+\chapter{Pre-Built Components}
+\input{08-pre-built-components/pre-built.tex}
+
+\chapter{Deployment}
+\input{09-deployment/deployment.tex}
+
+\nchapter{Glossary}
+\input{glossary.tex}
+
+
+\input{../../latex-templates/colophon.tex}
+
+\end{document}

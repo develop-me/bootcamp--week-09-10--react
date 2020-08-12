@@ -1,0 +1,280 @@
+In React we create \textbf{components}. These represent the different UI elements in your app. A component can be made up of other components and we can reuse components in more than one place. Thus, the UI of the entire app is made up entirely of components and sub-components.
+\\
+
+The top-level component in the React app scaffolding that's been created for us is called \texttt{App} and it lives in \texttt{src/App.js}. This component is loaded in from the \texttt{src/index.js}, which is where everything gets started. So all of our components will need to be used inside the \texttt{App} component or a sub-component thereof.
+
+
+\pagebreak
+
+
+\section{My First Component}
+
+If you have a look inside the \texttt{src/App.js} file, it should look something like this:
+
+\inputminted{jsx}{02-jsx/figures/01-App.jsx}
+
+There's a lot of cruft here, so let's update the App component to just say ``Hello, world!'':
+
+\inputminted{jsx}{02-jsx/figures/02-App-redux.jsx}
+
+Now save the file and check the app in your browser - it should have updated itself.
+\\
+
+Notice that we wrap our fat-arrow function with \texttt{(} and \texttt{)} instead of \texttt{\{} and \texttt{\}}. That's because a chunk of JSX code counts as a single value, so we don't want to have to use \texttt{return} (which is required if we used curly braces), but we still want to split it onto multiple lines.
+\\
+
+\begin{infobox}{\texttt{import} \& \texttt{export}}
+    The \texttt{import} and \texttt{export} keywords were added as part of ES6. They allow us to easily load bits of JavaScript from other files.
+    \\
+
+    The file that we want to use must \texttt{export} something. If the file only contains one thing (such as a React component) then it's common to use \texttt{export default}, which means that we don't have to specify which part of the file we want to import.
+    \\
+
+    To \texttt{import} a file that has used \texttt{export default} we use the \texttt{import} keyword, followed by the variable name we want to refer to it by in the current file, then the word \texttt{from}, then a relative path to the file (or a package name if it was installed with NPM).
+
+    \begin{minted}{js}
+        // import the package react and call it React in this file
+        import React from "react";
+
+        // import the file MyComponent.jsx
+        // and call it MyComponent
+        import MyComponent from "./MyComponent";
+    \end{minted}
+
+    You can also export different parts of the file using \textbf{named exports}:
+
+    \begin{minted}{js}
+        export let add = (a, b) => a + b;
+    \end{minted}
+
+    These are imported using object destructuring-style syntax:
+
+    \begin{minted}{js}
+        import { add } from "./maths";
+    \end{minted}
+\end{infobox}
+
+
+\section{Templating Languages}
+
+JSX is a \textbf{templating language} which mixes HTML-style tags with JavaScript. Basically we can write standard HTML elements in our JavaScript and it will automatically get turned into DOM elements for us.
+\\
+
+JSX has a few differences from regular HTML:
+
+\begin{itemize}
+    \item All attributes must be written in camel-case, e.g. \texttt{accept-charset} would become \texttt{acceptCharset}
+    \item The \texttt{class} attribute (for styling with CSS) is called \texttt{className}
+    \item All tags should self-close if they are empty (e.g. \texttt{<div />})
+    \item It allows us to easily add event handling
+    \item We can use moustaches (\texttt{\{} and \texttt{\}}) to insert JS \textit{expressions}
+\end{itemize}
+
+A contrived example:
+
+\begin{minted}{jsx}
+    <form className="form" acceptCharset="utf-8">
+        <div className="weird-empty-div" />
+        <p>There are { 24 * 365 } hours in a year</p>
+    </form>
+\end{minted}
+
+
+\begin{infobox}{Under the Hood}
+    Under the hood Babel transforms the HTML bits of JSX into standard JS:
+
+    \begin{minted}{js}
+        React.createElement( // this is why we have to import React
+          "h1",              // element type
+          {},                // attributes
+          "Hello, world!"    // content
+        );
+    \end{minted}
+
+    So, we're not actually writing the code that the browser runs - the browser wouldn't know what to do with a JSX file. We write our code, Babel converts that into standard JavaScript, and then it runs in the browser.
+\end{infobox}
+
+
+
+\section{CSS}
+
+Let's update our app to use Bootstrap so that it's a bit nicer to look at.
+\\
+
+Add the stylesheet to the \texttt{<head>} of \texttt{public/index.html}:
+
+\begin{minted}[fontsize=\scriptsize]{html}
+    <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+    />
+\end{minted}
+
+Then add Bootstrap's \texttt{container} class to the \texttt{<div id="root">}:
+
+\begin{minted}{html}
+    <div id="root" class="container"></div>
+\end{minted}
+
+This is just a regular HTML file - not JSX - so we don't need to use \texttt{className}.
+
+
+\begin{infobox}{CSS-in-JS}
+    This week we'll just be using a stylesheet and class names to style our components. This is probably how styling would work in a company where front-end development is split between CSS developers and JavaScript developers.
+    \\
+
+    However, it's becoming popular to do ``CSS-in-JS'', where the styling of individual React components is done as part of the JSX.
+    \\
+
+    This is not built into React, but there are various libraries that let you do it. The scaffolding created by \texttt{create-react-app} is setup to allow CSS-in-JS.
+\end{infobox}
+
+
+\pagebreak
+
+
+\section{Sub-Components}
+
+If we had to put all of our HTML into a single file, it would get very big. JSX lets us break up different parts of the UI into separate components.
+\\
+
+Let's create a \texttt{<Header>} component to keep our app title in. Create a new file called \texttt{Header.js} and add the following:
+
+\inputminted{jsx}{02-jsx/figures/03-Header.jsx}
+
+Now update \texttt{App.js} to include our Header component:
+
+\inputminted{jsx}{02-jsx/figures/04-App-with-Header.jsx}
+
+We import the \texttt{<Header>} component that we just created, then JSX lets us use HTML-style syntax to include it as part of the \texttt{<App>} component.
+\\
+
+The tag name we use is determined by what you call the imported component:
+
+\inputminted{jsx}{02-jsx/figures/05-App-with-Fishsticks.jsx}
+
+
+\begin{infobox}{Extra-Helpful Console}
+    As always with JavaScript in the browser, you should have the console open in Developer Tools (Mac: \texttt{Command+Option+J}/ Win: \texttt{Control+Shift+J}) when developing a React app.
+    \\
+
+    You will often get given advice about best-practices and other minor tweaks that will make your code easier to maintain.
+
+    \img{12cm}{02-jsx/img/console}{0em}{Thanks console! Thansole}
+
+    You should \textbf{always} read these bits of advice and fix them immediately, otherwise bugs will start to sneak into your code.
+\end{infobox}
+
+
+Next, let's add a \texttt{<Content>} component to hold the main part of our app.
+
+\inputminted{jsx}{02-jsx/figures/06-Content.jsx}
+
+Let's update it so we can easily change the amount of money:
+
+\inputminted{jsx}{02-jsx/figures/07-Content-with-JS.jsx}
+
+We're just using standard JS code outside the component: it's only when we're inside JSX tags that we have to do anything special.
+\\
+
+Don't forget to add the \texttt{<Content>} component to \texttt{<App>}:
+
+\inputminted{jsx}{02-jsx/figures/08-Content-in-App.jsx}
+
+
+\section{\texttt{React.Fragment}}
+
+In the last example we had to wrap our two sub-components in a \texttt{<div>} because a React component can \textit{only return a single element}. However, the \texttt{<div>} doesn't add any semantic value to our HTML code and we're not using it for styling, so it would be better if we could return a \textit{fake} element that doesn't actually get rendered - sort of like a document fragment.
+\\
+
+That's where \texttt{React.Fragment} comes in: it lets us return a single element from a component without adding an additional element to the DOM.
+
+\inputminted{jsx}{02-jsx/figures/09-React.Fragment.jsx}
+
+You should use \texttt{React.Fragment} whenever you don't need the wrapping element to appear in the DOM. If you don't, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
+\\
+
+Fragments are so useful that there's a shorthand for it:
+
+\stdinputminted{html}{02-jsx/figures/10-React.Fragment-shorthand.jsx}
+
+We open with \texttt{<>} and close with \texttt{</>}. This isn't fully supported with all tooling (e.g. text editors, syntax highlighters, \&c.), but it's worth giving it a go and seeing if it works with your setup.
+
+
+
+\section{Sub-Sub-Components}
+
+Our sub-components can have sub-components of their own, which in turn can have their own sub-components. Of course, nothing about a particular component makes it inherently a \textit{sub}-component, it's entirely about whether you use it in \textit{another} component or not.\footnote{In the same way that an HTML element isn't necessarily a child or parent of any other HTML element - it's entirely about how you use them}
+
+
+\pagebreak
+
+
+Let's pull out the funding code into its own component:
+
+\inputminted{jsx}{02-jsx/figures/11-Funding.jsx}
+
+And now update \texttt{<Content>} to use the new component:
+
+\inputminted{jsx}{02-jsx/figures/12-Content-with-Funding.jsx}
+
+We don't need to change anything in \texttt{<App>}, as it's just using the \texttt{<Content>} component.
+\\
+
+Now, if we wanted to, we could using the \texttt{<Funding>} component elsewhere on our site, without it being tied to the \texttt{<Content>} component.
+
+
+\section{Working with Arrays}
+
+
+JSX also makes it easy to work with arrays using the \texttt{.map()} array iterator:
+
+\inputminted{jsx}{02-jsx/figures/13-map.jsx}
+
+The \texttt{.map()} returns an array of \texttt{<li>} elements, which React then adds as children of the \texttt{<ul>} element.
+
+\begin{infobox}{JSX or JS?}
+    One thing that can take a while to get used to with JSX is the current context that you're in: JSX or JS?
+    \\
+
+    As a general rule, you're in JavaScript land until you open your first JSX tag. Once you go into JSX land you need to use a moustache (\texttt{\{}) to go into JS-in-JSX land. Once you're in JS-in-JSX land you don't need to use moustaches anymore \textit{unless} you start a new JSX tag.
+    \\
+
+    JS-in-JSX land is much like JavaScript land, except every instance of JS-in-JSX must be an expression (i.e. it must evaluate to a single value). So you can't use \texttt{if} statements, variable declarations, and the like.
+
+    \stdinputminted[frame=topline]{jsx}{02-jsx/figures/14-JSX-JS-context.jsx}
+\end{infobox}
+
+
+\pagebreak
+
+
+We can use \texttt{.map()} on \textit{any} array, including ones with more complex values:
+
+\stdinputminted{jsx}{02-jsx/figures/15-map-objects.jsx}
+
+In both examples above we had to add a special \texttt{key} attribute to the \texttt{<tr>}s. This needs to be unique for each element, so we use the array index. React can use this to efficiently re-render large lists of items.
+
+\begin{infobox}{What \texttt{key}?}
+    If you're just using an array of items then using the array index as the key is probably fine: it's guaranteed to be unique (unlike the items in the array). But it won't give you any performance benefits in more complex code.
+    \\
+
+    Of course, often in more complex apps you'll get your arrays of data from an API, which will mean each item has an associated unique \texttt{id} of some sort. If you use this as the \texttt{key} attribute you will be helping React when it comes to re-rendering the list.
+\end{infobox}
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/introducing-jsx.html}{React: Introducing JSX}
+    \item \href{https://reactjs.org/docs/jsx-in-depth.html}{React: JSX in Depth}
+    \item \href{https://reactjs.org/docs/fragments.html}{React: Fragments}
+    \item \href{https://egghead.io/lessons/react-use-the-key-prop-when-rendering-a-list-with-react}{Why the \texttt{key} prop is necessary}
+    \item \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import}{MDN: \texttt{import}}
+    \item \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export}{MDN: \texttt{export}}
+    \item \href{https://css-tricks.com/bridging-the-gap-between-css-and-javascript-css-in-js/}{Bridging the Gap Between CSS and JavaScript: CSS-in-JS}
+    \item \href{https://webplatform.news/issues/2020-04-29#when-not-to-use-the-br-element}{When (not) to use the \texttt{<br />} element}
+\end{itemize}

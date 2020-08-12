@@ -1,0 +1,78 @@
+You can deploy you React site to GitHub pages easily.
+\\
+
+We'll use an NPM package called \texttt{gh-pages} to make our lives easier.
+
+\section{Setup}
+
+First, install the \texttt{gh-pages} package
+
+\begin{minted}{bash}
+    npm install gh-pages
+\end{minted}
+
+Next, update the \texttt{homepage} property in your \texttt{package.json}:
+
+\begin{minted}{json}
+    "homepage": "https://<username>.github.io/<repo>/",
+\end{minted}
+
+Then add the following two lines to the \texttt{scripts} object in your \texttt{package.json}:
+
+\begin{minted}{json}
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+\end{minted}
+
+
+\pagebreak
+
+
+\section{Deploying}
+
+Whenever you want to update your site run:
+
+\begin{minted}{bash}
+    npm run deploy
+\end{minted}
+
+If your forget to do this, it won't update!
+\\
+
+Deployment can take a minute or two sometimes. You can go to \\ \texttt{https://github.com/<github-username>/<repo>/deployments} to see if a deployment is in progress.
+\\
+
+Once deployment is done, you can visit:\\ \texttt{https://<github-username>.github.io/<repo>/}
+
+
+\section{React Router}
+
+GitHub pages doesn't support single-page web-app URL routing, where all URLs get redirected to a single file. So we'll need to update our React app to use the \texttt{<HashRouter>} component instead of the \texttt{<BrowserRouter>} component:
+
+\begin{minted}{js}
+    import {
+      HashRouter as Router,
+      // ... other imports
+    } from "react-router-dom";
+\end{minted}
+
+\pagebreak
+
+
+\begin{infobox}{Hash Routing}
+    ``Hash routing'' means that rather than using a standard sub-directory style URL like \texttt{https://github.com/spoons/blah} it adds a \texttt{\#} before it: \\ \texttt{https://github.com/spoons/\#/blah}.
+    \\
+
+    This looks very similar to a user, but means something completely different to a web-browser. The \texttt{\#} looks for an \texttt{id} on the current page, meaning that all requests get sent to the same page. ReactRouter can then intercept this value and make it work as before.
+    \\
+
+    There are \href{https://www.quora.com/Are-hashbang-URLs-a-recommended-practice}{various issues} associated with using hash URLs, but if you don't have control of the server setup then it's often the only option.
+\end{infobox}
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://pages.github.com}{GitHub Pages}
+    \item \href{https://github.com/tschaub/gh-pages}{\texttt{gh-pages} Package}
+\end{itemize}

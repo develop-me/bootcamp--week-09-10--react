@@ -1,0 +1,165 @@
+Currently our components aren't very reusable. Say we wanted to create a component that shows an image as a card:
+
+\inputminted{jsx}{03-props/figures/01-Figure.jsx}
+
+As is, the image and caption are hard-coded in the component. If we wanted to display \textit{another} \texttt{<figure}, we'd need a whole new component. But other than the caption text and the image URL, the rest of the component is just boilerplate which would be the same for any \texttt{<figure>}.
+\\
+
+JSX lets us pass values into a component tag using HTML-attribute-esque syntax:
+
+\stdinputminted{jsx}{03-props/figures/02-Figure-usage.html}
+
+These are called \textbf{props} (short for "properties").
+\\
+
+We'll need to update the \texttt{<Figure>} component to use these props:
+
+\inputminted{jsx}{03-props/figures/03-Figure-props.jsx}
+
+Anything that you add as a prop when you use the component gets passed into the component as a property of the props object, which is passed in as the first argument to the component function.
+
+\begin{infobox}{Destructuring Props}
+    We can use \href{https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment}{object-destructuring} syntax to make this even neater:
+
+    \inputminted{jsx}{03-props/figures/04-Figure-destructure.jsx}
+
+    This makes it much easier to work with multiple props inside the component.
+\end{infobox}
+
+Now, if we wanted multiple \texttt{<Figure>}s:
+
+\stdinputminted{html}{03-props/figures/05-Figure-multi.html}
+
+Props can only be passed \textit{down} from parent components to their sub-components. This is called \textbf{one-way data flow}. This might seem like a limitation, but it's actually a very good idea when it comes to building large apps as it means that components never need to know anything about the components in which they are used, so they can be used in \textit{any} component.
+\\
+
+\begin{infobox}{JS Types and Props}
+    If we want to pass down string using props then we can use the HTML-like syntax:
+
+    \begin{minted}{jsx}
+        <Thing blah="A String" />
+    \end{minted}
+
+    If we want to pass other types of values (numbers, booleans, array, etc.) we can use moustaches to pass them.
+    \\
+
+    A number:
+
+    \begin{minted}{jsx}
+        <Thing blah={ 12 } />
+    \end{minted}
+
+    An array:
+
+    \begin{minted}{jsx}
+        <Thing blah={ [1, 2, 3, 4] } />
+    \end{minted}
+
+    An object literal (notice the \textit{double} curly-braces: the first to get into JS-in-JSX land and the second to open an object literal):
+
+    \begin{minted}{jsx}
+        <Thing blah={ { name: "Ada", job: "Programmer" } } />
+    \end{minted}
+
+    We can also use moustaches to pass down values stored in variables:
+
+    \begin{minted}[frame=topline]{js}
+        let x = ["A", "B", "C", "D"];
+
+        // ...elsewhere in JSX-land
+    \end{minted}
+    \begin{minted}[frame=bottomline]{jsx}
+        <Thing blah={ x } />
+    \end{minted}
+\end{infobox}
+
+
+\pagebreak
+
+
+Let's update our \texttt{<Header>} component so we can pass in the title and subtitle:
+
+\inputminted{jsx}{03-props/figures/06-Header.jsx}
+
+And then pass in the props from \texttt{<App>}:
+
+\begin{minted}{jsx}
+    <Header title="My Amazing App" subtitle="Is actually amazing" />
+\end{minted}
+
+
+
+\section{The Ternary Operator}
+
+We can only use JS expressions in JSX moustaches, which means we can't use \texttt{if} statements for deciding what to show. However, you'll remember that the ternary operator \textit{does} evaluate to a value, so we can use it to do basic logic in our JSX.
+\\
+
+For example, say we don't want the \texttt{<small>} element to render at all if no subtitle prop is passed into the component:
+
+\inputminted{jsx}{03-props/figures/07-Header-ternary.jsx}
+
+If we output \texttt{null} in the JSX then React just ignores it and doesn't render anything. We've used \texttt{!subtitle} as it lets us put \texttt{null} as the \textit{first} value, which makes it easier to read what the ternary does.
+\\
+
+Also notice that we've had to add a left margin to the \texttt{<small>} element. React strips any whitespace between elements, which means if we don't add this the \texttt{<small>} element would smash into the main title text. We pass in an object literal with style properties. React automatically adds the ``px'' for us.
+
+
+
+
+\section{The \texttt{children} Prop}
+
+When we're using HTML, we often put content \textit{between} opening and closing tags:
+
+\begin{minted}{html}
+    <h1>Kittens</h1>
+\end{minted}
+
+JSX lets us do something similar with our components:
+
+\begin{minted}{jsx}
+    <Header>My Awesome App</Header>
+\end{minted}
+
+Whatever we put between the opening and closing tags gets passed in as the special \texttt{children} prop. We can then use this in our components:
+
+\inputminted{jsx}{03-props/figures/08-Header-children.jsx}
+
+We can only pass in a single value with the \texttt{children} prop, so if we want to pass the subtitle in too we'll still need one prop:
+
+\begin{minted}{jsx}
+    <Header subtitle="Is really awesome!">My Awesome App</Header>
+\end{minted}
+
+We can pass \textit{any} valid JSX in as children, including other components we've created:
+
+\begin{minted}{jsx}
+    <Header subtitle="Is really awesome!">
+        My Amazing App
+        <Funding />
+    </Header>
+\end{minted}
+
+This is an incredibly powerful concept and is used by a lot of the libraries we'll be looking at in the next few weeks.
+
+
+\pagebreak
+
+
+\section{Default Props}
+
+
+For some of our components we might want to set \textbf{default} prop values. You can do this by adding properties to the \texttt{defaultProps} property of any component:
+
+\inputminted{jsx}{03-props/figures/09-default-props.jsx}
+
+This is particularly useful for components that do not render correctly if certain props are not provided.
+\\
+
+Default props are only used \textit{if the prop isn't present}. They will not be used if a null/empty/falsey value is given (otherwise we couldn't usefully pass in such values).
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/components-and-props.html}{React: Components and Props}
+\end{itemize}

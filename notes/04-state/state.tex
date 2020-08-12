@@ -1,0 +1,206 @@
+\section{Events}
+
+React lets us easily hook into events using the \texttt{on...} JSX attributes:
+
+\inputminted{jsx}{04-state/figures/01-onClick.jsx}
+
+There is an \texttt{on...} attribute for pretty much every type of event that the DOM supports. You can find a \href{https://facebook.github.io/react/docs/events.html#supported-events}{full list on the React Docs}. Under-the-hood the JSX gets translated in to plain-old DOM event-handlers. React is also smart enough to automatically remove event handlers for components that are no longer visible (which is a complete nightmare to do manually).
+\\
+
+You can only add event handlers to HTML elements, not to React components: components are just wrappers for HTML elements, so they don't exist in the final DOM structure.
+
+\begin{infobox}{Old Skool Events}
+    In the before-times, when JS was still in its infancy, you would write event-handlers in-line on the elements themselves:
+
+    \begin{minted}{html}
+        <p onClick="console.log('Nooooooooo')">
+          The 90s weren't all great
+        </p>
+    \end{minted}
+
+    Needless to say, this was horrific.
+    \\
+
+    When JSX first came out, some developers saw the event handler syntax, curled up into a ball and  began weeping uncontrollably. However, although they might at first look quite similar, they're actually \textit{very} different.
+\end{infobox}
+
+
+
+\section{Class Components}
+
+We don't really want to have our event handler functions mixed into our JSX: it would become hard to follow for anything but the simplest functions.\footnote{It also makes your React apps \textit{much} less performant}
+\\
+
+We \textit{could} store the event handler outside the component function, but this will cause us issues when it comes to state. However, we can use a \textit{class}:
+
+\inputminted{jsx}{04-state/figures/02-class-component.jsx}
+
+
+\begin{infobox}{From Function to Class}
+    To get from a function based component to a class based component:
+
+    \begin{itemize}
+        \item Create a \texttt{class} with the same name as the function you're replacing, and give it a \texttt{render} method
+        \item The \texttt{render} method should return the exact JSX that the function version returned
+        \item \texttt{props} don't get passed into \texttt{render}, instead you use \texttt{this.props}, which is automatically setup for you when you extend \texttt{Component}
+        \item You can use object destructuring on \texttt{this.props} to avoid rewriting any of your JSX
+    \end{itemize}
+
+    For example:
+
+    \inputminted{jsx}{04-state/figures/03-function-to-class-func.jsx}
+
+    Becomes:
+
+    \inputminted{jsx}{04-state/figures/04-function-to-class-class.jsx}
+
+    It's best to write your components as functions and only turn them into \texttt{class} based components if you need to.
+\end{infobox}
+
+
+\pagebreak
+
+
+\section{State}
+
+As well as setting up \texttt{this.props} for us, extending the \texttt{Component} class also sets up the special \texttt{this.state} property.
+\\
+
+We've looked at the idea of \textbf{state} before: we use \textbf{long-lived variables} to store values that can potentially change over time. These are normally updated when an event fires.
+\\
+
+Using state with \texttt{class} components consists of three parts:
+
+\begin{itemize}
+    \item Setting up our \textbf{initial state}
+    \item Displaying values based on \texttt{this.state} in our JSX
+    \item Updating \texttt{this.state} when events are fired
+\end{itemize}
+
+We cannot use state with our function based components, as they do not have access to \texttt{this}. That's why functional components are usually referred to as \textbf{stateless components} and \texttt{class} based components are sometimes called \textbf{stateful components}.
+\\
+
+To set up the initial state we need to use \texttt{class}'s \texttt{constructor} method:
+
+\inputminted{jsx}{04-state/figures/05-initial-state.jsx}
+
+\texttt{this.state} is just a plain old JavaScript object (``POJO''). It can take as many properties as you like, using any values you can usually have as part of an object literal.
+\\
+
+Next let's update our JSX to display something based on the state:
+
+\inputminted{jsx}{04-state/figures/06-state-jsx.jsx}
+
+Finally, let's update the \texttt{handleClick()} method to update the state:
+
+\inputminted{jsx}{04-state/figures/07-state-change.jsx}
+
+We can't just use \texttt{this.state.counter += 1} to update \texttt{this.state} - if we did, React wouldn't know that anything has changed.
+\\
+
+Instead we use the \texttt{this.setState()} method: this lets React know that something has changed, so it should re-run the \texttt{render} method of the component.
+
+\begin{infobox}{Using \texttt{this.setState()}}
+    We have to be careful to \textit{only} use \texttt{this.setState()} to change values in the state. This is particularly an issue if you're storing an array or an object in the state.
+    \\
+
+    For example if you use array methods like \texttt{.pop()} or \texttt{.push()} you change the \textit{original} array (you don't get back a new one). So if we use these methods to manipulate arrays stored in \texttt{this.state} we might accidentally change their values. So, as a general rule you should avoid methods that change (or ``\textbf{mutate}'') arrays or objects.
+    \\
+
+    Luckily we can use the spread operator (\texttt{...}) to always return a fresh version of objects/arrays. And the array iterator methods \textit{always} return a new version of the array, so are safe too.
+    \\
+
+    You should also be careful not to use the shorthand assignment operators like \texttt{+=} and \texttt{-=}, as these will also update the value in the state.
+    \\
+
+    When you're developing your React app you'll get a warning in the console if you mutate the state unintentionally. The code that checks this is automatically removed from your React app when you \hyperref[deployment]{build your app for deployment}, as it is a bit of a performance killer.
+\end{infobox}
+
+
+\pagebreak
+
+
+\subsection{F**k \texttt{this}}
+
+\quoteinline{In JavaScript, there is a beautiful, elegant, highly expressive language that is buried under a steaming pile of good intentions and blunders}{Douglas Crockford}
+
+What we've done so far \textit{should} work\textellipsis{ }but it won't because \texttt{this} is broken in JavaScript.
+\\
+
+Because of this we need to \textbf{bind} any of methods that use \texttt{this} inside the \texttt{constructor} method:
+
+\begin{minted}{js}
+    constructor(props) {
+        // ...etc.
+
+        // force this to always be *this* this in handleClick
+        this.handleClick = this.handleClick.bind(this);
+    }
+\end{minted}
+
+ When React calls \texttt{this.handleClick} the value of \texttt{this} gets lost. Using \texttt{bind} makes sure that the method always knows what \texttt{this} should be.\footnote{Once we start using Redux we'll mostly stick to stateless components, so this stops being something we need to worry about.}
+
+
+
+\begin{infobox}{React Developer Tools}
+    If you try to use \texttt{console.log(this.state)} in an event handler where you've used \texttt{this.setState()} you'll probably find that it doesn't log the values you'd expect. That's because \texttt{this.setState()} doesn't actually update the state until \textit{after} the event handling function \href{https://medium.com/@baphemot/understanding-reactjs-setstate-a4640451865b}{has finished}.
+    \\
+
+    \href{https://github.com/facebook/react-devtools}{React Developer Tools} lets you inspect the current state of any component in your app. This means that you rarely need to use \texttt{console.log()} at all.
+\end{infobox}
+
+
+
+\subsection{The Shape of the State}
+
+State is to keep track of things that change in your component. You'll need to ask yourself two questions to work out what your state should look like:
+
+\begin{itemize}
+    \item What do we want to be able to change in the component?
+    \item What types would be best to track these changes?
+\end{itemize}
+
+The state object can contain as many properties as you like, but you should aim to store the least amount of information necessary to work out how to render your component.
+\\
+
+Working out the state's \textbf{shape} can only come with practice.
+
+\subsubsection{Tips}
+
+\begin{itemize}
+    \item If it can be in one of two states, use a boolean.
+    \item Use arrays to keep track of all previous values.
+    \item If you always update two values at the same time with \texttt{this.setState()}, think about whether you can work out one of the values from the other. If you can, you might not need to store both in the state.
+\end{itemize}
+
+
+
+
+\begin{infobox}{Creating a Component}
+    If you do things in the following order and test at each stage you should avoid getting tied in knots:
+
+    \begin{enumerate}
+        \item Add in the boilerplate: the \texttt{import}s, \texttt{exports} and basic \texttt{class} declaration
+        \item Write a \texttt{render} method that outputs JSX that looks about right
+        \item Think about the shape of the state and add the \texttt{constructor} method to set up your initial state
+        \item Update the \texttt{render} method to use the initial state
+        \item Try temporarily changing the initial state values to check your JSX changes as you expect when the state changes
+        \item Add the event handlers
+    \end{enumerate}
+\end{infobox}
+
+
+
+
+\section{Additional Resources}
+
+\begin{itemize}[leftmargin=*]
+    \item \href{https://reactjs.org/docs/state-and-lifecycle.html}{React: State and Lifecycle}
+    \item \href{https://reactjs.org/docs/handling-events.html}{React: Handling Events}
+    \item \href{https://kentcdodds.com/blog/props-vs-state}{Props vs. State}
+    \item \href{https://code.tutsplus.com/tutorials/stateful-vs-stateless-functional-components-in-react--cms-29541}{Stateful vs. Stateless Components}
+    \item \href{http://lucybain.com/blog/2017/react-js-when-to-rerender/}{How does React decide to re-render a component?}
+    \item \href{https://medium.freecodecamp.org/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb}{This is why we need to bind event handlers in Class Components in React}
+    \item \href{https://blog.logrocket.com/5-things-you-didnt-know-about-react-devtools-2c6e0ef22529}{5 things you didn’t know about React DevTools}
+    \item \href{https://github.com/wix/vscode-glean}{VSCode Glean}: adds the ability to automatically switch between stateless and stateful components
+\end{itemize}
