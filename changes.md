@@ -39,6 +39,12 @@
     * [ ] Methods
     * [ ] Properties?
 - Update to use Bootstrap 4
+- Add a few more tests to the ToDo reducers
+- Cover testing components?
+- useEffect Challenges
+    > Do Week 9 Lifecycle Challenges first
+- Custom hooks challenges
+- Cover `useCallback`?
 
 ## Doing
 
@@ -49,3 +55,6 @@
 - Update answers/example to use handleX instead of onX when passing around functions
 - For state have some challenges that just turn stateless into stateful components - maybe some more simple challenges
 - Deployment Guide
+- Make sure basic hooks challenge includes some controlled components
+- `initial` -> `initialState`
+- API challenges need more explaining

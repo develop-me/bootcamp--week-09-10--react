@@ -7,7 +7,7 @@
 \newcommand\instructor{Mark Wales}
 
 % the week number
-\newcommand\weekno{9}
+\newcommand\weekno{9 \& 10}
 
 % week main title
 \newcommand\maintitle{Building UIs}
@@ -16,7 +16,7 @@
 \newcommand\subtitle{with React}
 
 % link to notes - relative to github.com/develop-me/
-\newcommand\github{bootcamp--week-09--react/blob/master/notes/}
+\newcommand\github{bootcamp--week-09-10--react/blob/main/notes/}
 
 % setup functions, styling, etc.
 \input{../../latex-templates/template.tex}
@@ -27,7 +27,7 @@
 % render the title page (uses variables above)
 \tp
 
-\quotepage{Success consists of going from failure to failure without loss of enthusiasm.}{Winston Churchill}
+\quotepage{"[Debugging] is damnably troublesome work, and plagues me."}{Ada Lovelace, 1840}
 
 \tableofcontents
 
@@ -59,6 +59,20 @@
 
 \chapter{Deployment}
 \input{09-deployment/deployment.tex}
+
+\chapter{One-Way Data Flow}
+\input{01-one-way-data-flow/01-lifting-state.tex}
+\input{01-one-way-data-flow/02-passing-data-up.tex}
+\input{01-one-way-data-flow/03-additional-resources.tex}
+
+\chapter{AJAX}
+\input{02-ajax/ajax.tex}
+
+\chapter{Asynchronous Programming}
+\input{03-async/async.tex}
+
+\chapter{Hooks}
+\input{04-hooks/01-hooks.tex}
 
 \nchapter{Glossary}
 \input{glossary.tex}
