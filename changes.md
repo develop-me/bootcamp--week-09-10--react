@@ -7,9 +7,9 @@
     * [ ] Routes inside non-App components
 - Switch to `.js` instead of `.jsx`
     * [ ] Add a note about Sublime Text support
-    * [ ] Challanges
-    * [ ] Notes
-    * [ ] Scripts
+    * [x] Challanges
+    * [x] Notes
+    * [x] Scripts
 - Where stuff goes in component
     * [ ] JSX in render
     * [ ] State manipulation in handler methods
@@ -35,10 +35,6 @@
     * [ ] Challenge Answers
     * [ ] Blog Form code?
 - Class properties
-- Static keyword
-    * [ ] Methods
-    * [ ] Properties?
-- Update to use Bootstrap 4
 - Add a few more tests to the ToDo reducers
 - Cover testing components?
 - useEffect Challenges
@@ -58,3 +54,4 @@
 - Make sure basic hooks challenge includes some controlled components
 - `initial` -> `initialState`
 - API challenges need more explaining
+- Update to use Bootstrap 4
