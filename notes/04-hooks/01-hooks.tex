@@ -3,11 +3,11 @@ Hooks are a newer way of writing stateful components in a more functional style,
 
 Let's take a look at a basic \texttt{class} based component again:
 
-\inputminted{js}{04-hooks/figures/01-class-component.js}
+\js{}{04-hooks/figures/01-class-component}
 
 And here it is using hooks:
 
-\inputminted{js}{04-hooks/figures/02-hooks.js}
+\js{}{04-hooks/figures/02-hooks}
 
 The hooks version is less than half the length, but it does exactly the same thing.
 \\
@@ -17,7 +17,7 @@ Before we delve into exactly how this works, we'll need to look at destructuring
 \section{Destructuring Assignment: Arrays}
 So far we've only used destructuring to get properties from an object:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     let person = { firstName: "Ben", lastName: "Folds", favouriteNo: 5 };
 
     // get the firstName property and store it in a firstName variable
@@ -27,7 +27,7 @@ So far we've only used destructuring to get properties from an object:
 
 We can also destructure an array. However, we don't have property names to work with and we're not allowed (and wouldn't want) variables that are just numbers. So destructuring an array is based purely on the \textit{order} of the items in the array:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     let values = [1, 2, 3, 4];
 
     // get first and second value
@@ -56,7 +56,7 @@ In the counter example, we want to keep track of a value that we're calling \tex
 
 The \texttt{useState} function returns an array containing two values: the current value and a function to update that value. We can then destructure this array to get the value and update function back, using whatever names are most appropriate (usually using the \texttt{x} and \texttt{setX} convention):\footnote{If it returned an object it would be messier to name them whatever we like}
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // useState returns an array containing two values
     // the current value
     // a function to update the value
@@ -65,7 +65,7 @@ The \texttt{useState} function returns an array containing two values: the curre
 
 As mentioned above, \texttt{useState} can only be used for setting/updating a \texttt{single} value. You will need more than one call to \texttt{useState} if you need more than one value in state:
 
-\inputminted{js}{04-hooks/figures/03-multiple-useState.js}
+\js{}{04-hooks/figures/03-multiple-useState}
 
 As you can imagine, this gets quite messy if you have lots of values in state. In that case it's best to use \texttt{useReducer}.
 
@@ -101,7 +101,7 @@ A reducer is a \textbf{pure} function which gets passed the current value of the
 
 The simplest possible reducer is one that takes the current state and returns it:
 
-\inputminted{js}{04-hooks/figures/04-reducer-id.js}
+\js{}{04-hooks/figures/04-reducer-id}
 
 This is not particularly useful, as it means the state can never change!
 \\
@@ -111,14 +111,14 @@ For our reducer to be useful we need to also pass along some additional informat
 
 An action is just an object literal with various properties. If we give it a \texttt{type} property then we can change the state in different ways depending on the value of this specific property:
 
-\inputminted{js}{04-hooks/figures/05-reducer-p1scores.js}
+\js{}{04-hooks/figures/05-reducer-p1scores}
 
 In the above reducer if the action has a \texttt{type} property of \texttt{PLAYER\_1\_SCORES}\footnote{It's a convention to use uppercase separated by underscores} we add \texttt{1} to the \texttt{player1} property of state. In all other cases (\texttt{default}) it will just return state unchanged - remember, \textbf{we always need to return a valid copy of the state}.
 \\
 
 We can now easily add a \texttt{PLAYER\_2\_SCORES} action:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     case: "PLAYER_2_SCORES": return {
         ...state,
         player2: state.player2 + 1,
@@ -127,7 +127,7 @@ We can now easily add a \texttt{PLAYER\_2\_SCORES} action:
 
 It's sometimes tidier to pull the \texttt{case}s out into their own functions:
 
-\inputminted{js}{04-hooks/figures/06-reducer-pull.js}
+\js{}{04-hooks/figures/06-reducer-pull}
 
 If you do this make sure you pass \texttt{state} and, if necessary, \texttt{action} as arguments.
 
@@ -142,7 +142,7 @@ But because an action is just an object literal, we can have as many properties 
 
 Say we wanted to keep track of lots of different player scores. It would be nice to be able to just have a single action and say \textit{which} player has scored:\footnote{This can be made even shorter using \href{https://tylermcginnis.com/computed-property-names/}{computed property names}}
 
-\inputminted{js}{04-hooks/figures/07-reducer-payload.js}
+\js{}{04-hooks/figures/07-reducer-payload}
 
 This additional data is often referred to as the \textbf{payload}.
 
@@ -154,7 +154,7 @@ Now that we understand what a reducer is, we need to know how to use it.
 
 We never call the reducer directly, instead we use the \texttt{dispatch} function that \texttt{useReducer} gives us:
 
-\inputminted{js}{04-hooks/figures/08-useReducer.js}
+\js{}{04-hooks/figures/08-useReducer}
 
 We pass \texttt{useReducer} the reducer that we've created as well as an initial value for that state.\footnote{In the same way that we have to give an initial value for the accumulator in an array reduce} \texttt{useReducer} then gives us back two values: \texttt{state} and \texttt{dispatch}.
 \\
@@ -193,27 +193,27 @@ Anything that causes side-effects needs to be wrapped with \texttt{useEffect}: t
 
 A simple example might be if you wanted to updated the \texttt{<title>} tag of the page every time something changes on your page:
 
-\inputminted{javascript}{04-hooks/figures/09-useEffect.js}
+\js{}{04-hooks/figures/09-useEffect}
 
 This function will be called \textit{every} time that component updates, similar to the behaviour of \texttt{componentDidUpdate}.
 \\
 
 Sometimes, if the component has more than one value in state, the update will not change the value that we're interested in. \texttt{useEffect} lets us optionally pass in an array of values that the effect is dependent on. Now the function will only run if the component updates \textit{and} that value has changed:
 
-\inputminted{javascript}{04-hooks/figures/10-useEffect-dependents.js}
+\js{}{04-hooks/figures/10-useEffect-dependents}
 
 React only does a shallow check of the values in the array, so be careful passing in data structures, as it might not behave as you expect.
 \\
 
 If we want to recreate the behaviour of \texttt{componentDidMount} we can pass an \textit{empty array} as the second argument to \texttt{useEffect}. This will run the first time the component renders and then, because it only runs if the values in the given array change, but you've \textit{not passed in any values to check}, it won't run again:
 
-\inputminted{javascript}{04-hooks/figures/11-StarWarsFolks.js}
+\js{}{04-hooks/figures/11-StarWarsFolks}
 
 
 We can also recreate the \texttt{addEventListener} example from the lifecycle methods section:
 
 
-\inputminted{javascript}{04-hooks/figures/12-useEffect-return.js}
+\js{}{04-hooks/figures/12-useEffect-return}
 
 Notice that the \texttt{componentWillUnmount} code goes in a function which you return from the function passed to \texttt{useEffect}.\footnote{This is a ``higher-order function'': a function that accepts/returns another function} This is a nice way of doing it, as it groups the adding and removing of the event listener in one place.
 
@@ -225,11 +225,11 @@ We need to use \texttt{useEffect} within our component function because it uses 
 
 Say we needed various components that load all the articles from an API: an articles list for the homepage and an archive list for the sidebar. We can write our own custom hook to avoid needing to rewrite the article fetching code:
 
-\inputminted{js}{04-hooks/figures/13-useGetArticles.js}
+\js{}{04-hooks/figures/13-useGetArticles}
 
 We create a function that \textit{just} deals with the state aspect of articles - no JSX involved. It's good practice to prefix the function name with \texttt{use}, to make it clear it's a custom hook. The function takes an initial value as its argument and returns a tuple containing the state and state setting function. We can now use this in any component we like:
 
-\inputminted{js}{04-hooks/figures/14-Articles.js}
+\js{}{04-hooks/figures/14-Articles}
 
 All we've really done is moved the article fetching code into a separate function, which we then call instead of \texttt{useState}. We don't even need to destructure the setter function as the custom hook is doing all the work for us.
 
@@ -246,7 +246,7 @@ Hooks can only work if the order that they are called in never changes. Because 
 
     \textbf{You don't need to understand this}, but here is a super-simplified version of what's going on (it's waaay more complicated in real life):
 
-    \inputminted{js}{04-hooks/figures/15-under-the-hood.js}
+    \js{}{04-hooks/figures/15-under-the-hood}
 
     As you can see, state is being kept track of outside of the component. And there's a bunch of other global(ish) variables too. Flagrantly impure.
     \\

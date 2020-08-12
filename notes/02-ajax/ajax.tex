@@ -49,13 +49,13 @@ We'll be using \href{https://github.com/mzabriskie/axios}{Axios} for our HTTP re
 
 You can install it with:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     npm install axios
 \end{minted}
 
 Axios provides us with methods for the various HTTP methods:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     import axios from "axios";
 
     // make a GET request
@@ -87,7 +87,7 @@ One of Axios' best features is it's easy to configure the parts of your HTTP req
 
 For example, if we're using a RESTful API, our base URL, the \texttt{Accept} header, and the \texttt{Authorization} header are going to be the same for every request, so we can setup a version of Axios that has those already setup:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // import the library version of axios
     import axios from "axios";
 
@@ -106,7 +106,7 @@ For example, if we're using a RESTful API, our base URL, the \texttt{Accept} hea
 
 Then we can import \textit{that} file and use it as follows:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // import *local* version of axios
     import axios from "./axios";
 

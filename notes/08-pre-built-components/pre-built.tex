@@ -73,7 +73,7 @@ React Bootstrap components have prop pass-through, meaning that any valid DOM pr
 
 Let's recreate something a bit more complicated:
 
-\inputminted{js}{08-pre-built-components/figures/01-Figure.js}
+\js{}{08-pre-built-components/figures/01-Figure}
 
 As you can see, it's very similar to before, except we use React Bootstrap components instead of DOM elements.
 
@@ -105,13 +105,13 @@ First, install the package:
 
 Then we need to import the React Datepicker CSS:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     import "react-datepicker/dist/react-datepicker.css";
 \end{minted}
 
 Now we can use the date picker:
 
-\inputminted{js}{08-pre-built-components/figures/02-Dates.js}
+\js{}{08-pre-built-components/figures/02-Dates}
 
 As you can see, we've used the \texttt{selected} and \texttt{onChange} props of the \texttt{DatePicker} component. Again, we only know about these because of the documentation.
 \\

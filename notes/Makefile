@@ -1,6 +1,6 @@
 templates := $(shell find ../../latex-templates -type f -name "*.tex" -depth 1)
 tex := $(shell find . -type f -name "*.tex")
-source := $(shell find . -type f -name "*.jsx" -o -name "*.js")
+source := $(shell find . -type f -name "*.js")
 
 notes.pdf: $(templates) $(tex) $(source)
 	xelatex -file-line-error --halt-on-error --shell-escape notes.tex && xelatex --shell-escape notes.tex

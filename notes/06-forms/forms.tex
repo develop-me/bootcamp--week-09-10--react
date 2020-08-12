@@ -5,7 +5,7 @@ One thing that we have to be particularly careful with is form inputs.
 
 A component's state is meant to represent \textit{any} values that change in the DOM. That means that, as the user types into a form input, the state should be updated.
 
-\inputminted{jsx}{06-forms/figures/01-input.jsx}
+\js{}{06-forms/figures/01-input}
 
 
 \pagebreak
@@ -13,7 +13,7 @@ A component's state is meant to represent \textit{any} values that change in the
 
 So, we should store the current value of the input item in the \texttt{state}:
 
-\inputminted{jsx}{06-forms/figures/02-input-state.jsx}
+\js{}{06-forms/figures/02-input-state}
 
 The input's value is now stored in the state but \textit{we can't change the value of the input!}
 \\
@@ -23,7 +23,7 @@ So, we'll need to update the state when the value changes. We can use the \textb
 
 We can use the \texttt{currentTarget} property of the event object to get back whatever DOM element our event was called on, in this case the \texttt{<input>}. We can then get the value of the \texttt{<input>} using the DOM \texttt{value} property:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // e is the standard DOM event object
     handleChange(e) {
         // e.currentTarget: DOM element we attached the event handler to

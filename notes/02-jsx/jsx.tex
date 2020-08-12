@@ -1,7 +1,7 @@
 In React we create \textbf{components}. These represent the different UI elements in your app. A component can be made up of other components and we can reuse components in more than one place. Thus, the UI of the entire app is made up entirely of components and sub-components.
 \\
 
-The top-level component in the React app scaffolding that's been created for us is called \texttt{App} and it lives in \texttt{src/App.js}. This component is loaded in from the \texttt{src/index.js}, which is where everything gets started. So all of our components will need to be used inside the \texttt{App} component or a sub-component thereof.
+The top-level component in the React app scaffolding that's been created for us is called \texttt{App} and it lives in \texttt{src/App}. This component is loaded in from the \texttt{src/index}, which is where everything gets started. So all of our components will need to be used inside the \texttt{App} component or a sub-component thereof.
 
 
 \pagebreak
@@ -9,13 +9,13 @@ The top-level component in the React app scaffolding that's been created for us 
 
 \section{My First Component}
 
-If you have a look inside the \texttt{src/App.js} file, it should look something like this:
+If you have a look inside the \texttt{src/App} file, it should look something like this:
 
-\inputminted{jsx}{02-jsx/figures/01-App.jsx}
+\js{}{02-jsx/figures/01-App}
 
 There's a lot of cruft here, so let's update the App component to just say ``Hello, world!'':
 
-\inputminted{jsx}{02-jsx/figures/02-App-redux.jsx}
+\js{}{02-jsx/figures/02-App-redux}
 
 Now save the file and check the app in your browser - it should have updated itself.
 \\
@@ -32,24 +32,24 @@ Notice that we wrap our fat-arrow function with \texttt{(} and \texttt{)} instea
 
     To \texttt{import} a file that has used \texttt{export default} we use the \texttt{import} keyword, followed by the variable name we want to refer to it by in the current file, then the word \texttt{from}, then a relative path to the file (or a package name if it was installed with NPM).
 
-    \begin{minted}{js}
+    \begin{minted}{jsx}
         // import the package react and call it React in this file
         import React from "react";
 
-        // import the file MyComponent.jsx
+        // import the file MyComponent.js
         // and call it MyComponent
         import MyComponent from "./MyComponent";
     \end{minted}
 
     You can also export different parts of the file using \textbf{named exports}:
 
-    \begin{minted}{js}
+    \begin{minted}{jsx}
         export let add = (a, b) => a + b;
     \end{minted}
 
     These are imported using object destructuring-style syntax:
 
-    \begin{minted}{js}
+    \begin{minted}{jsx}
         import { add } from "./maths";
     \end{minted}
 \end{infobox}
@@ -83,7 +83,7 @@ A contrived example:
 \begin{infobox}{Under the Hood}
     Under the hood Babel transforms the HTML bits of JSX into standard JS:
 
-    \begin{minted}{js}
+    \begin{minted}{jsx}
         React.createElement( // this is why we have to import React
           "h1",              // element type
           {},                // attributes
@@ -140,20 +140,20 @@ This is just a regular HTML file - not JSX - so we don't need to use \texttt{cla
 If we had to put all of our HTML into a single file, it would get very big. JSX lets us break up different parts of the UI into separate components.
 \\
 
-Let's create a \texttt{<Header>} component to keep our app title in. Create a new file called \texttt{Header.js} and add the following:
+Let's create a \texttt{<Header>} component to keep our app title in. Create a new file called \texttt{Header} and add the following:
 
-\inputminted{jsx}{02-jsx/figures/03-Header.jsx}
+\js{}{02-jsx/figures/03-Header}
 
-Now update \texttt{App.js} to include our Header component:
+Now update \texttt{App} to include our Header component:
 
-\inputminted{jsx}{02-jsx/figures/04-App-with-Header.jsx}
+\js{}{02-jsx/figures/04-App-with-Header}
 
 We import the \texttt{<Header>} component that we just created, then JSX lets us use HTML-style syntax to include it as part of the \texttt{<App>} component.
 \\
 
 The tag name we use is determined by what you call the imported component:
 
-\inputminted{jsx}{02-jsx/figures/05-App-with-Fishsticks.jsx}
+\js{}{02-jsx/figures/05-App-with-Fishsticks}
 
 
 \begin{infobox}{Extra-Helpful Console}
@@ -170,18 +170,18 @@ The tag name we use is determined by what you call the imported component:
 
 Next, let's add a \texttt{<Content>} component to hold the main part of our app.
 
-\inputminted{jsx}{02-jsx/figures/06-Content.jsx}
+\js{}{02-jsx/figures/06-Content}
 
 Let's update it so we can easily change the amount of money:
 
-\inputminted{jsx}{02-jsx/figures/07-Content-with-JS.jsx}
+\js{}{02-jsx/figures/07-Content-with-JS}
 
 We're just using standard JS code outside the component: it's only when we're inside JSX tags that we have to do anything special.
 \\
 
 Don't forget to add the \texttt{<Content>} component to \texttt{<App>}:
 
-\inputminted{jsx}{02-jsx/figures/08-Content-in-App.jsx}
+\js{}{02-jsx/figures/08-Content-in-App}
 
 
 \section{\texttt{React.Fragment}}
@@ -191,14 +191,14 @@ In the last example we had to wrap our two sub-components in a \texttt{<div>} be
 
 That's where \texttt{React.Fragment} comes in: it lets us return a single element from a component without adding an additional element to the DOM.
 
-\inputminted{jsx}{02-jsx/figures/09-React.Fragment.jsx}
+\js{}{02-jsx/figures/09-React.Fragment}
 
 You should use \texttt{React.Fragment} whenever you don't need the wrapping element to appear in the DOM. If you don't, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
 \\
 
 Fragments are so useful that there's a shorthand for it:
 
-\stdinputminted{html}{02-jsx/figures/10-React.Fragment-shorthand.jsx}
+\code{}{html}{02-jsx/figures/10-React.Fragment-shorthand.js}
 
 We open with \texttt{<>} and close with \texttt{</>}. This isn't fully supported with all tooling (e.g. text editors, syntax highlighters, \&c.), but it's worth giving it a go and seeing if it works with your setup.
 
@@ -214,11 +214,11 @@ Our sub-components can have sub-components of their own, which in turn can have 
 
 Let's pull out the funding code into its own component:
 
-\inputminted{jsx}{02-jsx/figures/11-Funding.jsx}
+\js{}{02-jsx/figures/11-Funding}
 
 And now update \texttt{<Content>} to use the new component:
 
-\inputminted{jsx}{02-jsx/figures/12-Content-with-Funding.jsx}
+\js{}{02-jsx/figures/12-Content-with-Funding}
 
 We don't need to change anything in \texttt{<App>}, as it's just using the \texttt{<Content>} component.
 \\
@@ -231,7 +231,7 @@ Now, if we wanted to, we could using the \texttt{<Funding>} component elsewhere 
 
 JSX also makes it easy to work with arrays using the \texttt{.map()} array iterator:
 
-\inputminted{jsx}{02-jsx/figures/13-map.jsx}
+\js{}{02-jsx/figures/13-map}
 
 The \texttt{.map()} returns an array of \texttt{<li>} elements, which React then adds as children of the \texttt{<ul>} element.
 
@@ -244,7 +244,7 @@ The \texttt{.map()} returns an array of \texttt{<li>} elements, which React then
 
     JS-in-JSX land is much like JavaScript land, except every instance of JS-in-JSX must be an expression (i.e. it must evaluate to a single value). So you can't use \texttt{if} statements, variable declarations, and the like.
 
-    \stdinputminted[frame=topline]{jsx}{02-jsx/figures/14-JSX-JS-context.jsx}
+    \js[frame=topline]{}{02-jsx/figures/14-JSX-JS-context}
 \end{infobox}
 
 
@@ -253,7 +253,7 @@ The \texttt{.map()} returns an array of \texttt{<li>} elements, which React then
 
 We can use \texttt{.map()} on \textit{any} array, including ones with more complex values:
 
-\stdinputminted{jsx}{02-jsx/figures/15-map-objects.jsx}
+\js{}{02-jsx/figures/15-map-objects}
 
 In both examples above we had to add a special \texttt{key} attribute to the \texttt{<tr>}s. This needs to be unique for each element, so we use the array index. React can use this to efficiently re-render large lists of items.
 

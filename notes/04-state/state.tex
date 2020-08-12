@@ -2,7 +2,7 @@
 
 React lets us easily hook into events using the \texttt{on...} JSX attributes:
 
-\inputminted{jsx}{04-state/figures/01-onClick.jsx}
+\js{}{04-state/figures/01-onClick}
 
 There is an \texttt{on...} attribute for pretty much every type of event that the DOM supports. You can find a \href{https://facebook.github.io/react/docs/events.html#supported-events}{full list on the React Docs}. Under-the-hood the JSX gets translated in to plain-old DOM event-handlers. React is also smart enough to automatically remove event handlers for components that are no longer visible (which is a complete nightmare to do manually).
 \\
@@ -33,7 +33,7 @@ We don't really want to have our event handler functions mixed into our JSX: it 
 
 We \textit{could} store the event handler outside the component function, but this will cause us issues when it comes to state. However, we can use a \textit{class}:
 
-\inputminted{jsx}{04-state/figures/02-class-component.jsx}
+\js{}{04-state/figures/02-class-component}
 
 
 \begin{infobox}{From Function to Class}
@@ -48,11 +48,11 @@ We \textit{could} store the event handler outside the component function, but th
 
     For example:
 
-    \inputminted{jsx}{04-state/figures/03-function-to-class-func.jsx}
+    \js{}{04-state/figures/03-function-to-class-func}
 
     Becomes:
 
-    \inputminted{jsx}{04-state/figures/04-function-to-class-class.jsx}
+    \js{}{04-state/figures/04-function-to-class-class}
 
     It's best to write your components as functions and only turn them into \texttt{class} based components if you need to.
 \end{infobox}
@@ -82,18 +82,18 @@ We cannot use state with our function based components, as they do not have acce
 
 To set up the initial state we need to use \texttt{class}'s \texttt{constructor} method:
 
-\inputminted{jsx}{04-state/figures/05-initial-state.jsx}
+\js{}{04-state/figures/05-initial-state}
 
 \texttt{this.state} is just a plain old JavaScript object (``POJO''). It can take as many properties as you like, using any values you can usually have as part of an object literal.
 \\
 
 Next let's update our JSX to display something based on the state:
 
-\inputminted{jsx}{04-state/figures/06-state-jsx.jsx}
+\js{}{04-state/figures/06-state-jsx}
 
 Finally, let's update the \texttt{handleClick()} method to update the state:
 
-\inputminted{jsx}{04-state/figures/07-state-change.jsx}
+\js{}{04-state/figures/07-state-change}
 
 We can't just use \texttt{this.state.counter += 1} to update \texttt{this.state} - if we did, React wouldn't know that anything has changed.
 \\
@@ -129,7 +129,7 @@ What we've done so far \textit{should} work\textellipsis{ }but it won't because 
 
 Because of this we need to \textbf{bind} any of methods that use \texttt{this} inside the \texttt{constructor} method:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     constructor(props) {
         // ...etc.
 

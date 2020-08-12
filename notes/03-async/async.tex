@@ -14,7 +14,7 @@ So, when we make a request with Axios, we can't be given back the response to st
 
 A Promise is an object with a \texttt{.then()} method. We can pass the \texttt{.then()} method a function, which will run once the response comes back. With Axios, the function will be passed the response as the first parameter.
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // make the request
     let promise = axios.get("/articles");
 
@@ -26,7 +26,7 @@ A Promise is an object with a \texttt{.then()} method. We can pass the \texttt{.
 
 Rather than using an intermediary variable, generally we use chaining with Promises:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // use destructuring to get the data property
     axios.get("/articles").then(({ data }) => {
         console.log(data);
@@ -38,7 +38,7 @@ Be aware that \textbf{there's no guarantee the promises will resolve in the orde
 
 We can use \href{https://httpbin.org/#/Dynamic_data/get_delay__delay_}{https://httpbin.org/delay/<delay>} to play around with this:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     // will take 5 seconds to return a response
     axios.get("https://httpbin.org/delay/5").then(() => {
         // will show after (at least) 5 seconds
@@ -61,7 +61,7 @@ Sometimes things will go wrong: you might have sent invalid data, the API server
 
 The \texttt{.then()} method of a Promise accepts a second argument which will be called if something goes wrong:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     axios.get("/articles").then(response => {
         console.log("Everything has worked");
     }, error => {
@@ -73,7 +73,7 @@ The \texttt{.then()} method of a Promise accepts a second argument which will be
 
 Alternatively you can use the \texttt{.catch()} method:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     axios.get("/articles").then(response => {
         console.log("Everything has worked");
     }).catch(error => {
@@ -87,7 +87,7 @@ You could use the above methods to handle form validation errors and the like.
 
 We can put API calls in our component methods, we just need to make sure that we use \texttt{this.setState()} \textit{inside} the \texttt{.then()} function:
 
-\begin{minted}{js}
+\begin{minted}{jsx}
     handleSubmit() {
         // get the values of some controlled components
         let { title, article } = this.state;
@@ -105,7 +105,7 @@ We can put API calls in our component methods, we just need to make sure that we
 
 If we need to fetch data from the API to show in our component, then we'll need to use \texttt{componentDidMount}:
 
-\inputminted{js}{03-async/figures/01-Articles.js}
+\js{}{03-async/figures/01-Articles}
 
 If it's not doing what you expect, you can use the \href{https://developer.mozilla.org/en-US/docs/Tools/Network_Monitor}{``Network'' tab in Developer Tools} to see if your API requests are working or not.
 
