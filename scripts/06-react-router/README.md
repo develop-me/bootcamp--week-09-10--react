@@ -32,12 +32,14 @@
 	- Small client side app which doesn't need a backend OR has routes which should not effect the browser URL e.g a widget on a website
 
 - Keep `Header` separate but use `Route` for rest
-- Add a route with `exact path="/"` to `Content` using the `component` prop
+- Add a route with `exact path="/"` to `Content`:
 	```js
 	<Router>
     	<>
       	  <Header subtitle="Space Wombats">My App</Header>
-     	  <Route exact path="/" component={ Content }/>
+     	  <Route exact path="/">
+            <Content />
+          </>
     	</>
   	</Router>
 	```
@@ -60,7 +62,7 @@
     - Inside we return the component we want to pass part of the url to
     - Use `match.params.<parameter>` as the value of the prop we pass down
 	```js
-	Route path="/articles/:id" render={ ({ match }) => (
+	<Route path="/articles/:id" render={ ({ match }) => (
     		<Article article={ match.params.id } />
 	) } />
 	```
@@ -100,9 +102,14 @@
 	}
 
 	<Switch>
-        <Route exact path="/" component={Header} />
-        <Route exact path="/funding" component={Funding} />
-		<Route component={FourOhFour} />
+        <Route exact path="/">
+            <Header />
+        </Route>
+        <Route exact path="/funding">
+            <Funding />
+        </Route>
+
+        <FourOhFour />
 	</Switch>
 	```
 - Make `<FourOhFour>` component to demonstrate
