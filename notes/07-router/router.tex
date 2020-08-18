@@ -51,7 +51,7 @@ Now we can begin to add \textbf{routes}.
 Visiting any URL will result in seeing the \texttt{<Header>} and \texttt{<Content>}.
 \\
 
-But, let's say we only wanted to show the \texttt{<Content>} element on the homepage. We could add a \texttt{<Route>} with a \texttt{component} prop:
+But, let's say we only wanted to show the \texttt{<Content>} element on the homepage. We could wrap it with a \texttt{<Route>}:
 
 \js{}{07-router/figures/02-component}
 
@@ -163,7 +163,9 @@ We can then wrap all our routes in the \texttt{<Switch>} component and add our \
 
 \begin{minted}{jsx}
     <Switch>
-        <Route exact path="/" component={ Content }/>
+        <Route exact path="/">
+            <Content />
+        </Route>
         <FourOhFour />
     </Switch>
 \end{minted}
@@ -172,6 +174,50 @@ Now, if none of the routes match it will display the last item in the \texttt{<S
 \\
 
 Other than your 404 component, you should only wrap \texttt{<Route>} components with \texttt{<Switch>}, otherwise things won't display as you'd expect.
+
+
+\section{Programmatic Navigation}
+
+Sometimes it would be nice if our app could navigate for us. For example, when we submit a form. To do this we can use ReactRouter's \textbf{history} functionality.
+\\
+
+First, create a new file \texttt{src/history.js}:
+
+\begin{minted}{js}
+    import { createBrowserHistory } from "history";
+    export default createBrowserHistory();
+\end{minted}
+
+Then add a \texttt{history} prop to your \texttt{<Router>}:
+
+\begin{minted}{javascript}
+    // import your history file
+    import history from "../history";
+
+    // use Router instead of BrowserRouter
+    import { Router } from "react-router-dom";
+\end{minted}
+
+\begin{minted}{javascript}
+    // pass history in as a prop to the Router
+    <Router history={ history }>
+\end{minted}
+
+Now we can import this file and use it elsewhere to change the URL, for example in the \texttt{handleSumbit} method of a form component:
+
+\begin{minted}{jsx}
+    import history from "../history";
+\end{minted}
+
+\begin{minted}{js}
+    handleSumbit(e) {
+        // ...do form submission stuff
+
+        // go to the homepage
+        history.push("/");
+    }
+\end{minted}
+
 
 
 

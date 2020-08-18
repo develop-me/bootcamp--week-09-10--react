@@ -24,5 +24,3 @@ const Thing = () => (
     { /* get into JS-in-JSX mode, then use comments */ }
   </div>
 );
-
-export default Thing;

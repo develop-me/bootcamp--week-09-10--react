@@ -36,29 +36,27 @@ We \textit{could} store the event handler outside the component function, but th
 \js{}{04-state/figures/02-class-component}
 
 
-\begin{infobox}{From Function to Class}
-    To get from a function based component to a class based component:
+\subsection{From Function to Class}
 
-    \begin{itemize}
-        \item Create a \texttt{class} with the same name as the function you're replacing, and give it a \texttt{render} method
-        \item The \texttt{render} method should return the exact JSX that the function version returned
-        \item \texttt{props} don't get passed into \texttt{render}, instead you use \texttt{this.props}, which is automatically setup for you when you extend \texttt{Component}
-        \item You can use object destructuring on \texttt{this.props} to avoid rewriting any of your JSX
-    \end{itemize}
+To get from a function based component to a class based component:
 
-    For example:
+\begin{itemize}
+    \item Create a \texttt{class} with the same name as the function you're replacing, and give it a \texttt{render} method
+    \item The \texttt{render} method should return the exact JSX that the function version returned
+    \item \texttt{props} don't get passed into \texttt{render}, instead you use \texttt{this.props}, which is automatically setup for you when you extend \texttt{Component}
+    \item You can use object destructuring on \texttt{this.props} to avoid rewriting any of your JSX
+\end{itemize}
 
-    \js{}{04-state/figures/03-function-to-class-func}
+For example:
 
-    Becomes:
+\js{}{04-state/figures/03-function-to-class-func}
 
-    \js{}{04-state/figures/04-function-to-class-class}
+Becomes:
 
-    It's best to write your components as functions and only turn them into \texttt{class} based components if you need to.
-\end{infobox}
+\js{}{04-state/figures/04-function-to-class-class}
 
+It's best to write your components as functions and only turn them into \texttt{class} based components if you need to.
 
-\pagebreak
 
 
 \section{State}
@@ -122,6 +120,8 @@ Instead we use the \texttt{this.setState()} method: this lets React know that so
 
 \subsection{F**k \texttt{this}}
 
+\quoteinline{Sometimes when I'm writing Javascript I want to throw up my hands and say `this is bullshit!' but I can never remember what `this' refers to\textellipsis}{The interwebs}
+
 \quoteinline{In JavaScript, there is a beautiful, elegant, highly expressive language that is buried under a steaming pile of good intentions and blunders}{Douglas Crockford}
 
 What we've done so far \textit{should} work\textellipsis{ }but it won't because \texttt{this} is broken in JavaScript.
@@ -141,6 +141,7 @@ Because of this we need to \textbf{bind} any of methods that use \texttt{this} i
  When React calls \texttt{this.handleClick} the value of \texttt{this} gets lost. Using \texttt{bind} makes sure that the method always knows what \texttt{this} should be.\footnote{Once we start using Redux we'll mostly stick to stateless components, so this stops being something we need to worry about.}
 
 
+\pagebreak
 
 \begin{infobox}{React Developer Tools}
     If you try to use \texttt{console.log(this.state)} in an event handler where you've used \texttt{this.setState()} you'll probably find that it doesn't log the values you'd expect. That's because \texttt{this.setState()} doesn't actually update the state until \textit{after} the event handling function \href{https://medium.com/@baphemot/understanding-reactjs-setstate-a4640451865b}{has finished}.
@@ -174,6 +175,7 @@ Working out the state's \textbf{shape} can only come with practice.
 \end{itemize}
 
 
+\pagebreak
 
 
 \begin{infobox}{Creating a Component}

@@ -56,6 +56,12 @@ GitHub pages doesn't support single-page web-app URL routing, where all URLs get
     } from "react-router-dom";
 \end{minted}
 
+If you're using a custom \texttt{history.js} then you should \textit{instead} update your \texttt{history.js} file:
+
+\begin{minted}{js}
+    import { createHashHistory } from "history";
+\end{minted}
+
 \pagebreak
 
 

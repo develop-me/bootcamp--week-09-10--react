@@ -19,9 +19,7 @@ class Counter extends Component {
     let { count } = this.state;
 
     return (
-      <>
-        <p onClick={ this.handleClick }>{ count }</p>
-      </>
+      <p onClick={ this.handleClick }>{ count }</p>
     );
   }
 }

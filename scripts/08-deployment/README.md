@@ -27,4 +27,10 @@
 ### `<HashRouter>`
 
 - Update `BrowserRouter` to `HashRouter` in `App` imports
+- If using custom `history.js` then need to **instead** update `history.js`:
+
+    ```js
+    import { createHashHistory } from "history";
+    ```
+
 - Demonstrate hash URLs with a `<Link>`

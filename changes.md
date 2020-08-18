@@ -3,13 +3,9 @@
 - Avoid derived state
     > Shouldn't copy props into state - check examples/challenges - form ones in particular. See: https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
 - More React Router information
-    * [ ] Hash router for deployment
+    * [x] Hash router for deployment
     * [ ] Routes inside non-App components
-- Switch to `.js` instead of `.jsx`
-    * [ ] Add a note about Sublime Text support
-    * [x] Challanges
-    * [x] Notes
-    * [x] Scripts
+- Add file locations
 - Where stuff goes in component
     * [ ] JSX in render
     * [ ] State manipulation in handler methods
@@ -22,6 +18,7 @@
     * [ ] Show that `this.props` and `this.state` are available anywhere in the class
 - Add more info about `exact` path in ReactRouter
 - Add more info about setState() ordering
+- More lifecycle challenges
 - A bit more about what a Component actually is - creates a class, when used creates an instance
 - Rewrite Lifting State notes - folks still a bit confused by it all
     > Just have the buttons material - get rid of the Form stuff
@@ -36,11 +33,11 @@
     * [ ] Blog Form code?
 - Class properties
 - Add a few more tests to the ToDo reducers
-- Cover testing components?
 - useEffect Challenges
     > Do Week 9 Lifecycle Challenges first
 - Custom hooks challenges
 - Cover `useCallback`?
+- Cover testing components?
 
 ## Doing
 
@@ -55,3 +52,7 @@
 - `initial` -> `initialState`
 - API challenges need more explaining
 - Update to use Bootstrap 4
+- Switch to `.js` instead of `.jsx`
+    * [x] Challanges
+    * [x] Notes
+    * [x] Scripts
