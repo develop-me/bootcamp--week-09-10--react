@@ -17,7 +17,8 @@ But there's no way for the first button to know anything about the state of the 
 
 
 This is where the concept of \textbf{lifting state} becomes important. If we store the state of both buttons in a shared parent component, then the parent component can keep track of which button has been selected and then use props to pass this information back down to each button.
-\\
+
+\pagebreak
 
 First let's create the component. We'll use a number to keep track of which \texttt{<Button>} we want highlighted:
 

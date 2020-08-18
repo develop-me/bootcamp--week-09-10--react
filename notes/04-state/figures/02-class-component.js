@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 // use standard JS class syntax
 // we "extend" React's Component class
-class App extends Component {
+class Clicker extends Component {
   // put the event handler in a method
   // this keeps it separate from our JSX
   handleClick() {
@@ -22,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Clicker;

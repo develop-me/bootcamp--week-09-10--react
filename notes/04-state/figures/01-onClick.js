@@ -1,6 +1,6 @@
 import React from "react";
 
-const App = () => (
+const Clicker = () => (
   <header
     className="jumbotron"
     onClick={ () => console.log("clicked") }
@@ -9,4 +9,4 @@ const App = () => (
   </header>
 );
 
-export default App;
+export default Clicker;
