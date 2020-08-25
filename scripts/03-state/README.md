@@ -81,7 +81,8 @@ returned
 	}
 
 	```
-
+	- We have to call `super()` at the beginning of our constructor so that we can access the methods of parent class and use the `this` keyword inside of our constructor, which we need to do to set state!
+	- We pass props into our constructor and super so we can use props in our constructor
 	- display values based on `this.state` in our JSX: destructure like props
 	```js
 	const { counter } = this.state;
@@ -108,13 +109,16 @@ returned
 	- instead use `concat`, spread operator, our array iterators
 	- methods and functions which do not modify the existing variable but create a new one
 	- another common cause of bugs to watch out for
-- Need to bind `this`
+- Need to bind `this` if we pass in the method by reference
 	- its weird, its clunky but the concept of this is broken is JS
 	- `this` - refers to object executing current code
 	- if your method uses `this`, bind it in the constructor
 	```js
 	this.handleClick = this.handleClick.bind(this);
 	```
+- Where a method is wrapped in an anonymous function and we are using the ES6 fat arrow syntax we do not have to bind EVEN if we use `this` in our method
+	- `this` is bound lexically
+	- It uses the context of the enclosing function — or global — scope as its `this` value
 - AGAIN: `this.setState()` does not update state till after method has finished, therefore don't `console.log()` after `setState()`
 - React Developer Tools: useful for seeing state
 - What is state and why do we use it?
