@@ -4,6 +4,7 @@
 
 -   The React life cycle follows the common Birth, Growth, and Death flow: with methods associated to each phase
 -   React calls and utilises these methods under the hood for us but for class based components we have access to these methods too
+- We use these lifecycle methods to add functionality to other stages of the components life that we can't achieve with the constructor or the render method
 -   There are other methods, check the docs
 -   **Birth or Mounting**:
     -   Initialisation of our component
@@ -52,9 +53,19 @@
     -   When our component is Unmounted from the Native UI stack
     -   Such as navigating to another page or not rendering the component due to some user interaction
     -   Methods here are typically to reverse any setup we did in either `componentWillMount()` or `componentDidMount()`
+    - If we don't unmount a listener or timer it will continue to run as long as the page is not refreshed
+        - Older browsers in particular will struggle with this
+        - You could end up with conflicting events or events interacting with each other in unexpected ways
+    - If we unmount a component (e.g closing a dropdown menu) which has an event listener which calls a method that updates state, the event listener will continue to run and when the method is next called we will get an error
+
+        ```
+        Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in the componentWillUnmount method.
+        ```
+
     -   `componentWillUnmount`:
         -   Just before the component is removed
         -   To avoid memory leaks/increase performance and reduce error risk
         -   e.g. clearing `setTimeout`
         -   e.g. removing `window` event listener
     -   READ THIS: https://developmentarc.gitbooks.io/react-indepth/content/life_cycle/introduction.html
+- Positioning: In order of lifecycle, BELOW the constructor, ABOVE methods we define and the render method
