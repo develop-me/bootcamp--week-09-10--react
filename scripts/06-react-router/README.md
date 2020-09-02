@@ -12,6 +12,7 @@
 	- Seems like normal browser functionality to the user: can use the back and forward buttons as if it was any other website
     - We are not actually leaving the original page - just changing which components we can see, which components are RENDERED
 - Setup: `react-router-dom`
+- Multiple Router options: Static, Memory, Native
 - Import `BrowserRouter as Router` and `Route`
 - BrowserRouter:
 	- Uses history API: history object from the DOM Window object - exists for us to use in the browser, lets us see user's history if page navigation
@@ -25,7 +26,7 @@
 - HashRouter:
 	- Uses URL with hash
 	- The hash keeps the server side routing independant from client side routing
-	- No browser issues
+	- Mainly intended for old browser compatibility
 	- Server does not have access to the path after the #
 	-`www.example.com/#/person/john`
 	- Client interprets bit after the hash
@@ -56,8 +57,11 @@
 - Wrapping it in `Route` allows you to just pass in props like normal
 - Notice that we are passing the `<Figure/>` component as `children` to `<Route/>`
 - Matches *(resource `Article.js`)*:
-	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use the `render` prop
-    - The render props contains a function
+	- If we want a part of the URL parameters to influence something inside the component or get passed in as a prop we can use the `render` method
+    - The render method has access to 3 props:
+        - match
+        - location
+        - history
     - Pass in the word `match` as a prop to the function
     - Inside we return the component we want to pass part of the url to
     - Use `match.params.<parameter>` as the value of the prop we pass down
@@ -118,7 +122,7 @@ Programmatic navigation:
 
 - Sometimes it would be nice if our app could navigate for us.
 - For example, when we submit a form.
-- ReactRouter's `history` functionality.
+- ReactRouter's custom `history` functionality.
 - Create a new file src/history.js:
 
     ```js
@@ -128,6 +132,10 @@ Programmatic navigation:
 
     - If using `HashRouter` needs to be `createHashHistory`
 
+- How is this history object different from the other times we've mentioned history objects?
+    - Hash: DOM-specific implementation for legacy web-browsers
+    - Browser: interacts with the HTML5 history API
+    - Just different implementations of the same concept, however here we can control our navigation from within the app not just by navigating via the browser
 - Then import and add a `history` prop to your `<Router>` in `<App>`:
 
     ```js
@@ -142,7 +150,7 @@ Programmatic navigation:
     // pass history in as a prop to the Router
     <Router history={ history }>
     ```
-
+- We use Router instead of BrowserRouter: Router is the 'low-level' interface for all router comps. The others we've mentioned are 'high-level'
 - Add to a form submission:
 
     ```js
@@ -164,8 +172,8 @@ Structure:
 - Components to appear on all pages either here or after your `<Switch>`
 - Use the `<Switch />` component to wrap all your `<Route>`s
 - Pass components to your `<Routes/>` to determine which path renders them!
-    - Single component without props: `component={COMPONENT}`
-    - Multiple components with or without props:
+    - LEGACY: Single component without props: `component={COMPONENT}`
+    - NOW: Single and Multiple components with or without props:
     ```js
         <Route>
             <>
@@ -174,7 +182,7 @@ Structure:
             </>
          </Route>
     ```
-- URL params important? Pass in with the render prop
+- URL params important? Pass in with the render method
     ```js
         <Route
           path="/articles/:id"

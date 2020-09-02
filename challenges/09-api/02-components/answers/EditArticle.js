@@ -13,13 +13,13 @@ class EditArticle extends Component {
             loaded: false,
             notFound: false,
             title: "",
-            article: "",
+            content: "",
             tags: "",
             saved: false,
         }
 
         this.handleTitle = this.handleTitle.bind(this);
-        this.handleArticle = this.handleArticle.bind(this);
+        this.handleContent = this.handleContent.bind(this);
         this.handleTags = this.handleTags.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -31,7 +31,7 @@ class EditArticle extends Component {
         let success = ({ data }) => this.setState({
             loaded: true,
             title: data.data.title,
-            article: data.data.article,
+            content: data.data.content,
             tags: data.data.tags.join(", "),
         });
 
@@ -47,8 +47,8 @@ class EditArticle extends Component {
         this.setState({ title: e.currentTarget.value });
     }
 
-    handleArticle(e) {
-        this.setState({ article: e.currentTarget.value });
+    handleContent(e) {
+        this.setState({ content: e.currentTarget.value });
     }
 
     handleTags(e) {
@@ -59,7 +59,7 @@ class EditArticle extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        let { title, article, tags } = this.state;
+        let { title, content, tags } = this.state;
 
         // need to get the ID from props
         let { id } = this.props;
@@ -73,13 +73,13 @@ class EditArticle extends Component {
         axios.put(`/articles/${id}`, {
             saved: false,
             title: title,
-            article: article,
+            content: content,
             tags: tags.split(", "),
         }).then(success);
     }
 
     render() {
-        let { saved, title, article, tags, loaded, notFound } = this.state;
+        let { saved, title, content, tags, loaded, notFound } = this.state;
 
         // need to handle loading/404 components
         return !loaded? <Loading /> : (notFound ? <FourOhFour /> : (
@@ -88,7 +88,7 @@ class EditArticle extends Component {
 
                 <form onSubmit={ this.handleSubmit }>
                     <Input handleChange={ this.handleTitle } value={ title } name="Title" id="title" />
-                    <Input handleChange={ this.handleArticle } value={ article } name="Article" id="article" />
+                    <Input handleChange={ this.handleContent } value={ content } name="Content" id="content" />
                     <Input handleChange={ this.handleTags } value={ tags } name="Tags" id="tags" />
                     <button className="btn btn-primary">Update</button>
                 </form>

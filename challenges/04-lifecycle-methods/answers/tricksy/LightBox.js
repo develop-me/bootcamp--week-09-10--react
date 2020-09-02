@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const lightBoxStyle = {
-    position: "absolute",
+    position: "fixed",
     top: 0,
     left: 0,
     right: 0,
@@ -21,26 +21,26 @@ class LightBox extends Component {
             lightBox: false,
         };
 
-        this.hide = this.hide.bind(this);
-        this.show = this.show.bind(this);
+        this.handleHide = this.handleHide.bind(this);
+        this.handleShow = this.handleShow.bind(this);
     }
 
     // listen on the window for any clicks
     componentDidMount() {
-        window.addEventListener("click", this.hide);
+        window.addEventListener("click", this.handleHide);
     }
 
     // remove window event listener when
     // component is removed
     componentWillUnmount() {
-        window.removeEventListener("click", this.hide);
+        window.removeEventListener("click", this.handleHide);
     }
 
-    hide() {
+    handleHide() {
         this.setState({ lightBox: false });
     }
 
-    show(e) {
+    handleShow(e) {
         // don't want to trigger window event
         // will immediately set back to false
         e.stopPropagation();
@@ -55,13 +55,14 @@ class LightBox extends Component {
             <div style={ lightBox ? lightBoxStyle : {} }>
                 <img
                     className="img-thumbnail"
-                    onClick={ this.show }
+                    onClick={ this.handleShow }
                     style={ {
-                        width: lightBox ? "" : 50,
+                        width: lightBox ? "" : 400,
                         margin: "0 auto",
                         zIndex: 2,
                     } }
                     src={ src }
+                    alt=''
                 />
             </div>
         );

@@ -12,12 +12,18 @@ class Timer extends Component {
         // doesn't need to be stored in state
         // nothing to do with render
         this.intervalID = null;
+
+        this.tick = this.tick.bind(this);
     }
 
     componentDidMount() {
         // need to keep track of the interval ID so we
         // can kill it if necessary
         this.intervalID = setInterval(this.tick, 1000);
+
+        // The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).
+        // The setInterval() method will continue calling the function until clearInterval() is called, or the window is closed.
+        // The ID value returned by setInterval() is used as the parameter for the clearInterval() method.
     }
 
     componentWillUnmount() {
@@ -41,7 +47,7 @@ class Timer extends Component {
         const { value } = this.state;
 
         return (
-            <p className="well">{ value }</p>
+            <p className='alert alert-light'>{ value }</p>
         );
     }
 }
