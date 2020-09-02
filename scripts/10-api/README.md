@@ -13,6 +13,7 @@
 - Axios - nice
 - `npm install axios`
 - Can configure with defaults (see `axios.js`)
+    - **Careful about adding to GitHub**
 - In `index.js`: `axios.get("/articles")`
 
 ### Asynchronous Programming

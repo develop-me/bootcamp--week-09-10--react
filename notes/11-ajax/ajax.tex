@@ -104,6 +104,13 @@ For example, if we're using a RESTful API, our base URL, the \texttt{Accept} hea
     });
 \end{minted}
 
+\begin{infobox}{API Tokens \& GitHub}
+    You shouldn't add API tokens to a public GitHub repo, as then anyone can make requests to the API as you.
+    \\
+
+    You should either make sure your repo is private or add the Axios config to your \texttt{.gitignore} file (make sure you note how to recreate it in your \texttt{README} if you do this).
+\end{infobox}
+
 Then we can import \textit{that} file and use it as follows:
 
 \begin{minted}{jsx}
