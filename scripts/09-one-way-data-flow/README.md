@@ -12,6 +12,9 @@
 - Lift state into the parent
 - Assign each button a number
 - Pass a function for click handler
+  - Each function does something different
+  - Child component **doesn't care what the function does**
+- Demonstrate writing as a single component and then breaking out
 
 
 **Challenges**: `challenges/01-one-way-data-flow/01-lifting-state/README.md`
