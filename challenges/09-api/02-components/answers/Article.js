@@ -44,7 +44,7 @@ class Article extends Component {
         return !loaded ? <Loading /> : (notFound ? <FourOhFour /> : (
             <>
                 <h2>{ article.title }</h2>
-                <p>{ article.article }</p>
+                <p>{ article.content }</p>
                 <Tags tags={ article.tags } />
                 <Comments id={ id } />
                 <CreateComment id={ id } />

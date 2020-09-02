@@ -12,7 +12,7 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
 
 ### Setup
 
-- Make sure you install the axios library and then setup a config file that looks something like this:
+- Make sure you install the axios library and then setup a config file (`src/axios.js`) that looks something like this:
 
     ```javascript
     // import the library version of axios
@@ -30,6 +30,8 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
         },
     });
     ```
+
+    **It's generally not a good idea to add API tokens to a public GitHub repo. So you might want to add `src/axios.js` to your `.gitignore`. Be sure to add a note to your README about how to set it up again on another machine.**
 
 - Create a new file `src/ajax.js` and write all of the following challenges in there. Make sure you use the local version of axios with your configuration
 
@@ -57,6 +59,8 @@ We're going to use the blog end-point of [`restful.training`](https://github.com
     ```
 
     This isn't a very realistic file setup, but we need somewhere to practice before we start doing it with React
+
+
 
 ## Challenges
 
