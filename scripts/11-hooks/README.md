@@ -13,8 +13,9 @@
 
 ### `useState`
 
-- Look at a basic class component (`counter.js`)
-- Rewrite `counter.js` using hooks
+- Look at a basic class component (`Counter.js`)
+- Rewrite `Counter.js` using hooks
+- **Hooks just adding onto stateless components: props work the same**
 - Go through counter example
 - Keeps track of a single value in state
 - Give it initial value
@@ -46,7 +47,7 @@
     - `type` property
 - Add an action to update `player1` score
 - Add an action to update `player2` score
-- Demonstrate using another property of action (`bonus`?)
+- Demonstrate passing which player as part of action
 - Pull reducer `case`s out into separate functions
     - Pass `state` and `action` (if needed)
 - Show `useReducer`
@@ -65,7 +66,7 @@
 - Similar to lifecycle methods
 - Demonstrate updating the page title `document.title` every time counter changes
 - Show dependents array for updating title example
-- Demonstrate `componentDidMount` like behaviour with empty array (`star-wars.js`)
+- Demonstrate `componentDidMount` like behaviour with empty array (`StarWars.js`)
 - Demonstrate `componentWillUnmount` like behaviour
 
 ### Custom Hooks
