@@ -27,6 +27,7 @@
 - Briefly mention concept of tuples
     - Not part of JS
     - Joins two values together, don't have to be same type
+- **Console.log() running twice**: `React.StrictMode` checking for side-effects
 
 **Challenges**: `challenges/04-hooks/01-basic-hooks/README.md`
 
