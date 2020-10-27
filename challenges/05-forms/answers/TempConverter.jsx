@@ -31,7 +31,7 @@ class TempConverter extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 <div className="form-group mt-4">
                     <label>Celsius</label>
                     <input type="number" className="form-control" onChange={ this.handleChangeCelsius } value={ this.state.celsius } />
@@ -40,7 +40,7 @@ class TempConverter extends Component {
                     <label>Fahrenheit</label>
                     <input type="number" className="form-control" onChange={ this.handleChangeFahrenheit } value={ this.state.fahrenheit } />
                 </div>
-            </React.Fragment>
+            </>
         );
     }
 }

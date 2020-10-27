@@ -193,14 +193,15 @@ That's where \texttt{React.Fragment} comes in: it lets us return a single elemen
 
 \js{src/App.js}{02-jsx/figures/09-React.Fragment}
 
-You should use \texttt{React.Fragment} whenever you don't need the wrapping element to appear in the DOM. If you don't, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
-\\
-
 Fragments are so useful that there's a shorthand for it:
 
 \code{src/App.js}{html}{02-jsx/figures/10-React.Fragment-shorthand.js}
 
-We open with \texttt{<>} and close with \texttt{</>}. This isn't fully supported with all tooling (e.g. text editors, syntax highlighters, \&c.), but it's worth giving it a go and seeing if it works with your setup.
+We open with \texttt{<>} and close with \texttt{</>}.
+\\
+
+You should use Fragments whenever you don't need the wrapping element to appear in the DOM. If you use a \texttt{<div>} instead, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
+
 
 
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 // import the ReactRouter components
 import {
@@ -13,10 +13,10 @@ import Content from "./Content";
 // this is simply using the children prop under the hood
 const App = () => (
   <Router>
-    <Fragment>
+    <>
       <Header subtitle="Space Wombats">App</Header>
       <Content />
-    </Fragment>
+    </>
   </Router>
 );
 

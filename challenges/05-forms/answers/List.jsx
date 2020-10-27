@@ -29,7 +29,7 @@ class List extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <>
                 <form onSubmit={ this.handleSubmit } className="form-group mt-4">
                     <input className="form-control" onChange={ this.handleChange } value={ this.state.value } />
                     <button className="btn btn-primary mt-4">Add</button>
@@ -39,7 +39,7 @@ class List extends Component {
                         <li className="list-group-item" key={ i }>{ item }</li>
                     )) }
                 </ul>
-            </React.Fragment>
+            </>
         );
     }
 }

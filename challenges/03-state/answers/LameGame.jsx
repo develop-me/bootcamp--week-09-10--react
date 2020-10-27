@@ -44,7 +44,7 @@ class LameGame extends Component {
         let { playing, start, finish } = this.state;
 
         return (
-            <React.Fragment>
+            <>
                 <div className="card mb-4">
                     <h5 className="card-header">Aim</h5>
                     <p className="card-body card-text">{ aim } seconds</p>
@@ -57,7 +57,7 @@ class LameGame extends Component {
                 )}
 
                 { start && finish ? <p className="alert alert-info">{ this.calculateDifference() }</p> : null }
-            </React.Fragment>
+            </>
         );
     }
 }

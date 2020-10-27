@@ -22,10 +22,10 @@ class Transform extends Component {
         let { transform } = this.props;
 
         return (
-            <React.Fragment>
+            <>
                 <input className="form-control mt-4" onChange={ this.handleChange } value={ value } />
                 <p className="card card-body mt-4">{ transform(value) }</p>
-            </React.Fragment>
+            </>
         );
     }
 }

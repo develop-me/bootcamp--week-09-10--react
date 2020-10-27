@@ -24,10 +24,10 @@ class RollCall extends Component {
         let { names } = this.props;
 
         return (
-            <React.Fragment>
+            <>
                 <p className="card card-body">{ names[index] }</p>
                 <button className="btn btn-primary" onClick={ this.handleClick }>Next</button>
-            </React.Fragment>
+            </>
         );
     }
 }
