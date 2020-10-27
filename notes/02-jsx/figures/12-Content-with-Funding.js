@@ -1,5 +1,3 @@
-import React from "react";
-
 // import Funding
 import Funding from "./Funding";
 

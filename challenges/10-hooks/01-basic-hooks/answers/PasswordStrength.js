@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const calculateColor = length => {
     if (length < 9) {

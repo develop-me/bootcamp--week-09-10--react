@@ -1,5 +1,3 @@
-import React from "react";
-
 const Square = () => (
     <div style={{
         background: "#f00",

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Counter = ({ highlighted, value, handlePlus, handleSubtract }) => (
     <div className={ "alert alert-" + (highlighted ? "danger" : "info") }>
         <p>{ value }</p>

@@ -1,5 +1,3 @@
-import React from "react";
-
 let Article = ({ article }) => (
     <>
         <h1>Article #{ article }</h1>

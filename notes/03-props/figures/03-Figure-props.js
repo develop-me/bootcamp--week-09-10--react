@@ -1,5 +1,3 @@
-import React from "react";
-
 // props are passed in as an object as the
 // first argument to our component
 const Figure = props => (

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Input = ({ name, id, handleChange, value }) => (
     <div className="form-group">
         <label htmlFor={ id }>{ name }</label>

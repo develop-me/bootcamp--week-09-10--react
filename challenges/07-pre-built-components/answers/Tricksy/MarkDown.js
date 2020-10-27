@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import MDEditor from '@uiw/react-md-editor';
 import { Card } from "react-bootstrap";

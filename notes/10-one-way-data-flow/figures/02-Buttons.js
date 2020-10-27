@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 // import the currently self-aware Button component
 import Button from "./Button";

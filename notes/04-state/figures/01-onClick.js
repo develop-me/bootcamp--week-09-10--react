@@ -1,5 +1,3 @@
-import React from "react";
-
 const Clicker = () => (
   <header
     className="jumbotron"

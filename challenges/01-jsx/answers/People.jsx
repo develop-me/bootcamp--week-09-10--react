@@ -1,5 +1,3 @@
-import React from "react";
-
 const names = ["James P. Sullivan", "Mike Wazowski", "Boo", "Randall Boggs", "Roz", "Fungus"];
 
 const People = () => (

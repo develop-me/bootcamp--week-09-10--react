@@ -1,5 +1,3 @@
-import React from "react";
-
 const Square = ({ colour }) => (
     <div style={{
         background: colour,

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Figure = ({ caption, src }) => (
   <figure className="card">
     { /* ...etc. */ }

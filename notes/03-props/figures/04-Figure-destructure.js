@@ -1,5 +1,3 @@
-import React from "react";
-
 // destructure the props object when it's passed in
 const Figure = ({ caption, src }) => (
   <figure className="card">

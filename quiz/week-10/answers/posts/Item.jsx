@@ -1,5 +1,3 @@
-import React from "react";
-
 const Input = ({ title, text }) => (
     <div className="list-group-item">
         <h4 className="list-group-item-header">{ title }</h4>

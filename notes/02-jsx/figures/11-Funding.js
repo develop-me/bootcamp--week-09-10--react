@@ -1,5 +1,3 @@
-import React from "react";
-
 const valuation = 5e6;
 
 // use the JS number toLocaleString() method to format

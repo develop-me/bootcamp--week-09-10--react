@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import { DisplayText } from "react-bootstrap";
 import { BlockPicker } from "react-color";

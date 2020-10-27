@@ -1,5 +1,3 @@
-import React from "react";
-
 const Input = ({ label, value, onChange }) => (
     <div className="form-group">
         <label>{ label }</label>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Tags = ({ tags }) => (
     <span className="pull-right">
         { tags.map(tag => (

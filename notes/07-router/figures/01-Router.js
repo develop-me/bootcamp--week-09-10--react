@@ -1,5 +1,3 @@
-import React from "react";
-
 // import the ReactRouter components
 import {
   BrowserRouter as Router,

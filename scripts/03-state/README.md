@@ -35,7 +35,7 @@ returned
 	- Use object destructuring on this.props
 
 	```js
-	import React, { Component } from "react";
+	import { Component } from "react";
 
 	class Header extends Component {
 		handleClick() {

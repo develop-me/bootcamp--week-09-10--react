@@ -1,5 +1,3 @@
-import React from "react";
-
 // we use className to add classes for Bootstrap styling
 const Header = () => (
   <header class="jumbotron">

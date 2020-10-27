@@ -1,5 +1,3 @@
-import React from "react";
-
 const Password = ({ label, handleChange, value }) => (
     <div className="form-group">
         <label>{ label }</label>

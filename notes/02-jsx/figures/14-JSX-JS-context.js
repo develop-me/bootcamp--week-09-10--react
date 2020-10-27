@@ -1,5 +1,3 @@
-import React from "react";
-
 // JS land
 // plain old javascript stuff out here
 

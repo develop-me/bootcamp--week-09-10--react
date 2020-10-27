@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Die  = ({ sides }) => {
     const [ value, setValue ] = useState(1);
