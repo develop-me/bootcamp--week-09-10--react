@@ -1,5 +1,3 @@
-import React from "react";
-
 // just an array of numbers
 let numbers = [1, 2, 3, 4];
 

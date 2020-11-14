@@ -1,5 +1,5 @@
 // import Component
-import React, { Component } from "react";
+import { Component } from "react";
 
 // turn into a class of same name
 // and extend Component

@@ -38,12 +38,12 @@ To connect your git repo for these challenge to the react app:
 - Create a component `<Stuff>` that includes all of the components so far and then use it in your `<App>` component:
 
     ```jsx
-    <React.Fragment>
+    <>
         <Header />
         <Paragraph />
         <Square />
         <People />
-    </React.Fragment>
+    </>
     ```
 
 ## Tricksy

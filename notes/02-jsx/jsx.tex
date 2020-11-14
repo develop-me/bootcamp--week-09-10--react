@@ -9,7 +9,7 @@ The top-level component in the React app scaffolding that's been created for us 
 
 \section{My First Component}
 
-If you have a look inside the \texttt{src/App.js} file, it should look something like this:
+If you have a look inside the \texttt{src/App.js} file, it should look something like this:\footnote{In older React code you might also see \texttt{import React from "react"} as the first line in every component. In older versions of React this was necessary so that your JSX could get converted into regular JavaScript. However, as of React 17 this is no longer necessary.}
 
 \js{src/App.js}{02-jsx/figures/01-App}
 
@@ -33,9 +33,6 @@ Notice that we wrap our fat-arrow function with \texttt{(} and \texttt{)} instea
     To \texttt{import} a file that has used \texttt{export default} we use the \texttt{import} keyword, followed by the variable name we want to refer to it by in the current file, then the word \texttt{from}, then a relative path to the file (or a package name if it was installed with NPM).
 
     \begin{minted}{jsx}
-        // import the package react and call it React in this file
-        import React from "react";
-
         // import the file MyComponent.js
         // and call it MyComponent
         import MyComponent from "./MyComponent";
@@ -193,14 +190,15 @@ That's where \texttt{React.Fragment} comes in: it lets us return a single elemen
 
 \js{src/App.js}{02-jsx/figures/09-React.Fragment}
 
-You should use \texttt{React.Fragment} whenever you don't need the wrapping element to appear in the DOM. If you don't, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
-\\
-
 Fragments are so useful that there's a shorthand for it:
 
 \code{src/App.js}{html}{02-jsx/figures/10-React.Fragment-shorthand.js}
 
-We open with \texttt{<>} and close with \texttt{</>}. This isn't fully supported with all tooling (e.g. text editors, syntax highlighters, \&c.), but it's worth giving it a go and seeing if it works with your setup.
+We open with \texttt{<>} and close with \texttt{</>}.
+\\
+
+You should use Fragments whenever you don't need the wrapping element to appear in the DOM. If you use a \texttt{<div>} instead, the HTML Standards Goblin will steal all the vowel keys from your keyboard while you sleep.
+
 
 
 

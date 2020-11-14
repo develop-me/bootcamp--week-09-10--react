@@ -183,6 +183,7 @@ Frameworks good for large companies as puts a constraint on the devs
 - imports we haven't used yet
 - function App() - capital letter looks a bit weird but thats just the old way of writing it
 - Look what its returning - its html. But not quite html - this is jsx
+- In older versions of React needed to have `import React from "react"` so that JSX could be converted into regular JS. Since React 17.0 they've updated how it works (the "JSX Transform") so this is no longer necessary.
 - JSX = syntax extension for JS, a templating language
 - What is a templating language?
 	- Allows the defining of placeholders within a design structure that are later on replaced with dynamic data

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import { Alert, Col, Row } from "react-bootstrap";
 import TimeKeeper from 'react-timekeeper';

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 // import the Counter component
 import Counter from "./Counter";

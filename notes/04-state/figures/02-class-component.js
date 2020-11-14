@@ -1,5 +1,5 @@
 // we have to import Component from react
-import React, { Component } from "react";
+import { Component } from "react";
 
 // use standard JS class syntax
 // we "extend" React's Component class

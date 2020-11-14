@@ -1,5 +1,3 @@
-import React from "react";
-
 // import Card from React Bootstrap
 import { Card } from "react-bootstrap";
 

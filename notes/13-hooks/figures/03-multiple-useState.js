@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const Scorer = () => {
   // sets up player 1 score value

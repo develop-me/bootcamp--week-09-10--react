@@ -1,5 +1,3 @@
-import React from "react";
-
 // accept children, no more title prop
 const Header = ({ children, subtitle }) => (
   <header className="jumbotron">

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 // a fairly useless input component
 // the user can change the value of the input

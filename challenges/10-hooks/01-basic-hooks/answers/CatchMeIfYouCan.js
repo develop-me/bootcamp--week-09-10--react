@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const CatchMeIfYouCan = ({ jump }) => {
     const [ top, setTop ] = useState(0);

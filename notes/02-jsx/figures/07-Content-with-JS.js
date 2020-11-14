@@ -1,5 +1,3 @@
-import React from "react";
-
 // just some standard JS
 const valuation = 5e6;
 

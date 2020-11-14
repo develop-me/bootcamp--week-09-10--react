@@ -1,5 +1,3 @@
-import React from "react";
-
 const Article = ({ article }) => (
   <article>
     <h2>Article #{ article }</h2>

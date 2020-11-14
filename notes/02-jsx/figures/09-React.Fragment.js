@@ -1,5 +1,5 @@
 // add an import of Fragment from react
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 
 import Header from "./Header";
 import Content from "./Content";

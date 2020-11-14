@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";

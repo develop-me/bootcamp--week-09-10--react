@@ -1,5 +1,3 @@
-import React from "react";
-
 let animals = [
   { name: "Rafiki", animal: "Baboon" },
   { name: "Paddington", animal: "Bear" },

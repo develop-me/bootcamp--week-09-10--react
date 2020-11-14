@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ToggleText = ({ initial, alternate }) => {
     const [ isInitial, setInitial ] = useState(true);
