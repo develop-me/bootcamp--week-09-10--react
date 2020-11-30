@@ -7,6 +7,9 @@
 ## Setup
 
 - Create a new React app for this week
+- Use split code view show your parent and child component at the same time
+
+![Screen Split](split.png)
 
 ## Lifting State
 
