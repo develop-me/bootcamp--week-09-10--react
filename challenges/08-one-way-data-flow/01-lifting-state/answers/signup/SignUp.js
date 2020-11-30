@@ -20,18 +20,20 @@ class SignUp extends Component {
     render() {
         let { minimumLength } = this.props;
         let { confirm, password } = this.state;
-        const valid = confirm === password && confirm.length > minimumLength && password.length > minimumLength;
+        const valid = (confirm === password) && (password.length > minimumLength);
 
         return (
-            <form className={ valid ? "" : "has-error" }>
+            <form>
                 <Password
                     label="Password"
                     value={ password }
+                    valid={ valid }
                     handleChange={ (e) => this.handleChange(e, "password") }
                 />
                 <Password
                     label="Confirm Password"
                     value={ confirm }
+                    valid={ valid }
                     handleChange={ (e) => this.handleChange(e, "confirm") }
                 />
             </form>
