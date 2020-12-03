@@ -47,6 +47,8 @@ These challenges all involve sending data to the server when a form is submitted
 
 - Create a component `<CreateArticle>` which allows you to submit an article to the API. You should be able to get to it by going to `/news/create`
 
+    **Hint**: the order of your routes is important. `/news/:id` will capture *anything* that comes after `/news/`, including the word `create`. If you use a `<Switch>` component, ReactRouter will show the *first* route that matches.
+
 ![Create Article](img/create-article.png)
 
 - Create a component `<CreateComment articleID={ number }>` which allows you to submit a comment for a specific article to the API
