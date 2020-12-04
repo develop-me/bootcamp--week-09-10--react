@@ -48,9 +48,9 @@
     - `type` property
 - Add an action to update `player1` score
 - Add an action to update `player2` score
-- Demonstrate passing which player as part of action
 - Pull reducer `case`s out into separate functions
     - Pass `state` and `action` (if needed)
+- Demonstrate passing which player as part of action
 - Show `useReducer`
 - Show dispatching an action
 - Destructure `state`

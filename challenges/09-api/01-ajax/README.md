@@ -2,6 +2,7 @@
 
 - Use your existing React App
 - Use the Network panel to check requests are being made (filter by "XHR" to just see AJAX requests)
+- You'll need to manually refresh when you make changes, as the auto-refresh stuff only works properly with React components
 - Use Postman to check your API requests if you're not sure what you need to send
 
 ## AJAX

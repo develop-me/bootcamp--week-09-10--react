@@ -7,6 +7,9 @@
 ## Setup
 
 - Create a new React app for this week
+- Use split code view show your parent and child component at the same time
+
+![Screen Split](split.png)
 
 ## Lifting State
 
@@ -17,6 +20,8 @@ You might also find it easier to create them as a *single component* first and t
 - Create a component `<Squares color="hotpink">` that displays two of your `<Square>` components from last week and passes through the `color` prop. As before, when clicked the background colour should change. But only one of the `<Square>`s should show the given colour at once. You'll need to turn your squares back into stateless components.
 
 - Create a component `<Password label="Password">` that contains an `<input>` with a `<label>`. Inside a `<SignUp minimumLength={ 12 }>` component put two of these `<Password>` components: one should have the label "Password" and the other "Confirm Password". Both `<Password>` components should have a red border *unless* they are longer than `minimumLength` and match each other.
+
+    *Hint*: If you don't remember it, go back over the Controlled Components material from last week first
 
 
 ## Tricksy

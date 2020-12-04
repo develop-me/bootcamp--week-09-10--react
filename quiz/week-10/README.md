@@ -45,3 +45,7 @@ Create a component `<Posts>` that consists of a list of items that have a title 
 ## Hooks
 
 If you haven't already, use Hooks for all of the above components.
+
+## More
+
+Try answering [these questions](https://dev.to/scrimba/react-interview-questions-to-expect-in-2021-with-answers-dfl) without looking at the answers.
